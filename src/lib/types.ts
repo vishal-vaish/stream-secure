@@ -1,6 +1,9 @@
+import React from "react";
+
 export interface SidebarItem {
   label: string;
   href?: string;
+  navbarTitle?: string;
   icon: React.ElementType;
   expandable?:boolean;
   id?:string;
@@ -11,5 +14,6 @@ export interface SidebarItem {
 export interface SubmenuItem {
   label: string;
   href: string;
+  navbarTitle:string;
 }
 
