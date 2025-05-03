@@ -42,7 +42,14 @@ const Sidebar = () => {
   };
 
   const isExpanded = (item: string) => expandedItems.includes(item);
-  const isActive = (path: string) => pathname === path;
+
+  const isActive = (path: string) => {
+    if (path === "/") {
+      return pathname === "/";
+    }
+    return pathname.startsWith(path);
+  };
+
 
   const navLinkClass = (active: boolean) =>
     `flex items-center px-4 py-2 text-sm font-medium rounded-md ${

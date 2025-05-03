@@ -1,5 +1,5 @@
 import React from 'react'
-import NVRCard from "@/app/(dashboard)/nvr_devices/_component/NVRCard";
+import NVRCard from './NVRCard'
 
 const NVRCardContainer = () => {
   return (

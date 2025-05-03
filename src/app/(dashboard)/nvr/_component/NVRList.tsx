@@ -3,7 +3,7 @@
 import React, {useState} from 'react'
 import {Input} from "@/components/ui/input";
 import {nvrs} from "@/lib/data";
-import NVRListCard from "@/app/(dashboard)/nvr_devices/_component/NVRListCard";
+import NVRListCard from "@/app/(dashboard)/nvr/_component/NVRListCard";
 
 const NVRList = () => {
   const [searchQuery, setSearchQuery] = useState("");

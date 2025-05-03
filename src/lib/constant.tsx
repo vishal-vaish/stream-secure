@@ -30,7 +30,7 @@ export const dashboardItems:SidebarItem[] = [
     expandable: true,
     id: "surveillance",
     subMenu: [
-      { label: SideMenu.NVR_DEVICES, href: "/nvr_devices", navbarTitle:"NVR Dashboard" },
+      { label: SideMenu.NVR_DEVICES, href: "/nvr", navbarTitle:"NVR Dashboard" },
       { label: SideMenu.CHANNELS, href: "/channels", navbarTitle:"All Channels" },
     ],
   },
