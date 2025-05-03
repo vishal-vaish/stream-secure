@@ -46,7 +46,7 @@ const Sidebar = () => {
 
   const navLinkClass = (active: boolean) =>
     `flex items-center px-4 py-2 text-sm font-medium rounded-md ${
-      active ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-100'
+      active ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white'
     }`;
 
   return (
@@ -61,7 +61,7 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <aside
-        className={cn("fixed inset-y-0 left-0 z-40 flex flex-col w-64 transition-transform duration-300 bg-white border-r border-gray-200 md:translate-x-0",
+        className={cn("fixed inset-y-0 left-0 z-40 flex flex-col w-64 transition-transform duration-300 bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-900",
           isOpen ? 'translate-x-0' : '-translate-x-full')}
       >
         <Logo/>
@@ -74,9 +74,9 @@ const Sidebar = () => {
 
             if (item.expandable && item.subMenu && item.id) {
               return (
-                <div key={item.id} className="pt-2">
+                <div key={item.id} className="pt-2 mx-2">
                   <button
-                    className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-left rounded-md hover:bg-gray-100"
+                    className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-left rounded-md text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
                     onClick={() => toggleExpand(item.id!)}
                   >
                     <div className="flex items-center">
@@ -104,7 +104,7 @@ const Sidebar = () => {
             }
 
             return (
-              <Link key={item.href} href={item.href!} className={navLinkClass(isActive(item.href!))}>
+              <Link key={item.href} href={item.href!} className={cn("mx-2",navLinkClass(isActive(item.href!)))}>
                 <Icon className="w-5 h-5 mr-3"/>
                 {item.label}
                 {item.badge && (

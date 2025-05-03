@@ -5,7 +5,7 @@ import React from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
 import NextTopLoader from "nextjs-toploader";
-import {ThemeProvider} from "@/components/theme-provider";
+import {ThemeProvider} from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
