@@ -9,7 +9,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="py-2 text-center bg-white border-t text-gray-500 text-base flex-shrink-0 w-full">
+    <footer className="py-2 text-center bg-white border-t text-gray-500 text-base flex-shrink-0 w-full dark:bg-gray-900 dark:text-white">
       Powered by
       <TooltipProvider>
         <Tooltip>

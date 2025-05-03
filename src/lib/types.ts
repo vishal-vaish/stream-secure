@@ -17,3 +17,19 @@ export interface SubmenuItem {
   navbarTitle:string;
 }
 
+export interface NVR {
+  id: string;
+  name: string;
+  location: string;
+  status: NVRStatusEnum;
+  lastUpdated: string;
+  totalCollections: number;
+  storageUsed: number;
+  storageTotal: number;
+  thumbnail: string;
+}
+
+export enum NVRStatusEnum {
+  ONLINE = 'online',
+  OFFLINE = 'offline',
+}

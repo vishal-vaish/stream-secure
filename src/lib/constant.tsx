@@ -11,8 +11,7 @@ export enum SideMenu {
   DASHBOARD = "Dashboard",
   SURVEILLANCE = "Surveillance",
   NVR_DEVICES = "NVR Devices",
-  SERVERS = "Servers",
-  Cameras = "Cameras",
+  CHANNELS = "Channels",
   SETTINGS = "Settings",
   ALERTS = "Alerts",
   USERS = "Users",
@@ -32,8 +31,7 @@ export const dashboardItems:SidebarItem[] = [
     id: "surveillance",
     subMenu: [
       { label: SideMenu.NVR_DEVICES, href: "/nvr_devices", navbarTitle:"NVR Dashboard" },
-      { label: SideMenu.SERVERS, href: "/servers", navbarTitle:"All Servers" },
-      { label: SideMenu.Cameras, href: "/cameras", navbarTitle:"All Cameras" },
+      { label: SideMenu.CHANNELS, href: "/channels", navbarTitle:"All Channels" },
     ],
   },
   {

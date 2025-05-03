@@ -1,0 +1,56 @@
+import React from 'react'
+import {NVR} from "@/lib/types";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card"
+import Link from "next/link";
+import Image from "next/image";
+import StatusBadge from "@/components/StatusBadge";
+import {Camera} from "lucide-react";
+import StorageBar from '@/components/StorageBar';
+
+type Props = {
+  nvr: NVR;
+}
+
+const NvrListCard = (props: Props) => {
+  return (
+    <Link href={`/nvr/${props.nvr.id}`} className="block">
+      <Card className="hover:shadow-md">
+        <CardHeader className="p-0 pb-4">
+          <div className="relative h-40 overflow-hidden rounded-t-lg">
+            <Image
+              src={props.nvr.thumbnail}
+              alt={props.nvr.name}
+              className="w-full h-full object-cover"
+              fill
+            />
+            <div className="absolute top-2 right-2">
+              <StatusBadge status={props.nvr.status}/>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <h3 className="text-lg font-semibold text-gray-900 mb-1">{props.nvr.name}</h3>
+          <p className="text-sm text-gray-500 mb-4">{props.nvr.location}</p>
+
+          <div className="flex items-center text-sm text-gray-600">
+            <Camera className="w-4 h-4 mr-1 text-blue-600"/>
+            <span>{props.nvr.totalCollections} Cameras</span>
+          </div>
+        </CardContent>
+        <CardFooter>
+          <StorageBar
+            used={props.nvr.storageUsed}
+            total={props.nvr.storageTotal}
+            className="mb-4"
+          />
+        </CardFooter>
+      </Card>
+    </Link>
+  )
+}
+export default NvrListCard

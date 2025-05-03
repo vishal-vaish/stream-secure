@@ -124,8 +124,8 @@ const Sidebar = () => {
               A
             </div>
             <div className="ml-3">
-              <p className="text-sm font-medium text-gray-700">Admin User</p>
-              <p className="text-xs text-gray-500">admin@example.com</p>
+              <p className="text-sm font-medium text-gray-700 dark:text-white">Admin User</p>
+              <p className="text-xs text-gray-500 dark:text-gray-100">admin@example.com</p>
             </div>
           </div>
         </div>

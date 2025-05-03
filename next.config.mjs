@@ -4,6 +4,9 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["fs", "path"],
   },
+  images: {
+    domains: ['images.pexels.com'],
+  }
 };
 
 export default nextConfig;
