@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
-import {SidebarProvider} from "@/components/ui/sidebar";
-import AppSidebar from "@/components/Sidebar";
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
 import NextTopLoader from "nextjs-toploader";
@@ -28,20 +26,18 @@ export default function RootLayout({
       <title>Logi Scan</title>
       <link rel="icon" href="/logo.png" sizes="any" />
     </head>
-      <body className={inter.className}>
-      <NextTopLoader color="#2564eb" showSpinner={false}/>
+    <body className="font-sans">
+
+    <NextTopLoader color="#2564eb" showSpinner={false}/>
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
         enableSystem
         disableTransitionOnChange
       >
-        <SidebarProvider>
-          <AppSidebar />
-          <main>
+          <main >
               {children}
           </main>
-        </SidebarProvider>
         <ToastContainer/>
       </ThemeProvider>
       </body>

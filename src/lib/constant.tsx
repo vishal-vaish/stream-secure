@@ -1,21 +1,51 @@
-import VehicleAccessIcon from "@/components/Icon/VehicleAccessIcon";
-import NvrIcon from "@/components/Icon/NVRIcon";
+import {
+ Bell,
+  Camera,
+  LayoutDashboard,
+  Settings,
+   Users
+} from "lucide-react";
+import {SidebarItem} from "@/lib/types";
 
-export enum TABS {
+export enum Menu {
   DASHBOARD = "Dashboard",
-  NVR = "NVR",
+  SURVEILLANCE = "Surveillance",
+  NVR_DEVICES = "NVR Devices",
+  SERVERS = "Servers",
+  Cameras = "Cameras",
 }
 
-export const dashboardItems = [
+export const dashboardItems:SidebarItem[] = [
   {
-    name: TABS.DASHBOARD,
-    route: "/",
-    icon: <VehicleAccessIcon/>
+    label: 'Dashboard',
+    href: '/',
+    icon: LayoutDashboard,
   },
   {
-    name: TABS.NVR,
-    route: "/nvr",
-    icon: <NvrIcon/>
+    label: 'Surveillance',
+    icon: Camera,
+    expandable: true,
+    id: 'surveillance',
+    subMenu: [
+      { label: 'NVR Devices', href: '/nvr_devices' },
+      { label: 'Servers', href: '/servers' },
+      { label: 'Cameras', href: '/cameras' },
+    ],
+  },
+  {
+    label: 'Settings',
+    href: '/settings',
+    icon: Settings,
+  },
+  {
+    label: 'Alerts',
+    href: '/alert',
+    icon: Bell,
+    badge: 3,
+  },
+  {
+    label: 'Users',
+    href: '/users',
+    icon: Users,
   },
 ];
-
