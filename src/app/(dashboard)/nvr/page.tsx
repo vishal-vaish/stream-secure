@@ -1,8 +1,17 @@
-import React from 'react'
+"use client";
+
+import React, {useEffect} from 'react'
 import NVRCardContainer from "@/app/(dashboard)/nvr/_component/NVRCardContainer";
 import NVRList from "@/app/(dashboard)/nvr/_component/NVRList";
+import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 
 const Page = () => {
+  const {setNavbarTitle} = useNavbarDetails();
+
+  useEffect(() => {
+    setNavbarTitle("NVR Dashboard");
+  }, [setNavbarTitle]);
+  
   return (
     <>
       <NVRCardContainer/>

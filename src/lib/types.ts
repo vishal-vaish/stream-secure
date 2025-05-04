@@ -3,7 +3,6 @@ import React from "react";
 export interface SidebarItem {
   label: string;
   href?: string;
-  navbarTitle?: string;
   icon: React.ElementType;
   expandable?:boolean;
   id?:string;
@@ -32,4 +31,9 @@ export interface NVR {
 export enum NVRStatusEnum {
   ONLINE = 'online',
   OFFLINE = 'offline',
+}
+
+export interface BreadcrumbItemType {
+  label: string;
+  path: string;
 }

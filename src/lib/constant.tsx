@@ -22,7 +22,6 @@ export const dashboardItems:SidebarItem[] = [
     label: SideMenu.DASHBOARD,
     href: "/",
     icon: LayoutDashboard,
-    navbarTitle: "Dashboard",
   },
   {
     label: SideMenu.SURVEILLANCE,

@@ -1,28 +1,22 @@
 "use client";
 
-import React, {useState} from 'react'
-import {Input} from "@/components/ui/input";
+import React from 'react'
 import {nvrs} from "@/lib/data";
 import NVRListCard from "@/app/(dashboard)/nvr/_component/NVRListCard";
+import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 
 const NVRList = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const {searchTerm} = useNavbarDetails();
 
   const filteredNVRs = nvrs.filter(nvr =>
-    nvr.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    nvr.location.toLowerCase().includes(searchQuery.toLowerCase())
+    nvr.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    nvr.location.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div>
-      <div className="flex w-full justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold text-gray-800">NVR Devices</h2>
-        <Input
-          className="w-64"
-          placeholder="Search NVR Devices..."
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </div>
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">NVR Devices</h2>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {filteredNVRs.map((nvr) => (
           <NVRListCard key={nvr.id} nvr={nvr}/>

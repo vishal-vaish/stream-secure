@@ -2,9 +2,10 @@ import React from 'react'
 import {Bell} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import Theme from "@/components/theme";
+import SearchBar from "@/components/Header/SearchBar";
 
 type Props = {
-  title: string
+  title: string;
 }
 
 const Header = (props:Props) => {
@@ -15,6 +16,7 @@ const Header = (props:Props) => {
           {props.title}
         </h1>
         <div className="flex items-center space-x-4">
+          <SearchBar/>
           <div className="flex items-center space-x-2">
             <Theme/>
             <Button

@@ -5,7 +5,7 @@ import React from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
 import NextTopLoader from "nextjs-toploader";
-import {ThemeProvider} from "next-themes";
+import AppProvider from "@/provider/AppProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,17 +29,12 @@ export default function RootLayout({
     <body className="font-sans">
 
     <NextTopLoader color="#2564eb" showSpinner={false}/>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-          <main >
-              {children}
-          </main>
+     <AppProvider>
+        <main >
+            {children}
+        </main>
         <ToastContainer/>
-      </ThemeProvider>
+     </AppProvider>
       </body>
     </html>
   );
