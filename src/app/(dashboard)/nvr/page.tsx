@@ -6,11 +6,12 @@ import NVRList from "@/app/(dashboard)/nvr/_component/NVRList";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 
 const Page = () => {
-  const {setNavbarTitle} = useNavbarDetails();
+  const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();
 
   useEffect(() => {
     setNavbarTitle("NVR Dashboard");
-  }, [setNavbarTitle]);
+    setBreadcrumbItems([]);
+  }, [setNavbarTitle, setBreadcrumbItems]);
   
   return (
     <>

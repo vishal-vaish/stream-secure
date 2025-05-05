@@ -1,7 +1,6 @@
 "use client";
 
-import {createContext, ReactNode, useEffect, useState} from "react";
-import {usePathname} from "next/navigation";
+import {createContext, ReactNode, useState} from "react";
 import {BreadcrumbItemType} from "@/lib/types";
 
 export interface NavbarDetailsContextType {
@@ -19,13 +18,6 @@ export const NavbarDetailsProvider = ({ children }: {children:ReactNode}) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [navbarTitle, setNavbarTitle] = useState<string>("");
   const [breadcrumbItems, setBreadcrumbItems] = useState<BreadcrumbItemType[]>([]);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    setSearchTerm("");
-    setBreadcrumbItems([]);
-    setNavbarTitle("");
-  }, [pathname]);
 
   return (
     <NavbarDetailsContext.Provider value={{
