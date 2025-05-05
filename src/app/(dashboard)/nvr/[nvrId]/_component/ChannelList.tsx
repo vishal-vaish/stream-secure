@@ -6,11 +6,11 @@ import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import ChannelListCard from "@/app/(dashboard)/nvr/[nvrId]/_component/ChannelListCard";
 
 type Props = {
-  serverId: string;
+  nvrId: string;
 }
 
 const ChannelList = (props:Props) => {
-  const channel = getFilteredChannel(props.serverId);
+  const channel = getFilteredChannel(props.nvrId);
   const {searchTerm} = useNavbarDetails();
 
   const filteredChannel = channel.filter(camera =>

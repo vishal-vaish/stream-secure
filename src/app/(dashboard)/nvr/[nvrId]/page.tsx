@@ -37,7 +37,7 @@ const Page = () => {
   return (
     <div>
       <NVRDetailContainer nvr={nvr}/>
-      <ChannelList serverId={nvrId} />
+      <ChannelList nvrId={nvrId} />
     </div>
   )
 }

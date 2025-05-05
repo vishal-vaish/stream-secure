@@ -4,11 +4,13 @@ import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import {useEffect} from "react";
 
 const Dashboard = () => {
-  const {setNavbarTitle} = useNavbarDetails();
+  const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();
 
   useEffect(() => {
     setNavbarTitle("Dashboard");
-  }, [setNavbarTitle]);
+    setBreadcrumbItems([]);
+  }, [setBreadcrumbItems, setNavbarTitle]);
+
   return (
     <div>
       Dashboard

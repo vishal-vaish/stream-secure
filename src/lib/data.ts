@@ -133,7 +133,7 @@ export const mockedChannelsData: ChannelType[] = [
     lastUpdated: new Date().toISOString(),
     resolution: "1080p",
     streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-    thumbnail: "https://images.pexels.com/photos/6612706/pexels-photo-6612706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    thumbnail: "https://images.pexels.com/photos/1756957/pexels-photo-1756957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   {
     id: "cam-008",
