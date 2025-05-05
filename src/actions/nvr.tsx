@@ -8,3 +8,7 @@ export const getNVRById = (id: string): NVR | undefined => {
 export const getFilteredChannel = (serverId: string): ChannelType[] => {
   return mockedChannelsData.filter(camera => camera.nvrId === serverId);
 };
+
+export const getChannelById = (id: string): ChannelType | undefined => {
+  return mockedChannelsData.find(camera => camera.id === id);
+};

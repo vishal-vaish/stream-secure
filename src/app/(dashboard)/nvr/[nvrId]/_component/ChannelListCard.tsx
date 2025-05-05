@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import {
   Card,
   CardContent,
@@ -17,18 +17,18 @@ type Props = {
 const ChannelListCard = (props: Props) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      month: 'short',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
+    return new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
       hour12: true
     }).format(date);
   };
 
   return (
     <Link
-      href={`/nvr/${props.channel.nvrId}/camera/${props.channel.id}`}
+      href={`/nvr/${props.channel.nvrId}/channel/${props.channel.id}`}
       className="block"
     >
       <Card className="hover:shadow-md">
@@ -43,7 +43,7 @@ const ChannelListCard = (props: Props) => {
             <div className="absolute top-2 right-2">
               <StatusBadge status={props.channel.status}/>
             </div>
-            {props.channel.status !== 'offline' && (
+            {props.channel.status !== "offline" && (
               <div
                 className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div
@@ -52,7 +52,7 @@ const ChannelListCard = (props: Props) => {
                 </div>
               </div>
             )}
-            {props.channel.status === 'offline' && (
+            {props.channel.status === "offline" && (
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
                 <VideoOff className="w-10 h-10 text-white opacity-70"/>
               </div>

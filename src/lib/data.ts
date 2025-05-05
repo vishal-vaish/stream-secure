@@ -154,7 +154,7 @@ export const mockedChannelsData: ChannelType[] = [
     status: "online",
     lastUpdated: new Date().toISOString(),
     resolution: "1080p",
-    streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    streamUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     thumbnail: "https://images.pexels.com/photos/4481326/pexels-photo-4481326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   {
