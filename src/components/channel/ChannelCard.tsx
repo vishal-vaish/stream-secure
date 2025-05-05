@@ -3,6 +3,7 @@ import {ChannelType} from "@/lib/types";
 import StatusBadge from "@/components/StatusBadge";
 import VideoPlayer from "@/components/channel/VideoPlayer";
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
+import RealTimeVideoPlayer from "@/components/channel/RealTimeVideoPlayer";
 
 type Props = {
   channel: ChannelType;
@@ -17,6 +18,19 @@ const ChannelCard = (props: Props) => {
     }).format(date);
   };
 
+  const isRealStreaming =
+    props.channel.id === "cam-009" ||
+    props.channel.id === "cam-010";
+
+  const streamUrl: Record<string, string> = {
+    "cam-009": "http://192.168.1.114:8000/hls/stream_0/playlist.m3u8",
+    "cam-010": "http://192.168.1.114:8000/hls/stream_1/playlist.m3u8"
+  }
+
+  const liveStreamUrl = (id: string) => {
+    return streamUrl[id];
+  }
+
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -27,11 +41,17 @@ const ChannelCard = (props: Props) => {
           </div>
 
           {props.channel.status !== 'offline' ? (
-            <VideoPlayer
-              src={props.channel.streamUrl}
-              poster={props.channel.thumbnail}
-              title={props.channel.name}
-            />
+            isRealStreaming ? (
+              <RealTimeVideoPlayer
+                src={liveStreamUrl(props.channel.id)}
+              />
+            ) : (
+              <VideoPlayer
+                src={props.channel.streamUrl}
+                poster={props.channel.thumbnail}
+                title={props.channel.name}
+              />
+            )
           ) : (
             <div className="bg-gray-900 rounded-lg aspect-video flex items-center justify-center">
               <div className="text-center">

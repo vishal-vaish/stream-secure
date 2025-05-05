@@ -121,7 +121,7 @@ export const mockedChannelsData: ChannelType[] = [
     status: ChannelStatusEnum.RECORDING,
     lastUpdated: new Date().toISOString(),
     resolution: "1080p",
-    streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    streamUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     thumbnail: "https://images.pexels.com/photos/1756957/pexels-photo-1756957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   {
@@ -132,7 +132,7 @@ export const mockedChannelsData: ChannelType[] = [
     status: ChannelStatusEnum.ONLINE,
     lastUpdated: new Date().toISOString(),
     resolution: "1080p",
-    streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    streamUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     thumbnail: "https://images.pexels.com/photos/1756957/pexels-photo-1756957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   {
@@ -149,8 +149,8 @@ export const mockedChannelsData: ChannelType[] = [
   {
     id: "cam-009",
     nvrId: "nvr-001",
-    name: "Loading Dock 1",
-    location: "North Loading Area",
+    name: "Ground Floor Lobby-1",
+    location: "Ground Floor Lobby",
     status: ChannelStatusEnum.ONLINE,
     lastUpdated: new Date().toISOString(),
     resolution: "1080p",
@@ -160,9 +160,9 @@ export const mockedChannelsData: ChannelType[] = [
   {
     id: "cam-010",
     nvrId: "nvr-001",
-    name: "Conference Room A",
-    location: "2nd Floor East Wing",
-    status: ChannelStatusEnum.OFFLINE,
+    name: "Ground Floor Lobby-2",
+    location: "Ground Floor Lobby",
+    status: ChannelStatusEnum.ONLINE,
     lastUpdated: new Date(Date.now() - 7200000).toISOString(),
     resolution: "1080p",
     streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
