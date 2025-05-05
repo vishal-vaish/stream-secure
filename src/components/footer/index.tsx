@@ -9,11 +9,11 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="py-2 text-center bg-white border-t text-gray-500 text-base flex-shrink-0 w-full dark:bg-gray-900 dark:text-white">
+    <footer className="py-2 text-center bg-white border-t text-gray-500 text-base flex-shrink-0 w-full dark:bg-gray-900 dark:text-gray-200">
       Powered by
       <TooltipProvider>
         <Tooltip>
-          <TooltipTrigger className="ml-1 text-[#2564eb] hover:underline cursor-pointer">
+          <TooltipTrigger className="ml-1 text-blue-600 hover:underline cursor-pointer dark:text-blue-400">
             Skytel
           </TooltipTrigger>
           <TooltipContent>

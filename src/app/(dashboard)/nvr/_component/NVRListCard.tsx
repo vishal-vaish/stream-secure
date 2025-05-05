@@ -19,7 +19,7 @@ type Props = {
 const NvrListCard = (props: Props) => {
   return (
     <Link href={`/nvr/${props.nvr.id}`} className="block">
-      <Card className="hover:shadow-md">
+      <Card className="hover:shadow-md dark:shadow-border/60">
         <CardHeader className="p-0 pb-4">
           <div className="relative h-40 overflow-hidden rounded-t-lg">
             <Image
