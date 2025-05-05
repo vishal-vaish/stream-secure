@@ -18,7 +18,7 @@ const StorageBar = (props:Props) => {
   
   return (
     <div className={cn("w-full",props.className)}>
-      <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
+      <div className="flex justify-between text-xs text-gray-500 dark:text-gray-300 mb-1">
         <span>{props.used.toFixed(1)} TB used</span>
         <span>{percentage}%</span>
       </div>
@@ -28,7 +28,7 @@ const StorageBar = (props:Props) => {
           style={{ width: `${percentage}%` }}
         ></div>
       </div>
-      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+      <div className="text-xs text-gray-500 dark:text-gray-300 mt-1">
         <span>{props.total.toFixed(1)} TB total</span>
       </div>
     </div>

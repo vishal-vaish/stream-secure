@@ -21,7 +21,7 @@ const ChannelList = (props:Props) => {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">Connected Channels</h2>
+      <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Connected Channels</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {filteredChannel.map((channel) => (
@@ -30,7 +30,7 @@ const ChannelList = (props:Props) => {
 
         {filteredChannel.length === 0 && (
           <div className="col-span-full text-center py-12">
-            <p className="text-gray-500">No Channel found for this NVR Device.</p>
+            <p className="text-gray-500 dark:text-gray-100">No Channel found for this NVR Device.</p>
           </div>
         )}
       </div>

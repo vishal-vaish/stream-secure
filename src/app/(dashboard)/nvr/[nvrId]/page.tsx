@@ -29,7 +29,7 @@ const Page = () => {
     setNavbarTitle("NVR Not found");
     return (
       <div className="text-center py-12">
-        <p className="text-xl text-gray-700">The requested NVR was not found.</p>
+        <p className="text-xl text-gray-700 dark:text-white">The requested NVR was not found.</p>
       </div>
     );
   }

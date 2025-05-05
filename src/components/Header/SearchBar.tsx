@@ -16,7 +16,7 @@ const SearchBar = () => {
         placeholder="Search devices..."
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        className="pl-10"
+        className="pl-10 dark:bg-gray-700 dark:border-gray-600 "
       />
     </div>
   )

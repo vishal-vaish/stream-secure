@@ -23,6 +23,8 @@ const buttonVariants = cva(
           'bg-primary border-primary text-primary-foreground whitespace-nowrap hover:bg-primary/80 border border-primary border-[#7f92f8] text-md shadow-md',
         'btn-secondary':
           'whitespace-nowrap dark:text-primary-foreground text-lg font-normal',
+        "no-background":
+          'bg-transparent hover:bg-accent hover:text-accent-foreground',
       },
       size: {
         default: "h-10 px-4 py-2",

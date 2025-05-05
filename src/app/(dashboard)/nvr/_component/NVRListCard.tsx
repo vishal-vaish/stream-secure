@@ -34,12 +34,12 @@ const NvrListCard = (props: Props) => {
           </div>
         </CardHeader>
         <CardContent>
-          <h3 className="text-lg font-semibold text-gray-900 mb-1">{props.nvr.name}</h3>
-          <p className="text-sm text-gray-500 mb-4">{props.nvr.location}</p>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{props.nvr.name}</h3>
+          <p className="text-sm text-gray-500 dark:text-gray-200 mb-4">{props.nvr.location}</p>
 
           <div className="flex items-center text-sm text-gray-600">
-            <Camera className="w-4 h-4 mr-1 text-blue-600"/>
-            <span>{props.nvr.totalChannels} Channels</span>
+            <Camera className="w-4 h-4 mr-1 text-blue-600 dark:text-blue-500"/>
+            <span className="dark:text-gray-50">{props.nvr.totalChannels} Channels</span>
           </div>
         </CardContent>
         <CardFooter>

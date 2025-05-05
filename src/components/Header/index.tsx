@@ -20,7 +20,7 @@ const Header = (props:Props) => {
           <div className="flex items-center space-x-2">
             <Theme/>
             <Button
-              variant={"outline"}
+              variant={"no-background"}
               className="relative p-2 border-0"
             >
               <Bell className="w-5 h-5" />

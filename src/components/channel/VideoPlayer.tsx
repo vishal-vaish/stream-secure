@@ -135,7 +135,7 @@ const VideoPlayer = (props:Props) => {
 
   return (
     <div
-      className="relative w-full bg-black rounded-lg overflow-hidden shadow-lg"
+      className="relative w-full aspect-video bg-black rounded-lg overflow-hidden shadow-lg"
       ref={playerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => {

@@ -51,7 +51,7 @@ const Page = () => {
   if (notFound) {
     return (
       <div className="text-center py-12">
-        <p className="text-xl text-gray-700">The requested Channel was not found.</p>
+        <p className="text-xl text-gray-700 dark:text-gray-200">The requested Channel was not found.</p>
       </div>
     );
   }

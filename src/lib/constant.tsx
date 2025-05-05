@@ -33,20 +33,20 @@ export const dashboardItems:SidebarItem[] = [
       { label: SideMenu.CHANNELS, href: "/channels", navbarTitle:"All Channels" },
     ],
   },
-  {
-    label: SideMenu.SETTINGS,
-    href: "/settings",
-    icon: Settings,
-  },
-  {
-    label: SideMenu.ALERTS,
-    href: "/alert",
-    icon: Bell,
-    badge: 3,
-  },
-  {
-    label: SideMenu.USERS,
-    href: "/users",
-    icon: Users,
-  },
+  // {
+  //   label: SideMenu.SETTINGS,
+  //   href: "/settings",
+  //   icon: Settings,
+  // },
+  // {
+  //   label: SideMenu.ALERTS,
+  //   href: "/alert",
+  //   icon: Bell,
+  //   badge: 3,
+  // },
+  // {
+  //   label: SideMenu.USERS,
+  //   href: "/users",
+  //   icon: Users,
+  // },
 ];
