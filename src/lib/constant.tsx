@@ -1,9 +1,9 @@
 import {
- Bell,
+  Bell,
   Camera,
-  LayoutDashboard,
+  LayoutDashboard, ServerIcon,
   Settings,
-   Users
+  Users
 } from "lucide-react";
 import {SidebarItem} from "@/lib/types";
 
@@ -17,21 +17,21 @@ export enum SideMenu {
   USERS = "Users",
 }
 
-export const dashboardItems:SidebarItem[] = [
+export const dashboardItems: SidebarItem[] = [
   {
     label: SideMenu.DASHBOARD,
     href: "/",
     icon: LayoutDashboard,
   },
   {
-    label: SideMenu.SURVEILLANCE,
+    label: SideMenu.NVR_DEVICES,
+    icon: ServerIcon,
+    href: "/nvr"
+  },
+  {
+    label: SideMenu.CHANNELS,
     icon: Camera,
-    expandable: true,
-    id: "surveillance",
-    subMenu: [
-      { label: SideMenu.NVR_DEVICES, href: "/nvr", navbarTitle:"NVR Dashboard" },
-      { label: SideMenu.CHANNELS, href: "/channels", navbarTitle:"All Channels" },
-    ],
+    href: "/channels"
   },
   // {
   //   label: SideMenu.SETTINGS,

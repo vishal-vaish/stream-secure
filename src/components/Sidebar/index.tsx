@@ -1,6 +1,6 @@
 "use client";
 
-import {ChevronRight,Menu, X} from 'lucide-react';
+import {ChevronRight, Menu, X} from 'lucide-react';
 import React, {useEffect, useState} from 'react'
 import {cn} from "@/lib/utils";
 import Link from "next/link";
@@ -72,46 +72,13 @@ const Sidebar = () => {
           isOpen ? 'translate-x-0' : '-translate-x-full')}
       >
         <Logo/>
-
         <Separator className="mb-4"/>
-
         <div className="flex flex-col flex-1 overflow-y-auto">
           {dashboardItems.map(item => {
             const Icon = item.icon;
 
-            if (item.expandable && item.subMenu && item.id) {
-              return (
-                <div key={item.id} className="pt-2 mx-2">
-                  <button
-                    className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-left rounded-md text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
-                    onClick={() => toggleExpand(item.id!)}
-                  >
-                    <div className="flex items-center">
-                      <Icon className="w-5 h-5 mr-3"/>
-                      {item.label}
-                    </div>
-                    <ChevronRight
-                      className={`w-4 h-4 transition-transform duration-200 ${
-                        isExpanded(item.id!) ? 'transform rotate-90' : ''
-                      }`}
-                    />
-                  </button>
-
-                  {isExpanded(item.id) && (
-                    <div className="mt-1 ml-8 space-y-1">
-                      {item.subMenu.map(child => (
-                        <Link key={child.href} href={child.href} className={navLinkClass(isActive(child.href))}>
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            }
-
             return (
-              <Link key={item.href} href={item.href!} className={cn("mx-2",navLinkClass(isActive(item.href!)))}>
+              <Link key={item.href} href={item.href!} className={cn("mx-2", navLinkClass(isActive(item.href!)))}>
                 <Icon className="w-5 h-5 mr-3"/>
                 {item.label}
                 {item.badge && (
