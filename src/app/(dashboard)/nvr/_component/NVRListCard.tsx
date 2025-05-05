@@ -39,7 +39,7 @@ const NvrListCard = (props: Props) => {
 
           <div className="flex items-center text-sm text-gray-600">
             <Camera className="w-4 h-4 mr-1 text-blue-600"/>
-            <span>{props.nvr.totalCollections} Channels</span>
+            <span>{props.nvr.totalChannels} Channels</span>
           </div>
         </CardContent>
         <CardFooter>

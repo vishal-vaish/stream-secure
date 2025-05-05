@@ -1,6 +1,10 @@
-import {NVR} from "@/lib/types";
-import {nvrs} from "@/lib/data";
+import {ChannelType, NVR} from "@/lib/types";
+import {mockedChannelsData, mockedNVRData} from "@/lib/data";
 
 export const getNVRById = (id: string): NVR | undefined => {
-  return nvrs.find(nvr => nvr.id === id);
+  return mockedNVRData.find(nvr => nvr.id === id);
+};
+
+export const getFilteredChannel = (serverId: string): ChannelType[] => {
+  return mockedChannelsData.filter(camera => camera.nvrId === serverId);
 };

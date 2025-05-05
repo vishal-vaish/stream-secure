@@ -1,14 +1,14 @@
 "use client";
 
 import React from 'react'
-import {nvrs} from "@/lib/data";
+import {mockedNVRData} from "@/lib/data";
 import NVRListCard from "@/app/(dashboard)/nvr/_component/NVRListCard";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 
 const NVRList = () => {
   const {searchTerm} = useNavbarDetails();
 
-  const filteredNVRs = nvrs.filter(nvr =>
+  const filteredNVRs = mockedNVRData.filter(nvr =>
     nvr.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     nvr.location.toLowerCase().includes(searchTerm.toLowerCase())
   );

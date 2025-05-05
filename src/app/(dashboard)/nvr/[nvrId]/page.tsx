@@ -5,34 +5,40 @@ import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import {BreadcrumbItemType} from "@/lib/types";
 import {useParams} from "next/navigation";
 import {getNVRById} from "@/actions/nvr";
+import NVRDetailContainer from "@/app/(dashboard)/nvr/[nvrId]/_component/NVRDetailContainer";
+import ChannelList from "@/app/(dashboard)/nvr/[nvrId]/_component/ChannelList";
 
 const Page = () => {
   const {setBreadcrumbItems, setNavbarTitle} = useNavbarDetails();
-  const {nvrId} = useParams<{ nvrId:string}>();
+  const {nvrId} = useParams<{ nvrId: string }>();
 
   const nvr = getNVRById(nvrId || "");
 
   useEffect(() => {
-    if(nvr) {
+    if (nvr) {
       const breadcrumbItems: BreadcrumbItemType[] = [
         {label: nvr.name, path: `/nvr/${nvr.id}`}
       ];
 
       setBreadcrumbItems(breadcrumbItems);
+      setNavbarTitle(nvr.name);
     }
-  }, [nvr, setBreadcrumbItems]);
+  }, [nvr, setBreadcrumbItems, setNavbarTitle]);
 
   if (!nvr) {
     setNavbarTitle("NVR Not found");
     return (
-        <div className="text-center py-12">
-          <p className="text-xl text-gray-700">The requested NVR was not found.</p>
-        </div>
+      <div className="text-center py-12">
+        <p className="text-xl text-gray-700">The requested NVR was not found.</p>
+      </div>
     );
   }
 
   return (
-    <div>Page</div>
+    <div>
+      <NVRDetailContainer nvr={nvr}/>
+      <ChannelList serverId={nvrId} />
+    </div>
   )
 }
 export default Page

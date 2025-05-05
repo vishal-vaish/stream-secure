@@ -21,19 +21,33 @@ export interface NVR {
   name: string;
   location: string;
   status: NVRStatusEnum;
+  model:string;
+  modelName:string;
   lastUpdated: string;
-  totalCollections: number;
+  totalChannels: number;
   storageUsed: number;
   storageTotal: number;
   thumbnail: string;
 }
 
 export enum NVRStatusEnum {
-  ONLINE = 'online',
-  OFFLINE = 'offline',
+  ONLINE = "online",
+  OFFLINE = "offline",
 }
 
 export interface BreadcrumbItemType {
   label: string;
   path: string;
+}
+
+export interface ChannelType {
+  id: string;
+  nvrId: string;
+  name: string;
+  location: string;
+  status: "online" | "offline" | "recording";
+  lastUpdated: string;
+  resolution: string;
+  streamUrl: string;
+  thumbnail: string;
 }

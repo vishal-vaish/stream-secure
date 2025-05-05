@@ -1,10 +1,12 @@
 import React from "react"
 import {Badge} from "@/components/ui/badge";
+import {cn} from "@/lib/utils";
 
 type StatusType = "online" | "offline" | "recording";
 
 type Props = {
   status: StatusType;
+  className?: string;
 }
 
 const StatusBadge = (props:Props) => {
@@ -35,7 +37,7 @@ const StatusBadge = (props:Props) => {
   };
 
   return (
-    <Badge className={getStatusColor()}>
+    <Badge className={cn(getStatusColor(), props.className)}>
       <span className={`w-2 h-2 ${getStatusDot()} rounded-full mr-1.5`}></span>
       <span className="capitalize">{props.status}</span>
     </Badge>
