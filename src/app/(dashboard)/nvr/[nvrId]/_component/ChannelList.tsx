@@ -4,6 +4,7 @@ import React from 'react'
 import {getFilteredChannel} from "@/actions/nvr";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import ChannelListCard from "@/app/(dashboard)/nvr/[nvrId]/_component/ChannelListCard";
+import Link from "next/link";
 
 type Props = {
   nvrId: string;
@@ -25,7 +26,12 @@ const ChannelList = (props:Props) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {filteredChannel.map((channel) => (
-          <ChannelListCard key={channel.id} channel={channel} />
+          <Link
+            href={`/nvr/${channel.nvrId}/channel/${channel.id}`}
+            key={channel.id}
+          >
+            <ChannelListCard channel={channel} />
+          </Link>
         ))}
 
         {filteredChannel.length === 0 && (

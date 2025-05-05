@@ -4,6 +4,7 @@ import React, {useEffect} from 'react'
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import {mockedChannelsData} from "@/lib/data";
 import ChannelListCard from "@/app/(dashboard)/nvr/[nvrId]/_component/ChannelListCard";
+import Link from "next/link";
 
 const Page = () => {
   const {setNavbarTitle, setBreadcrumbItems, searchTerm} = useNavbarDetails();
@@ -23,7 +24,12 @@ const Page = () => {
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredChannels.map(channel => (
-          <ChannelListCard key={channel.id} channel={channel} />
+          <Link
+            href={`/channels/${channel.id}`}
+            key={channel.id}
+          >
+          <ChannelListCard channel={channel} />
+          </Link>
         ))}
 
         {filteredChannels.length === 0 && (

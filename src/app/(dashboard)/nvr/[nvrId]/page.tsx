@@ -17,6 +17,7 @@ const Page = () => {
   useEffect(() => {
     if (nvr) {
       const breadcrumbItems: BreadcrumbItemType[] = [
+        {label: "All NVR", path: "/nvr"},
         {label: nvr.name, path: `/nvr/${nvr.id}`}
       ];
 

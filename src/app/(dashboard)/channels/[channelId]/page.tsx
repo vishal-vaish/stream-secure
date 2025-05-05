@@ -1,44 +1,39 @@
 "use client";
 
 import React, {useEffect, useState} from 'react'
-import {useParams} from "next/navigation";
-import {BreadcrumbItemType, ChannelType, NVR} from "@/lib/types";
-import {getChannelById, getNVRById} from '@/actions/nvr';
-import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import ChannelCard from "@/components/channel/ChannelCard";
+import {getChannelById} from "@/actions/nvr";
+import {BreadcrumbItemType, ChannelType} from "@/lib/types";
+import {useParams} from "next/navigation";
+import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 
 const Page = () => {
   const {setBreadcrumbItems, setNavbarTitle} = useNavbarDetails();
-  const [nvr, setNvr] = useState<NVR | null>(null);
   const [channel, setChannel] = useState<ChannelType | null>(null);
   const [notFound, setNotFound] = useState<boolean>(false);
-  const {nvrId, channelId} = useParams<{
-    nvrId: string;
+  const {channelId} = useParams<{
     channelId: string;
   }>();
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!nvrId || !channelId) return;
+      if (!channelId) return;
 
-      const fetchedNvr = getNVRById(nvrId || '');
       const fetchedChannel = getChannelById(channelId || '');
 
-      if (!fetchedNvr || !fetchedChannel) {
+      if (!fetchedChannel) {
         setNotFound(true);
         setNavbarTitle("Camera Not found");
         return;
       }
 
-      setNvr(fetchedNvr);
       setChannel(fetchedChannel);
 
       const breadcrumbItems: BreadcrumbItemType[] = [
-        {label: "All NVR", path: "/nvr"},
-        { label: fetchedNvr.name, path: `/nvr/${fetchedNvr.id}` },
+        {label: "All Channels", path: "/channels"},
         {
           label: fetchedChannel.name,
-          path: `/nvr/${fetchedNvr.id}/channel/${fetchedChannel.id}`
+          path: `/channel/${fetchedChannel.id}`
         }
       ];
 
@@ -47,7 +42,7 @@ const Page = () => {
     };
 
     fetchData();
-  }, [channelId, nvrId, setBreadcrumbItems, setNavbarTitle]);
+  }, [channelId, setBreadcrumbItems, setNavbarTitle]);
 
   if (notFound) {
     return (
@@ -59,14 +54,12 @@ const Page = () => {
     );
   }
 
-  if (!nvr || !channel) {
+  if (!channel) {
     return null;
   }
 
   return (
-    <div>
-      <ChannelCard channel={channel}/>
-    </div>
+    <ChannelCard channel={channel}/>
   )
 }
 export default Page

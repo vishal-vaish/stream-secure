@@ -7,7 +7,6 @@ import {
 import Image from "next/image";
 import StatusBadge from "@/components/StatusBadge";
 import {Play, VideoOff} from "lucide-react";
-import Link from "next/link";
 import {ChannelType} from "@/lib/types";
 
 type Props = {
@@ -27,10 +26,7 @@ const ChannelListCard = (props: Props) => {
   };
 
   return (
-    <Link
-      href={`/nvr/${props.channel.nvrId}/channel/${props.channel.id}`}
-      className="block"
-    >
+    <div className="block">
       <Card className="hover:shadow-md dark:shadow-border/60">
         <CardHeader className="p-0 pb-4">
           <div className="relative h-40 overflow-hidden rounded-t-lg group">
@@ -71,7 +67,7 @@ const ChannelListCard = (props: Props) => {
           </div>
         </CardContent>
       </Card>
-    </Link>
+    </div>
   )
 }
 export default ChannelListCard
