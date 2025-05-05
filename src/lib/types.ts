@@ -45,9 +45,15 @@ export interface ChannelType {
   nvrId: string;
   name: string;
   location: string;
-  status: "online" | "offline" | "recording";
+  status: ChannelStatusEnum;
   lastUpdated: string;
   resolution: string;
   streamUrl: string;
   thumbnail: string;
+}
+
+export enum ChannelStatusEnum {
+  ONLINE = "online",
+  OFFLINE = "offline",
+  RECORDING = "recording",
 }
