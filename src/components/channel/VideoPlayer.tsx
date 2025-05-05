@@ -143,10 +143,13 @@ const VideoPlayer = (props:Props) => {
       }}
     >
       <video
+        ref={videoRef}
         src={props.src}
         poster={props.poster}
         className="w-full h-full"
+        onClick={togglePlay}
         onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
       />
 
       {/*Video controls*/}
