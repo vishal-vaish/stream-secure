@@ -21,6 +21,7 @@ export interface NVR {
   name: string;
   location: string;
   status: NVRStatusEnum;
+  ipAddress:string;
   model:string;
   modelName:string;
   lastUpdated: string;
@@ -55,5 +56,4 @@ export interface ChannelType {
 export enum ChannelStatusEnum {
   ONLINE = "online",
   OFFLINE = "offline",
-  RECORDING = "recording",
 }

@@ -7,12 +7,15 @@ import {
 } from "@/components/ui/card"
 import StatusBadge from "@/components/StatusBadge";
 import StorageBar from '@/components/StorageBar';
+import {mockedChannelsData} from "@/lib/data";
 
 type Props = {
   nvr: NVR;
 }
 
 const NVRDetailContainer = (props: Props) => {
+  const nvrChannelCount = mockedChannelsData.filter(channel => channel.nvrId === props.nvr.id).length;
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat('en-US', {
@@ -38,13 +41,13 @@ const NVRDetailContainer = (props: Props) => {
               <h1 className="text-2xl font-bold">{props.nvr.name}</h1>
               <p className="text-muted-foreground">{props.nvr.location}</p>
             </div>
-            <StatusBadge status={props.nvr.status} className="text-sm" />
+            <StatusBadge status={props.nvr.status} className="text-sm"/>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-2">Storage</h3>
-              <StorageBar used={props.nvr.storageUsed} total={props.nvr.storageTotal} />
+              <StorageBar used={props.nvr.storageUsed} total={props.nvr.storageTotal}/>
             </div>
 
             <div>
@@ -52,7 +55,7 @@ const NVRDetailContainer = (props: Props) => {
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Channels:</span>
-                  <span className="font-medium">{props.nvr.totalChannels}</span>
+                  <span className="font-medium">{nvrChannelCount}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Model:</span>

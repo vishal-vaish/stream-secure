@@ -11,12 +11,15 @@ import Image from "next/image";
 import StatusBadge from "@/components/StatusBadge";
 import {Camera} from "lucide-react";
 import StorageBar from '@/components/StorageBar';
+import {mockedChannelsData} from "@/lib/data";
 
 type Props = {
   nvr: NVR;
 }
 
 const NvrListCard = (props: Props) => {
+  const channelCount = mockedChannelsData.filter(channel => channel.nvrId === props.nvr.id).length;
+
   return (
     <Link href={`/nvr/${props.nvr.id}`} className="block">
       <Card className="hover:shadow-md dark:shadow-border/60">
@@ -39,7 +42,7 @@ const NvrListCard = (props: Props) => {
 
           <div className="flex items-center text-sm text-gray-600">
             <Camera className="w-4 h-4 mr-1 text-blue-600 dark:text-blue-500"/>
-            <span className="dark:text-gray-50">{props.nvr.totalChannels} Channels</span>
+            <span className="dark:text-gray-50">{channelCount} Channels</span>
           </div>
         </CardContent>
         <CardFooter>
