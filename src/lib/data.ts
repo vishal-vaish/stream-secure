@@ -59,7 +59,7 @@ export const mockedChannelsData: ChannelType[] = [
   // Main Server 1 Cameras
   {
     id: "cam-001",
-    nvrId: "nvr-001",
+    nvrId: "nvr-002",
     name: "Lobby Camera 1",
     location: "Main Entrance",
     status: "online",
@@ -70,7 +70,7 @@ export const mockedChannelsData: ChannelType[] = [
   },
   {
     id: "cam-002",
-    nvrId: "nvr-001",
+    nvrId: "nvr-002",
     name: "Lobby Camera 2",
     location: "Reception Desk",
     status: "online",
@@ -81,7 +81,7 @@ export const mockedChannelsData: ChannelType[] = [
   },
   {
     id: "cam-003",
-    nvrId: "nvr-001",
+    nvrId: "nvr-002",
     name: "Elevator Camera",
     location: "Main Lobby Elevator",
     status: "recording",
@@ -93,7 +93,7 @@ export const mockedChannelsData: ChannelType[] = [
   // Additional cameras would be defined here, but trimmed for brevity
   {
     id: "cam-004",
-    nvrId: "nvr-001",
+    nvrId: "nvr-003",
     name: "Office Hallway 1",
     location: "1st Floor Hallway",
     status: "online",
@@ -104,7 +104,7 @@ export const mockedChannelsData: ChannelType[] = [
   },
   {
     id: "cam-005",
-    nvrId: "nvr-001",
+    nvrId: "nvr-002",
     name: "Conference Room A",
     location: "2nd Floor East Wing",
     status: "offline",
@@ -115,7 +115,7 @@ export const mockedChannelsData: ChannelType[] = [
   },
   {
     id: "cam-006",
-    nvrId: "nvr-001",
+    nvrId: "nvr-003",
     name: "Parking Entrance",
     location: "Underground Parking",
     status: "recording",
@@ -145,5 +145,27 @@ export const mockedChannelsData: ChannelType[] = [
     resolution: "1080p",
     streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
     thumbnail: "https://images.pexels.com/photos/4481326/pexels-photo-4481326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-  }
+  },
+  {
+    id: "cam-009",
+    nvrId: "nvr-001",
+    name: "Loading Dock 1",
+    location: "North Loading Area",
+    status: "online",
+    lastUpdated: new Date().toISOString(),
+    resolution: "1080p",
+    streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    thumbnail: "https://images.pexels.com/photos/4481326/pexels-photo-4481326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    id: "cam-010",
+    nvrId: "nvr-001",
+    name: "Conference Room A",
+    location: "2nd Floor East Wing",
+    status: "offline",
+    lastUpdated: new Date(Date.now() - 7200000).toISOString(),
+    resolution: "1080p",
+    streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    thumbnail: "https://images.pexels.com/photos/561458/pexels-photo-561458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
 ];
