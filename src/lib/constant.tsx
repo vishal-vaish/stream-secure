@@ -1,17 +1,16 @@
 import {
-  Bell,
   Camera,
-  LayoutDashboard, ServerIcon,
-  Settings,
-  Users
+  HardDrive,
+  LayoutDashboard,
+  ServerIcon,
 } from "lucide-react";
 import {SidebarItem} from "@/lib/types";
 
 export enum SideMenu {
   DASHBOARD = "Dashboard",
-  SURVEILLANCE = "Surveillance",
   NVR_DEVICES = "NVR Devices",
   CHANNELS = "Channels",
+  STORAGE = "Storage",
   SETTINGS = "Settings",
   ALERTS = "Alerts",
   USERS = "Users",
@@ -32,6 +31,11 @@ export const dashboardItems: SidebarItem[] = [
     label: SideMenu.CHANNELS,
     icon: Camera,
     href: "/channels"
+  },
+  {
+    label: SideMenu.STORAGE,
+    icon: HardDrive,
+    href: "/storages"
   },
   // {
   //   label: SideMenu.SETTINGS,

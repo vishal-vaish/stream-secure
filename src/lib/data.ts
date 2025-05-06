@@ -1,4 +1,4 @@
-import {ChannelStatusEnum, ChannelType, NVR, NVRStatusEnum} from "@/lib/types";
+import {ChannelStatusEnum, ChannelType, NVR, NVRStatusEnum, StorageType} from "@/lib/types";
 
 export const mockedNVRData: NVR[] = [
   {
@@ -9,7 +9,7 @@ export const mockedNVRData: NVR[] = [
     lastUpdated: new Date().toISOString(),
     model: "DS-7P32NI-K4",
     ipAddress: "49.249.96.100",
-    modelName:"HIK Media Server",
+    modelName: "HIK Media Server",
     totalChannels: 2,
     storageUsed: 1.8,
     storageTotal: 8,
@@ -23,7 +23,7 @@ export const mockedNVRData: NVR[] = [
     lastUpdated: new Date().toISOString(),
     model: "DS-7P32NI-K4",
     ipAddress: "24.119.45.410",
-    modelName:"HIK Media Server",
+    modelName: "HIK Media Server",
     totalChannels: 16,
     storageUsed: 2.4,
     storageTotal: 6,
@@ -36,7 +36,7 @@ export const mockedNVRData: NVR[] = [
     status: NVRStatusEnum.OFFLINE,
     model: "DS-7P32NI-K4",
     ipAddress: "24.459.12.410",
-    modelName:"HIK Media Server",
+    modelName: "HIK Media Server",
     lastUpdated: new Date(Date.now() - 86400000).toISOString(),
     totalChannels: 8,
     storageUsed: 1.2,
@@ -49,7 +49,7 @@ export const mockedNVRData: NVR[] = [
     location: "East Wing",
     model: "DS-7P32NI-K4",
     ipAddress: "24.129.40.010",
-    modelName:"HIK Media Server",
+    modelName: "HIK Media Server",
     status: NVRStatusEnum.ONLINE,
     lastUpdated: new Date().toISOString(),
     totalChannels: 12,
@@ -173,3 +173,18 @@ export const mockedChannelsData: ChannelType[] = [
     thumbnail: "https://images.pexels.com/photos/561458/pexels-photo-561458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
 ];
+
+export const mockedStorageData:StorageType[] = [
+  {
+    id: "storage-001",
+    nvrId: "nvr-001",
+    channelId: "cam-009",
+    channelName: "Ground Floor Lobby-1",
+    nvrName: "JMS Mining HO",
+    fileName: "sto-001",
+    streamUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    thumbnail: "https://images.pexels.com/photos/561458/pexels-photo-561458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    resolution: "1080p",
+    createdAt: new Date(Date.now() - 7200000).toISOString(),
+  }
+]

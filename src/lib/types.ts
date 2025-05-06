@@ -57,3 +57,16 @@ export enum ChannelStatusEnum {
   ONLINE = "online",
   OFFLINE = "offline",
 }
+
+export interface StorageType {
+  id: string;
+  nvrId: string;
+  channelId: string;
+  channelName: string;
+  nvrName: string;
+  fileName: string;
+  createdAt: string;
+  resolution: string;
+  streamUrl: string;
+  thumbnail: string;
+}
