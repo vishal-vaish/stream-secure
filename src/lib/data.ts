@@ -80,7 +80,7 @@ export const mockedChannelsData: ChannelType[] = [
     status: ChannelStatusEnum.ONLINE,
     lastUpdated: new Date().toISOString(),
     resolution: "1080p",
-    streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    streamUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     thumbnail: "https://images.pexels.com/photos/3205735/pexels-photo-3205735.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   {
@@ -173,18 +173,3 @@ export const mockedChannelsData: ChannelType[] = [
     thumbnail: "https://images.pexels.com/photos/561458/pexels-photo-561458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
 ];
-
-export const mockedStorageData:StorageType[] = [
-  {
-    id: "storage-001",
-    nvrId: "nvr-001",
-    channelId: "cam-009",
-    channelName: "Ground Floor Lobby-1",
-    nvrName: "JMS Mining HO",
-    fileName: "sto-001",
-    streamUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    thumbnail: "https://images.pexels.com/photos/561458/pexels-photo-561458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    resolution: "1080p",
-    createdAt: new Date(Date.now() - 7200000).toISOString(),
-  }
-]

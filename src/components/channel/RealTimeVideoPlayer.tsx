@@ -58,6 +58,9 @@ const RealTimeVideoPlayer = (props:Props) => {
     <div
       className="relative w-full aspect-video bg-black rounded-lg overflow-hidden shadow-lg"
     >
+      <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded z-10">
+        LIVE
+      </div>
       <VideoJsPlayer
         options={videoJsOptions}
         onReady={handlePlayerReady}

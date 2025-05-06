@@ -67,4 +67,5 @@ export interface StorageType {
   created: string;
   path: string;
   size_bytes: number;
+  thumbnail: string;
 }

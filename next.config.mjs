@@ -5,7 +5,7 @@ const nextConfig = {
     serverComponentsExternalPackages: ["fs", "path"],
   },
   images: {
-    domains: ['images.pexels.com'],
+    domains: ['images.pexels.com', "192.168.1.114"],
   }
 };
 

@@ -4,6 +4,7 @@ import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import Image from "next/image";
 import { Play} from "lucide-react";
 import {Separator} from "@/components/ui/separator";
+import {baseUrl} from "@/lib/queries";
 
 type Props = {
   storage: StorageType,
@@ -27,7 +28,7 @@ const StorageListCard = (props: Props) => {
         <CardHeader className="p-0 pb-4">
           <div className="relative h-40 overflow-hidden rounded-t-lg group">
             <Image
-              src={props.storage.path}
+              src={`${baseUrl}${props.storage.thumbnail}`}
               alt={props.storage.filename}
               className="w-full h-full object-cover"
               fill

@@ -46,7 +46,15 @@ const Page = () => {
       {isLoading ? (
         <StorageListSkeleton/>
       ) : (
-        <StorageList storageData={storageData}/>
+        storageData.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-xl text-gray-700 dark:text-gray-200">
+              No data is Available
+            </p>
+          </div>
+        ) : (
+          <StorageList storageData={storageData}/>
+        )
       )}
     </div>
   )
@@ -56,7 +64,7 @@ export default Page
 const StorageListSkeleton = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((i) => (
+      {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
         <Skeleton key={i} className="h-48 w-full"/>
       ))}
     </div>

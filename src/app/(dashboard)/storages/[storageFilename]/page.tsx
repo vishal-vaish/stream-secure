@@ -7,6 +7,7 @@ import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import {baseUrl, getAllStorageData} from "@/lib/queries";
 import {toast} from "sonner";
 import {StorageType} from "@/lib/types";
+import {Loader2} from "lucide-react";
 
 const Page = () => {
   const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();
@@ -14,6 +15,7 @@ const Page = () => {
     storageFilename: string;
   }>();
   const [storageData, setStorageData] = useState<StorageType | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     setNavbarTitle("Storage Management");
@@ -24,17 +26,28 @@ const Page = () => {
 
   const fetchData = async () => {
     try {
+      setIsLoading(true);
       const data = await getAllStorageData();
       const filterData = data.filter((data) => data.filename === refactorStorageFileName);
       setStorageData(filterData[0]);
     } catch (error) {
       toast.error("Unable to fetch data");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="h-screen w-full flex items-center justify-center">
+        <Loader2 className="animate-spin"/>
+      </div>
+    );
+  }
 
   if (!storageData) {
     return (
@@ -58,17 +71,20 @@ const Page = () => {
     <div className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div className="mb-6 col-span-2">
-          <div className="flex justify-between items-center mb-4">
+          <div className="relative w-full aspect-video">
+            <video
+              controls
+              className="absolute top-0 left-0 w-full h-full object-cover rounded-md"
+            >
+              <source src={`${baseUrl}${storageData.path}`} type="video/mp4"/>
+              Your browser does not support the video tag.
+            </video>
           </div>
-          <video controls>
-            <source src={`${baseUrl}${storageData.path}`} type="video/mp4"/>
-            Your browser does not support the video tag.
-          </video>
         </div>
 
         <Card className="rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 h-fit">
           <CardHeader className="text-xl font-semibold p-0 mb-4">
-            Camera Details
+            File Details
           </CardHeader>
           <CardContent className="space-y-4 pl-0">
             <div>
