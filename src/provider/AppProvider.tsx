@@ -1,6 +1,7 @@
 import React from 'react'
 import {ThemeProvider} from "next-themes";
 import {NavbarDetailsProvider} from "@/provider/NavbarDetailsProvider";
+import {Toaster} from "sonner";
 
 const AppProvider = ({children}:{children:React.ReactNode}) => {
   return (
@@ -13,6 +14,7 @@ const AppProvider = ({children}:{children:React.ReactNode}) => {
       <NavbarDetailsProvider>
          {children}
       </NavbarDetailsProvider>
+      <Toaster />
     </ThemeProvider>
   )
 }

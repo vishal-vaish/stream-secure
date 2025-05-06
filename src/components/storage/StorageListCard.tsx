@@ -27,8 +27,8 @@ const StorageListCard = (props: Props) => {
         <CardHeader className="p-0 pb-4">
           <div className="relative h-40 overflow-hidden rounded-t-lg group">
             <Image
-              src={props.storage.thumbnail}
-              alt={props.storage.fileName}
+              src={props.storage.path}
+              alt={props.storage.filename}
               className="w-full h-full object-cover"
               fill
             />
@@ -57,10 +57,10 @@ const StorageListCard = (props: Props) => {
           <Separator className="mb-4"/>
 
           <div className="text-sm text-muted-foreground mb-1">
-            Resolution: {props.storage.resolution}
+            Resolution: 1080p
           </div>
           <div className="text-xs text-muted-foreground">
-            Created At: {formatDate(props.storage.createdAt)}
+            Created At: {formatDate(props.storage.created)}
           </div>
         </CardContent>
       </Card>

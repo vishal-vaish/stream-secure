@@ -59,14 +59,12 @@ export enum ChannelStatusEnum {
 }
 
 export interface StorageType {
-  id: string;
   nvrId: string;
   channelId: string;
   channelName: string;
   nvrName: string;
-  fileName: string;
-  createdAt: string;
-  resolution: string;
-  streamUrl: string;
-  thumbnail: string;
+  filename: string;
+  created: string;
+  path: string;
+  size_bytes: number;
 }
