@@ -1,13 +1,14 @@
 import React from 'react'
-import {StorageType} from "@/lib/types";
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import Image from "next/image";
-import { Play} from "lucide-react";
+import {Play} from "lucide-react";
 import {Separator} from "@/components/ui/separator";
 import {baseUrl} from "@/lib/queries";
+import {RecordingType} from "@/lib/types";
+import {bytesToMB} from "@/lib/utils";
 
 type Props = {
-  storage: StorageType,
+  recording: RecordingType,
 }
 
 const RecordingListCard = (props: Props) => {
@@ -28,8 +29,8 @@ const RecordingListCard = (props: Props) => {
         <CardHeader className="p-0 pb-4">
           <div className="relative h-40 overflow-hidden rounded-t-lg group">
             <Image
-              src={`${baseUrl}${props.storage.thumbnail}`}
-              alt={props.storage.filename}
+              src={`${baseUrl}${props.recording.thumbnail}`}
+              alt={props.recording.filename}
               className="w-full h-full object-cover"
               fill
             />
@@ -44,24 +45,22 @@ const RecordingListCard = (props: Props) => {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-1 mb-5">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200">
-              {/*{props.recording.fileName}*/}
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-400">
+              Created At: {formatDate(props.recording.created)}
             </h3>
-            <div className="text-sm font-semibold text-gray-900 dark:text-gray-300">
-              {props.storage.nvrName}
-            </div>
-            <div className="text-sm font-semibold text-gray-900 dark:text-gray-300">
-              {props.storage.channelName}
+            <div className="text-sm font-semibold text-gray-900 dark:text-gray-400">
+              {props.recording.channelName}
             </div>
           </div>
 
           <Separator className="mb-4"/>
 
-          <div className="text-sm text-muted-foreground mb-1">
-            Resolution: 1080p
+          <div className="text-xs text-muted-foreground">
+            {props.recording.nvrName}
           </div>
           <div className="text-xs text-muted-foreground">
-            Created At: {formatDate(props.storage.created)}
+            File Size: {" "}
+            {bytesToMB(props.recording.size_bytes)} MB
           </div>
         </CardContent>
       </Card>

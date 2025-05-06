@@ -9,6 +9,7 @@ import {Loader2} from "lucide-react";
 import {RecordingType} from "@/lib/types";
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import VideoPlayer from "@/components/channel/VideoPlayer";
+import {bytesToMB} from "@/lib/utils";
 
 const Page = () => {
   const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();
@@ -19,7 +20,7 @@ const Page = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setNavbarTitle("Storage Management");
+    setNavbarTitle("File");
     setBreadcrumbItems([]);
   }, [setBreadcrumbItems, setNavbarTitle]);
 
@@ -72,15 +73,6 @@ const Page = () => {
     <div className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div className="mb-6 col-span-2">
-          {/*<div className="relative w-full aspect-video">*/}
-          {/*  <video*/}
-          {/*    controls*/}
-          {/*    className="absolute top-0 left-0 w-full h-full object-cover rounded-md"*/}
-          {/*  >*/}
-          {/*    <source src={`${baseUrl}${recordingData.path}`} type="video/mp4"/>*/}
-          {/*    Your browser does not support the video tag.*/}
-          {/*  </video>*/}
-          {/*</div>*/}
           <VideoPlayer
             src={`${baseUrl}${recordingData.path}`}
           />
@@ -100,8 +92,20 @@ const Page = () => {
               <p className="text-muted-foreground">1080p</p>
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Last Updated</p>
+              <p className="text-sm font-medium text-gray-800 dark:text-gray-100">File Size</p>
+              <p className="text-muted-foreground">{bytesToMB(recordingData.size_bytes)}MB</p>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Created Time</p>
               <p className="text-muted-foreground">{formatDate(recordingData.created)}</p>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-800 dark:text-gray-100">NVR Name</p>
+              <p className="text-muted-foreground">{recordingData.nvrName}</p>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Channel Name</p>
+              <p className="text-muted-foreground">{recordingData.channelName}</p>
             </div>
           </CardContent>
         </Card>

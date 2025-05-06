@@ -12,7 +12,7 @@ import {Skeleton} from "@/components/ui/skeleton";
 const Page = () => {
   const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [storageData, setStorageData] = useState<RecordingType[]>([]);
+  const [recordingData, setRecordingData] = useState<RecordingType[]>([]);
 
   useEffect(() => {
     setNavbarTitle("All Recordings");
@@ -28,7 +28,7 @@ const Page = () => {
         const createdAt = new Date(item.created);
         return createdAt < fiveMinutesAgo;
       });
-      setStorageData(filteredData);
+      setRecordingData(filteredData);
     } catch (error) {
       toast.error("Unable to fetch data");
     } finally {
@@ -41,18 +41,18 @@ const Page = () => {
   }, []);
   return (
     <div>
-      <RecordingCardContainer/>
+      <RecordingCardContainer recordingData={recordingData}/>
       {isLoading ? (
         <RecordingsListSkeleton/>
       ) : (
-        storageData.length === 0 ? (
+        recordingData.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-xl text-gray-700 dark:text-gray-200">
               No data is Available
             </p>
           </div>
         ) : (
-          <RecordingList storageData={storageData}/>
+          <RecordingList recordingData={recordingData}/>
         )
       )}
     </div>

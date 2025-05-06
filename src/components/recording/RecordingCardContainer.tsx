@@ -1,29 +1,46 @@
 import React from 'react'
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-import {cn} from "@/lib/utils";
+import {bytesToTB, cn} from "@/lib/utils";
+import {RecordingType} from "@/lib/types";
 
-const RecordingCardContainer = () => {
+type Props = {
+  recordingData:RecordingType[];
+}
+
+const RecordingCardContainer = (props:Props) => {
+  const totalStorage = 1;
+
+  const totalFileCount = props.recordingData.length;
+
+  const totalUsedBytes = props.recordingData.reduce((acc, recording) => {
+    return acc + (recording.size_bytes || 0);
+  }, 0);
+
+  const usedSpaceTB = totalUsedBytes / 1e12;
+
+  const freeSpaceTB = totalStorage - usedSpaceTB;
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
       <StorageCard
         title="Total Storage"
-        value={"18"}
+        value={(totalStorage).toString()}
         postfix={"(in TB)"}
       />
       <StorageCard
         title="Used Space"
-        value={"5.4"}
+        value={`${(bytesToTB(totalUsedBytes)).toString()}`}
         postfix={"(in TB)"}
       />
       <StorageCard
         title="Free Space"
         postfix={"(in TB)"}
-        value="12.6 TB"
+        value={(freeSpaceTB).toFixed(4)}
         valueColor={"text-green-500"}
       />
       <StorageCard
         title="Total Files"
-        value="3"
+        value={(totalFileCount).toString()}
       />
     </div>
   )
@@ -31,14 +48,14 @@ const RecordingCardContainer = () => {
 export default RecordingCardContainer
 
 
-type NVRCardProps = {
+type StorageCardProps = {
   title:string;
   value:string;
   postfix?:string;
   valueColor?:string
 }
 
-const StorageCard = (props:NVRCardProps) => {
+const StorageCard = (props:StorageCardProps) => {
   return (
     <Card >
       <CardHeader className="p-4">
