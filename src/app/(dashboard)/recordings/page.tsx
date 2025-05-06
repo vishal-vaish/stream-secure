@@ -1,28 +1,28 @@
 "use client";
 
 import React, {useEffect, useState} from 'react'
+import {getAllRecordingsData} from "@/lib/queries";
+import {toast} from "sonner";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
-import StorageCardContainer from "@/components/storage/StorageCardContainer";
-import StorageList from "@/components/storage/StorageList";
-import {getAllStorageData} from "@/lib/queries";
-import {toast} from "sonner"
-import {StorageType} from "@/lib/types";
+import {RecordingType} from "@/lib/types";
+import RecordingCardContainer from "@/components/recording/RecordingCardContainer";
+import RecordingList from "@/components/recording/RecordingList";
 import {Skeleton} from "@/components/ui/skeleton";
 
 const Page = () => {
   const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [storageData, setStorageData] = useState<StorageType[]>([]);
+  const [storageData, setStorageData] = useState<RecordingType[]>([]);
 
   useEffect(() => {
-    setNavbarTitle("Storage Management");
+    setNavbarTitle("All Recordings");
     setBreadcrumbItems([]);
   }, [setBreadcrumbItems, setNavbarTitle]);
 
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      const data = await getAllStorageData();
+      const data = await getAllRecordingsData();
       const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
       const filteredData = data.filter(item => {
         const createdAt = new Date(item.created);
@@ -39,12 +39,11 @@ const Page = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
   return (
     <div>
-      <StorageCardContainer/>
+      <RecordingCardContainer/>
       {isLoading ? (
-        <StorageListSkeleton/>
+        <RecordingsListSkeleton/>
       ) : (
         storageData.length === 0 ? (
           <div className="text-center py-12">
@@ -53,7 +52,7 @@ const Page = () => {
             </p>
           </div>
         ) : (
-          <StorageList storageData={storageData}/>
+          <RecordingList storageData={storageData}/>
         )
       )}
     </div>
@@ -61,7 +60,7 @@ const Page = () => {
 }
 export default Page
 
-const StorageListSkeleton = () => {
+const RecordingsListSkeleton = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (

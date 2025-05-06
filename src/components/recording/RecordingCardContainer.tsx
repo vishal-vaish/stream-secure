@@ -2,7 +2,7 @@ import React from 'react'
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {cn} from "@/lib/utils";
 
-const StorageCardContainer = () => {
+const RecordingCardContainer = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
       <StorageCard
@@ -28,7 +28,7 @@ const StorageCardContainer = () => {
     </div>
   )
 }
-export default StorageCardContainer
+export default RecordingCardContainer
 
 
 type NVRCardProps = {

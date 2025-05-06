@@ -10,7 +10,7 @@ type Props = {
   storage: StorageType,
 }
 
-const StorageListCard = (props: Props) => {
+const RecordingListCard = (props: Props) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat("en-US", {
@@ -45,7 +45,7 @@ const StorageListCard = (props: Props) => {
         <CardContent>
           <div className="flex flex-col gap-1 mb-5">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200">
-              {/*{props.storage.fileName}*/}
+              {/*{props.recording.fileName}*/}
             </h3>
             <div className="text-sm font-semibold text-gray-900 dark:text-gray-300">
               {props.storage.nvrName}
@@ -68,4 +68,4 @@ const StorageListCard = (props: Props) => {
     </div>
   )
 }
-export default StorageListCard
+export default RecordingListCard

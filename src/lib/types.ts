@@ -58,7 +58,7 @@ export enum ChannelStatusEnum {
   OFFLINE = "offline",
 }
 
-export interface StorageType {
+export interface RecordingType {
   nvrId: string;
   channelId: string;
   channelName: string;

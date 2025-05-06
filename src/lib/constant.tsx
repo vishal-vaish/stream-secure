@@ -10,7 +10,7 @@ export enum SideMenu {
   DASHBOARD = "Dashboard",
   NVR_DEVICES = "NVR Devices",
   CHANNELS = "Channels",
-  STORAGE = "Storage",
+  RECORDINGS = "Recordings",
   SETTINGS = "Settings",
   ALERTS = "Alerts",
   USERS = "Users",
@@ -33,9 +33,9 @@ export const dashboardItems: SidebarItem[] = [
     href: "/channels"
   },
   {
-    label: SideMenu.STORAGE,
+    label: SideMenu.RECORDINGS,
     icon: HardDrive,
-    href: "/storages"
+    href: "/recordings"
   },
   // {
   //   label: SideMenu.SETTINGS,
