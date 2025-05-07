@@ -1,6 +1,6 @@
 "use client";
 
-import {createContext, ReactNode, useState} from "react";
+import {createContext, ReactNode, useEffect, useState} from "react";
 import {BreadcrumbItemType} from "@/lib/types";
 
 export interface NavbarDetailsContextType {

@@ -26,7 +26,7 @@ const Page = () => {
 
       if (!fetchedNvr || !fetchedChannel) {
         setNotFound(true);
-        setNavbarTitle("Camera Not found");
+        setNavbarTitle("Channel Not found");
         return;
       }
 

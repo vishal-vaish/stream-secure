@@ -4,6 +4,7 @@ import StatusBadge from "@/components/StatusBadge";
 import VideoPlayer from "@/components/channel/VideoPlayer";
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import RealTimeVideoPlayer from "@/components/channel/RealTimeVideoPlayer";
+import Link from "next/link";
 
 type Props = {
   channel: ChannelType;
@@ -69,33 +70,43 @@ const ChannelCard = (props: Props) => {
           )}
         </div>
 
-        <Card className="rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 h-fit">
-          <CardHeader className="text-xl font-semibold p-0 mb-4">
-            Camera Details
-          </CardHeader>
-          <CardContent className="space-y-4 pl-0">
-            <div>
-              <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Name</p>
-              <p className="text-muted-foreground">{props.channel.name}</p>
-            </div>
-            <div>
-              <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Location</p>
-              <p className="text-muted-foreground">{props.channel.location}</p>
-            </div>
-            <div>
-              <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Resolution</p>
-              <p className="text-muted-foreground">{props.channel.resolution}</p>
-            </div>
-            <div>
-              <p className="text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Status</p>
-              <StatusBadge status={props.channel.status}/>
-            </div>
-            <div>
-              <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Last Updated</p>
-              <p className="text-muted-foreground">{formatDate(props.channel.lastUpdated)}</p>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="flex flex-col gap-5">
+          <Card className="rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 h-fit">
+            <CardHeader className="text-xl font-semibold p-0 mb-4">
+              Camera Details
+            </CardHeader>
+            <CardContent className="space-y-4 pl-0">
+              <div>
+                <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Name</p>
+                <p className="text-muted-foreground">{props.channel.name}</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Location</p>
+                <p className="text-muted-foreground">{props.channel.location}</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Resolution</p>
+                <p className="text-muted-foreground">{props.channel.resolution}</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Status</p>
+                <StatusBadge status={props.channel.status}/>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Last Updated</p>
+                <p className="text-muted-foreground">{formatDate(props.channel.lastUpdated)}</p>
+              </div>
+            </CardContent>
+          </Card>
+          <Link
+            href={`/nvr/${props.channel.nvrId}/channel/${props.channel.id}/recording`}
+            className="bg-blue-500 dark:bg-blue-600 p-2 rounded-md text-gray-50 text-center"
+          >
+            Show Recording
+          </Link>
+
+        </div>
+
       </div>
     </div>
   )
