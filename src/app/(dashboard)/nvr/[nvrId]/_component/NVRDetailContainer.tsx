@@ -8,6 +8,8 @@ import {
 import StatusBadge from "@/components/StatusBadge";
 import StorageBar from '@/components/StorageBar';
 import {mockedChannelsData} from "@/lib/data";
+import {Button} from "@/components/ui/button";
+import Link from "next/link";
 
 type Props = {
   nvr: NVR;
@@ -43,7 +45,15 @@ const NVRDetailContainer = (props: Props) => {
               <h1 className="text-2xl font-bold">{props.nvr.name}</h1>
               <p className="text-muted-foreground">{props.nvr.location}</p>
             </div>
+            <div className="flex gap-5">
+              <Link
+                href={`/nvr/${props.nvr.id}/recording`}
+                className="bg-blue-500 p-2 rounded-md text-gray-50"
+              >
+                Show Recording
+              </Link>
             <StatusBadge status={props.nvr.status} className="text-sm"/>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

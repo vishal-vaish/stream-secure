@@ -3,14 +3,12 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import {useParams} from "next/navigation";
-import {baseUrl, getAllRecordingsData} from "@/lib/queries";
-import {toast} from "sonner";
-import {Loader2} from "lucide-react";
 import {RecordingType} from "@/lib/types";
-import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import VideoPlayer from "@/components/channel/VideoPlayer";
-import {bytesToMB} from "@/lib/utils";
+import {baseUrl, getAllRecordingsData} from "@/lib/queries";
 import RecordingFileDetailsCard from "@/components/recording/RecordingFileDetailsCard";
+import {Loader2} from "lucide-react";
+import {toast} from "sonner";
 
 const Page = () => {
   const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();

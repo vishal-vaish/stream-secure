@@ -7,7 +7,7 @@ import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import {RecordingType} from "@/lib/types";
 import RecordingCardContainer from "@/components/recording/RecordingCardContainer";
 import RecordingList from "@/components/recording/RecordingList";
-import {Skeleton} from "@/components/ui/skeleton";
+import RecordingsListSkeleton from "@/components/recording/RecordingsListSkeleton";
 
 const Page = () => {
   const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();
@@ -39,6 +39,7 @@ const Page = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <div>
       <RecordingCardContainer recordingData={recordingData}/>
@@ -59,13 +60,3 @@ const Page = () => {
   )
 }
 export default Page
-
-const RecordingsListSkeleton = () => {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-      {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-        <Skeleton key={i} className="h-48 w-full"/>
-      ))}
-    </div>
-  )
-}
