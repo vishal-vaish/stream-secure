@@ -20,3 +20,9 @@ export function bytesToTB(bytes: number, decimals = 4) {
 
   return parseFloat((bytes / terabyte).toFixed(decimals));
 }
+
+export const waitFor = (seconds:number) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
