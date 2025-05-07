@@ -59,7 +59,7 @@ const Page = () => {
   }
 
   return (
-    <ChannelCard channel={channel}/>
+    <ChannelCard channel={channel} isChannelFlow={true}/>
   )
 }
 export default Page

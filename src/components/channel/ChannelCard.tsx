@@ -8,6 +8,7 @@ import Link from "next/link";
 
 type Props = {
   channel: ChannelType;
+  isChannelFlow?:boolean;
 }
 
 const ChannelCard = (props: Props) => {
@@ -99,14 +100,14 @@ const ChannelCard = (props: Props) => {
             </CardContent>
           </Card>
           <Link
-            href={`/nvr/${props.channel.nvrId}/channel/${props.channel.id}/recording`}
+            href={props.isChannelFlow
+              ?  `/channels/${props.channel.id}/recording`
+              : `/nvr/${props.channel.nvrId}/channel/${props.channel.id}/recording`}
             className="bg-blue-500 dark:bg-blue-600 p-2 rounded-md text-gray-50 text-center"
           >
             Show Recording
           </Link>
-
         </div>
-
       </div>
     </div>
   )
