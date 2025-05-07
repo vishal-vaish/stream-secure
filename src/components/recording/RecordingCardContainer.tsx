@@ -35,7 +35,7 @@ const RecordingCardContainer = (props:Props) => {
       <StorageCard
         title="Free Space"
         postfix={"(in TB)"}
-        value={(freeSpaceTB).toFixed(4)}
+        value={Number.isInteger(freeSpaceTB) ? freeSpaceTB.toString() : freeSpaceTB.toFixed(4)}
         valueColor={"text-green-500"}
       />
       <StorageCard

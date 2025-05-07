@@ -3,7 +3,7 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import {useParams} from "next/navigation";
-import {RecordingType} from "@/lib/types";
+import {BreadcrumbItemType, RecordingType} from "@/lib/types";
 import VideoPlayer from "@/components/channel/VideoPlayer";
 import {baseUrl, getAllRecordingsData} from "@/lib/queries";
 import RecordingFileDetailsCard from "@/components/recording/RecordingFileDetailsCard";
@@ -17,11 +17,6 @@ const Page = () => {
   }>();
   const [recordingData, setRecordingData] = useState<RecordingType | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    setNavbarTitle("File");
-    setBreadcrumbItems([]);
-  }, [setBreadcrumbItems, setNavbarTitle]);
 
   const refactorStorageFileName = recordingFilename.replace(/%3A/g, ":");
 
@@ -41,6 +36,27 @@ const Page = () => {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  useEffect(() => {
+    if (recordingData) {
+      const breadcrumbItems: BreadcrumbItemType[] = [
+        {label: "All NVR", path: "/nvr"},
+        {label: recordingData.nvrName, path: `/nvr/${recordingData.nvrId}`},
+        {
+          label: "Recording",
+          path: `/nvr/${recordingData.nvrId}/recording`
+        },
+        {
+          label: `${refactorStorageFileName.slice(0, 35)}`,
+          path: `/nvr/${recordingData.nvrId}/recording/${recordingData.filename}`
+        }
+      ];
+
+      setBreadcrumbItems(breadcrumbItems);
+    }
+
+    setNavbarTitle(refactorStorageFileName.slice(0, 35));
+  }, [recordingData, recordingFilename, refactorStorageFileName, setBreadcrumbItems, setNavbarTitle]);
 
   if (isLoading) {
     return (

@@ -19,7 +19,7 @@ const NVRCardContainer = () => {
       <NVRCard
         title="Total Capacity"
         postfix={"(in TB)"}
-        value="24"
+        value="1"
       />
       <NVRCard
         title="Active Alerts"
