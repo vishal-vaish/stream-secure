@@ -8,6 +8,7 @@ import Image from "next/image";
 import StatusBadge from "@/components/StatusBadge";
 import {Play, VideoOff} from "lucide-react";
 import {ChannelType} from "@/lib/types";
+import RealTimeVideoPlayer from "@/components/channel/RealTimeVideoPlayer";
 
 type Props = {
   channel: ChannelType;
@@ -25,23 +26,43 @@ const ChannelListCard = (props: Props) => {
     }).format(date);
   };
 
+  const isRealStreaming =
+    props.channel.id === "cam-009" ||
+    props.channel.id === "cam-010";
+
+  const streamUrl: Record<string, string> = {
+    "cam-009": "http://192.168.1.114:8000/hls/stream_0/playlist.m3u8",
+    "cam-010": "http://192.168.1.114:8000/hls/stream_1/playlist.m3u8"
+  }
+
+  const liveStreamUrl = (id: string) => {
+    return streamUrl[id];
+  }
+
   return (
     <div className="block">
       <Card className="hover:shadow-md dark:shadow-border/60">
-        <CardHeader className="p-0 pb-4">
+        <CardHeader className="p-0 mb-4">
           <div className="relative h-40 overflow-hidden rounded-t-lg group">
-            <Image
-              src={props.channel.thumbnail}
-              alt={props.channel.name}
-              className="w-full h-full object-cover"
-              fill
-            />
+            {isRealStreaming ? (
+              <RealTimeVideoPlayer
+                src={liveStreamUrl(props.channel.id)}
+                showAsThumbail={true}
+              />
+            ) : (
+              <Image
+                src={props.channel.thumbnail}
+                alt={props.channel.name}
+                className="w-full h-full object-cover"
+                fill
+              />
+            )}
             <div className="absolute top-2 right-2">
               <StatusBadge status={props.channel.status}/>
             </div>
             {props.channel.status !== "offline" && (
               <div
-                className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                className="absolute inset-0 flex items-center justify-center bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div
                   className="bg-blue-600 rounded-full p-3 transform transition-transform duration-300 group-hover:scale-110">
                   <Play className="w-6 h-6 text-white" fill="white"/>
@@ -49,7 +70,7 @@ const ChannelListCard = (props: Props) => {
               </div>
             )}
             {props.channel.status === "offline" && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+              <div className="absolute inset-0 flex items-center justify-center g-opacity-40">
                 <VideoOff className="w-10 h-10 text-white opacity-70"/>
               </div>
             )}

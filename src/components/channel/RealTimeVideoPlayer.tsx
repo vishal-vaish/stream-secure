@@ -5,9 +5,11 @@ import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import "@videojs/http-streaming";
 import type Player from "video.js/dist/types/player";
+import {cn} from "@/lib/utils";
 
 type Props = {
-  src:string;
+  src: string;
+  showAsThumbail?: boolean;
 }
 
 interface VideoJsPlayerProps {
@@ -15,7 +17,7 @@ interface VideoJsPlayerProps {
   onReady?: (player: Player) => void;
 }
 
-const RealTimeVideoPlayer = (props:Props) => {
+const RealTimeVideoPlayer = (props: Props) => {
   const playerRef = useRef<Player | null>(null);
 
   const videoJsOptions = {
@@ -56,11 +58,14 @@ const RealTimeVideoPlayer = (props:Props) => {
 
   return (
     <div
-      className="relative w-full aspect-video bg-black rounded-lg overflow-hidden shadow-lg"
+      className={cn("relative w-full aspect-video overflow-hidden shadow-lg",
+      props.showAsThumbail ? "" : "rounded-lg bg-black")}
     >
-      <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded z-10">
-        LIVE
-      </div>
+      {!props.showAsThumbail && (
+        <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded z-10">
+          LIVE
+        </div>
+      )}
       <VideoJsPlayer
         options={videoJsOptions}
         onReady={handlePlayerReady}
@@ -70,7 +75,7 @@ const RealTimeVideoPlayer = (props:Props) => {
 }
 export default RealTimeVideoPlayer;
 
-const VideoJsPlayer = ({ options, onReady }: VideoJsPlayerProps) => {
+const VideoJsPlayer = ({options, onReady}: VideoJsPlayerProps) => {
   const videoRef = useRef<HTMLDivElement | null>(null);
   const playerRef = useRef<Player | null>(null);
 
@@ -111,7 +116,7 @@ const VideoJsPlayer = ({ options, onReady }: VideoJsPlayerProps) => {
 
   return (
     <div>
-      <div ref={videoRef} className="w-full h-full" />
+      <div ref={videoRef} className="w-full h-full"/>
     </div>
   );
 };
