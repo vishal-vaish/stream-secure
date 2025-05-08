@@ -11,9 +11,10 @@ export const mockedNVRData: NVR[] = [
     ipAddress: "49.249.96.100",
     modelName: "HIK Media Server",
     totalChannels: 2,
-    storageUsed: 1.8,
-    storageTotal: 8,
-    thumbnail: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    storageUsed: 0.8,
+    storageTotal: 1,
+    // thumbnail: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    thumbnail: "https://jmsmining.com/wp-content/uploads/2024/03/Demo.jpg"
   },
   // {
   //   id: "nvr-002",

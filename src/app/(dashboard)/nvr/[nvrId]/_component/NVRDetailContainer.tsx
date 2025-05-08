@@ -1,6 +1,8 @@
-import React from 'react'
+"use client";
+
+import React, {useEffect, useState} from 'react'
 import Image from "next/image";
-import {NVR} from "@/lib/types";
+import {DishUsageType, NVR} from "@/lib/types";
 import {
   Card,
   CardContent,
@@ -8,14 +10,25 @@ import {
 import StatusBadge from "@/components/StatusBadge";
 import StorageBar from '@/components/StorageBar';
 import {mockedChannelsData} from "@/lib/data";
-import {Button} from "@/components/ui/button";
 import Link from "next/link";
+import {getDiskUsage} from "@/lib/queries";
+import {bytesToTB} from "@/lib/utils";
 
 type Props = {
   nvr: NVR;
 }
 
 const NVRDetailContainer = (props: Props) => {
+  const [usage, setUsage] = useState<DishUsageType | null>(null);
+
+  useEffect(() => {
+    const fetchUsageData = async () => {
+      const usageData = await getDiskUsage();
+      setUsage(usageData);
+    }
+    fetchUsageData();
+  }, [props]);
+
   const nvrChannelCount = mockedChannelsData
     .filter(channel => channel.nvrId === props.nvr.id)
     .length;
@@ -59,7 +72,7 @@ const NVRDetailContainer = (props: Props) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-2">Storage</h3>
-              <StorageBar used={props.nvr.storageUsed} total={props.nvr.storageTotal}/>
+              <StorageBar used={bytesToTB(usage?.total_size_bytes)} total={props.nvr.storageTotal}/>
             </div>
 
             <div>

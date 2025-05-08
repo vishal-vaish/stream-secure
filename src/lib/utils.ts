@@ -13,10 +13,10 @@ export function bytesToMB(bytes:number, decimals = 4) {
   return parseFloat((bytes / megabyte).toFixed(decimals));
 }
 
-export function bytesToTB(bytes: number, decimals = 4) {
-  if (bytes === 0) return 0;
+export function bytesToTB(bytes: number | undefined, decimals = 4) {
+  if (bytes === 0 || bytes === undefined) return 0;
 
-  const terabyte = 1024 ** 4; // 1 TB = 1024^4 bytes
+  const terabyte = 1024 ** 4;
 
   return parseFloat((bytes / terabyte).toFixed(decimals));
 }

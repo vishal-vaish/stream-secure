@@ -1,5 +1,7 @@
-import React from 'react'
-import {NVR} from "@/lib/types";
+"use client";
+
+import React, {useEffect, useState} from 'react'
+import {DishUsageType, NVR} from "@/lib/types";
 import {
   Card,
   CardContent,
@@ -12,12 +14,24 @@ import StatusBadge from "@/components/StatusBadge";
 import {Camera} from "lucide-react";
 import StorageBar from '@/components/StorageBar';
 import {mockedChannelsData} from "@/lib/data";
+import {getDiskUsage} from "@/lib/queries";
+import {bytesToTB} from "@/lib/utils";
 
 type Props = {
   nvr: NVR;
 }
 
 const NvrListCard = (props: Props) => {
+  const [usage, setUsage] = useState<DishUsageType | null>(null);
+
+  useEffect(() => {
+    const fetchUsageData = async () => {
+      const usageData = await getDiskUsage();
+      setUsage(usageData);
+    }
+    fetchUsageData();
+  }, [props]);
+
   const channelCount = mockedChannelsData.filter(channel => channel.nvrId === props.nvr.id).length;
 
   return (
@@ -47,7 +61,7 @@ const NvrListCard = (props: Props) => {
         </CardContent>
         <CardFooter>
           <StorageBar
-            used={props.nvr.storageUsed}
+            used={bytesToTB(usage?.total_size_bytes)}
             total={props.nvr.storageTotal}
             className="mb-4"
           />

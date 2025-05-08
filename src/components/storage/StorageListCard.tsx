@@ -1,5 +1,7 @@
-import React from 'react'
-import {StorageType} from "@/lib/types";
+"use client";
+
+import React, {useEffect, useState} from 'react'
+import {DishUsageType, StorageType} from "@/lib/types";
 import {Card, CardContent} from "@/components/ui/card";
 import StatusBadge from "@/components/StatusBadge";
 import StorageBar from "@/components/StorageBar";
@@ -7,12 +9,24 @@ import {Pencil, Trash2} from 'lucide-react';
 import {Separator} from "@/components/ui/separator";
 import {Button} from "@/components/ui/button";
 import TooltipWrapper from "@/components/TooltipWrapper";
+import {getDiskUsage} from "@/lib/queries";
+import {bytesToTB} from "@/lib/utils";
 
 type Props = {
   storage: StorageType;
 }
 
 const StorageListCard = (props: Props) => {
+  const [usage, setUsage] = useState<DishUsageType | null>(null);
+
+  useEffect(() => {
+    const fetchUsageData = async () => {
+      const usageData = await getDiskUsage();
+      setUsage(usageData);
+    }
+    fetchUsageData();
+  }, [props]);
+
   return (
     <Card className="p-4">
       <CardContent className="space-y-3 p-0">
@@ -39,7 +53,7 @@ const StorageListCard = (props: Props) => {
             <div className="text-gray-800 dark:text-gray-50">{props.storage.storageCapacity}{" "}TB</div>
           </div>
           <Separator className="!my-3"/>
-          <StorageBar used={0.5} total={1}/>
+          <StorageBar used={bytesToTB(usage?.total_size_bytes)} total={1}/>
 
         </div>
 

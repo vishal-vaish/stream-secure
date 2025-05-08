@@ -97,3 +97,7 @@ export interface StorageType {
     useAsBackupOnly?:boolean,
   }
 }
+
+export interface DishUsageType {
+  total_size_bytes: number;
+}
