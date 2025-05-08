@@ -1,7 +1,7 @@
 "use client";
 
 import React, {useState} from 'react'
-import {Eye, EyeOff, Loader2, MonitorPlay} from "lucide-react";
+import {Eye, EyeOff, Loader2} from "lucide-react";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {useForm} from "react-hook-form";
 import {loginSchema, loginSchemaType} from "@/lib/schema";
@@ -22,7 +22,7 @@ import Image from "next/image";
 import {waitFor} from "@/lib/utils";
 import {toast} from "sonner"
 import Cookies from "js-cookie";
-import {validUser} from "@/lib/data";
+import {validUserData} from "@/lib/data";
 
 const Page = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -40,7 +40,7 @@ const Page = () => {
     setIsPending(true);
 
     try {
-      if (data.username === validUser.username && data.password === validUser.password) {
+      if (data.username === validUserData[0].username && data.password === validUserData[0].password) {
         const token_exist = Cookies.get("auth_token")
         if (token_exist) {
           Cookies.remove("auth_token");

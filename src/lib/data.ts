@@ -175,10 +175,17 @@ export const mockedChannelsData: ChannelType[] = [
   },
 ];
 
-export const validUser = {
-  username: "admin",
-  password: "password123",
-}
+export const validUserData = [
+  {
+    id:"001",
+    username: "admin",
+    password: "password123",
+    email: "admin@example.com",
+    role: "Admin",
+    status: "active",
+    lastActive: new Date(Date.now() - 1000 * 60 * 15)
+  }
+]
 
 export const storageMockedData: StorageType[] = [{
   id: "sto-001",

@@ -9,6 +9,7 @@ import {dashboardItems} from "@/lib/constant";
 import Logo from "@/components/Sidebar/Logo";
 import {Separator} from "@/components/ui/separator";
 import Cookies from "js-cookie";
+import {validUserData} from "@/lib/data";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -95,8 +96,8 @@ const Sidebar = () => {
                 A
               </div>
               <div className="ml-3">
-                <p className="text-sm font-medium text-gray-700 dark:text-gray-100">admin</p>
-                <p className="text-xs text-gray-500 dark:text-gray-300">admin@example.com</p>
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-100">{validUserData[0].username}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-300">{validUserData[0].email}</p>
               </div>
             </div>
             <div

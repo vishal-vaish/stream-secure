@@ -1,8 +1,10 @@
 import {
-  Camera, CassetteTape,
+  Camera,
+  CassetteTape,
   HardDrive,
   LayoutDashboard,
   ServerIcon,
+  Users,
 } from "lucide-react";
 import {SidebarItem} from "@/lib/types";
 
@@ -54,9 +56,9 @@ export const dashboardItems: SidebarItem[] = [
   //   icon: Bell,
   //   badge: 3,
   // },
-  // {
-  //   label: SideMenu.USERS,
-  //   href: "/users",
-  //   icon: Users,
-  // },
+  {
+    label: SideMenu.USERS,
+    href: "/users",
+    icon: Users,
+  },
 ];
