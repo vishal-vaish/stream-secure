@@ -1,4 +1,5 @@
 import {ChannelStatusEnum, ChannelType, NVR, NVRStatusEnum, StorageType, StorageTypeEnum} from "@/lib/types";
+import {Bell, KeyRound, User2Icon} from "lucide-react";
 
 export const mockedNVRData: NVR[] = [
   {
@@ -177,7 +178,7 @@ export const mockedChannelsData: ChannelType[] = [
 
 export const validUserData = [
   {
-    id:"001",
+    id: "001",
     username: "admin",
     password: "password123",
     email: "admin@example.com",
@@ -206,3 +207,21 @@ export const storageMockedData: StorageType[] = [{
     useAsBackupOnly: false
   }
 }]
+
+export const settingMockedData = [
+  {
+    id: "1",
+    settingName: "Notifications",
+    icon: Bell
+  },
+  {
+    id: "2",
+    settingName: "Profile",
+    icon: User2Icon
+  },
+  {
+    id: "3",
+    settingName: "Reset Password",
+    icon: KeyRound
+  },
+]
