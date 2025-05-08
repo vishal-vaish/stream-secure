@@ -15,17 +15,6 @@ type Props = {
 }
 
 const ChannelListCard = (props: Props) => {
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat("en-US", {
-      month: "short",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true
-    }).format(date);
-  };
-
   const isRealStreaming =
     props.channel.id === "cam-009" ||
     props.channel.id === "cam-010";
@@ -77,15 +66,8 @@ const ChannelListCard = (props: Props) => {
           </div>
         </CardHeader>
         <CardContent>
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-1">{props.channel.name}</h3>
-          <p className="text-sm text-gray-500 dark:text-gray-200 mb-4">{props.channel.location}</p>
-
-          <div className="text-sm text-muted-foreground mb-1">
-            Resolution: {props.channel.resolution}
-          </div>
-          <div className="text-xs text-muted-foreground">
-            Last Updated: {formatDate(props.channel.lastUpdated)}
-          </div>
+          <h3 className="text-md font-semibold text-gray-900 dark:text-gray-200 mb-1">{props.channel.name}</h3>
+          <p className="text-xs text-muted-foreground">{props.channel.location}</p>
         </CardContent>
       </Card>
     </div>
