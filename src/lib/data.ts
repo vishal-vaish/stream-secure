@@ -1,4 +1,4 @@
-import {ChannelStatusEnum, ChannelType, NVR, NVRStatusEnum} from "@/lib/types";
+import {ChannelStatusEnum, ChannelType, NVR, NVRStatusEnum, StorageType, StorageTypeEnum} from "@/lib/types";
 
 export const mockedNVRData: NVR[] = [
   {
@@ -174,8 +174,27 @@ export const mockedChannelsData: ChannelType[] = [
   },
 ];
 
-
 export const validUser = {
   username: "admin",
   password: "password123",
 }
+
+export const storageMockedData: StorageType[] = [{
+  id: "sto-001",
+  storageName: "Primary Storage",
+  storageType: StorageTypeEnum.LOCAL_STORAGE,
+  ipAddress: "192.168.1.114",
+  path: "/tmp/recordings",
+  authentication: {
+    username: "admin",
+    password: "securePass123"
+  },
+  storageCapacity: 1,
+  retentionSettings: {
+    enableAutoDelete: false
+  },
+  advancedOptions: {
+    setPrimaryStorage: true,
+    useAsBackupOnly: false
+  }
+}]

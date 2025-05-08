@@ -3,20 +3,20 @@ import {
   Card,
   CardContent,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+  CardTitle
+} from "@/components/ui/card";
 import {cn} from "@/lib/utils";
 
 type Props = {
-  title:string;
-  value:string;
-  postfix?:string;
-  valueColor?:string
+  title: string;
+  value: string;
+  postfix?: string;
+  valueColor?: string
 }
 
-const NVRCard = (props:Props) => {
+const TopCard = (props: Props) => {
   return (
-    <Card >
+    <Card>
       <CardHeader className="p-4">
         <CardTitle className="text-lg">
           {props.title}
@@ -29,7 +29,6 @@ const NVRCard = (props:Props) => {
         <p>{props.value}</p>
       </CardContent>
     </Card>
-
   )
 }
-export default NVRCard
+export default TopCard

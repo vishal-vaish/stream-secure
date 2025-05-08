@@ -69,3 +69,31 @@ export interface RecordingType {
   size_bytes: number;
   thumbnail: string;
 }
+
+export enum StorageTypeEnum {
+  LOCAL_STORAGE = "Local Storage",
+  NETWORK_STORAGE = "Network Storage",
+  CLOUD_STORAGE = "Cloud Storage",
+}
+
+export interface StorageType {
+  id:string;
+  storageName: string;
+  storageType: StorageTypeEnum;
+  ipAddress: string;
+  path: string;
+  authentication: {
+    username: string;
+    password: string;
+  },
+  storageCapacity: number;
+  retentionSettings: {
+    enableAutoDelete: boolean,
+    autoDeleteOlderThan?: boolean,
+    timeUnit?:string
+  }
+  advancedOptions: {
+    setPrimaryStorage?:boolean,
+    useAsBackupOnly?:boolean,
+  }
+}
