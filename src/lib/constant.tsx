@@ -1,9 +1,13 @@
 import {
+  BarChart3,
+  Calendar,
   Camera,
   CassetteTape,
+  FileBarChart,
   HardDrive,
   LayoutDashboard,
   ServerIcon,
+  Settings,
   Users,
 } from "lucide-react";
 import {SidebarItem} from "@/lib/types";
@@ -15,7 +19,9 @@ export enum SideMenu {
   RECORDINGS = "Recordings",
   STORAGE = "Storage",
   SETTINGS = "Settings",
-  ALERTS = "Alerts",
+  REPORTS = "Reports",
+  EVENTS = "Events",
+  ANALYTICS = "Analytics",
   USERS = "Users",
 }
 
@@ -24,6 +30,7 @@ export const dashboardItems: SidebarItem[] = [
     label: SideMenu.DASHBOARD,
     href: "/",
     icon: LayoutDashboard,
+    isDisabled: true
   },
   {
     label: SideMenu.NVR_DEVICES,
@@ -45,20 +52,32 @@ export const dashboardItems: SidebarItem[] = [
     icon: HardDrive,
     href: "/storages"
   },
-  // {
-  //   label: SideMenu.SETTINGS,
-  //   href: "/settings",
-  //   icon: Settings,
-  // },
-  // {
-  //   label: SideMenu.ALERTS,
-  //   href: "/alert",
-  //   icon: Bell,
-  //   badge: 3,
-  // },
+  {
+    label: SideMenu.REPORTS,
+    href: "/reports",
+    isDisabled: true,
+    icon: FileBarChart,
+  },
+  {
+    label: SideMenu.EVENTS,
+    href: "/events",
+    isDisabled: true,
+    icon: Calendar,
+  },
+  {
+    label: SideMenu.ANALYTICS,
+    href: "/analytics",
+    isDisabled: true,
+    icon: BarChart3,
+  },
   {
     label: SideMenu.USERS,
     href: "/users",
     icon: Users,
+  },
+  {
+    label: SideMenu.SETTINGS,
+    href: "/settings",
+    icon: Settings,
   },
 ];

@@ -1,19 +1,12 @@
 import React from "react";
+import {SideMenu} from "@/lib/constant";
 
 export interface SidebarItem {
-  label: string;
+  label: SideMenu;
   href?: string;
   icon: React.ElementType;
-  expandable?:boolean;
-  id?:string;
-  subMenu?: SubmenuItem[];
   badge?:number;
-}
-
-export interface SubmenuItem {
-  label: string;
-  href: string;
-  navbarTitle:string;
+  isDisabled?: boolean;
 }
 
 export interface NVR {
