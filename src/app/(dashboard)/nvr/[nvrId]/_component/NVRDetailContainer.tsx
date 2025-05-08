@@ -89,7 +89,7 @@ const NVRDetailContainer = (props: Props) => {
                 <Button
                   variant={"ghost"}
                   onClick={toggleExpand}
-                  className="pr-0 text-xs"
+                  className="pr-0 text-xs dark:text-gray-300"
                 >
                   {expanded ? "Show less" : "Show more"}
                   {expanded
