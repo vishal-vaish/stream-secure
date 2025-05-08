@@ -4,6 +4,7 @@ import React from 'react'
 import {mockedNVRData} from "@/lib/data";
 import NVRListCard from "@/app/(dashboard)/nvr/_component/NVRListCard";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
+import CreateNVRDialog from "@/components/nvr/CreateNVRDialog";
 
 const NVRList = () => {
   const {searchTerm} = useNavbarDetails();
@@ -21,6 +22,7 @@ const NVRList = () => {
         {filteredNVRs.map((nvr) => (
           <NVRListCard key={nvr.id} nvr={nvr}/>
         ))}
+        <CreateNVRDialog/>
       </div>
     </div>
   )

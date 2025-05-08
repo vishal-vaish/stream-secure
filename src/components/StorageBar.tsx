@@ -19,7 +19,7 @@ const StorageBar = (props:Props) => {
   return (
     <div className={cn("w-full",props.className)}>
       <div className="flex justify-between text-xs text-gray-500 dark:text-gray-300 mb-1">
-        <span>{props.used.toFixed(1)} TB used</span>
+        <span>{props.used.toFixed(2)} TB used</span>
         <span>{percentage}%</span>
       </div>
       <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
@@ -29,7 +29,7 @@ const StorageBar = (props:Props) => {
         ></div>
       </div>
       <div className="text-xs text-gray-500 dark:text-gray-300 mt-1">
-        <span>{props.total.toFixed(1)} TB total</span>
+        <span>{props.total.toFixed(2)} TB total</span>
       </div>
     </div>
   )

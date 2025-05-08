@@ -102,7 +102,7 @@ const Sidebar = () => {
                   >
                     <div
                       className={cn(
-                        "flex items-center px-4 py-2 text-sm font-medium rounded-md ",
+                        "flex items-center px-4 py-2 text-sm font-medium rounded-md dark:text-gray-500",
                         isActive(item.href!) ? "" : "hover:bg-gray-100 dark:hover:bg-gray-900"
                       )}
                     >
