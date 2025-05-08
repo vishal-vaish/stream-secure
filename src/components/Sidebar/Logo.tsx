@@ -3,24 +3,31 @@ import LogiscanLogo from "../../../public/logiscan logo.png";
 import LogiscanLogoDark from "../../../public/logiscan logo-dark.png";
 import Image from "next/image";
 import Link from "next/link";
+import {cn} from "@/lib/utils";
 
-const Logo = () => {
+type Props = {
+  className?: string;
+  height?: number;
+  width?: number;
+}
+
+const Logo = (props:Props) => {
   return (
     <Link href="/">
-      <div className="flex items-center justify-center h-16 dark:hidden">
+      <div className={cn("flex items-center justify-center h-16 dark:hidden",props.className)}>
         <Image
           src={LogiscanLogo}
           alt={"favicon-icon"}
-          width={200}
-          height={40}
+          width={props.width ?? 200}
+          height={props.height ?? 40}
         />
       </div>
-      <div className="hidden dark:flex items-center justify-center h-16">
+      <div className={cn("hidden dark:flex items-center justify-center h-16", props.className)}>
         <Image
           src={LogiscanLogoDark}
           alt={"favicon-icon"}
-          width={200}
-          height={40}
+          width={props.width ?? 200}
+          height={props.height ?? 40}
         />
       </div>
     </Link>

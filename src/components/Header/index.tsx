@@ -1,14 +1,16 @@
 import React from 'react'
-import {Bell} from "lucide-react";
+import {Bell, LayoutGrid} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import Theme from "@/components/theme";
 import SearchBar from "@/components/Header/SearchBar";
+import {useRouter} from "next/navigation";
 
 type Props = {
   title: string;
 }
 
 const Header = (props:Props) => {
+  const router = useRouter();
   return (
     <header className="p-3 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-row justify-between gap-4 items-center pl-14 md:pl-0">
@@ -18,6 +20,12 @@ const Header = (props:Props) => {
         <div className="flex items-center space-x-4">
           <SearchBar/>
           <div className="flex items-center space-x-2">
+            <Button
+              variant="no-background"
+              onClick={() => router.push("/liveGridMonitor")}
+            >
+              <LayoutGrid className="w-5 h-5" />
+            </Button>
             <Theme/>
             <Button
               variant={"no-background"}

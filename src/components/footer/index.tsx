@@ -36,7 +36,6 @@ const Footer = () => {
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-
     </footer>
   )
 }
