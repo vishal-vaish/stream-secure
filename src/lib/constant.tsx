@@ -1,5 +1,5 @@
 import {
-  Camera,
+  Camera, CassetteTape,
   HardDrive,
   LayoutDashboard,
   ServerIcon,
@@ -11,6 +11,7 @@ export enum SideMenu {
   NVR_DEVICES = "NVR Devices",
   CHANNELS = "Channels",
   RECORDINGS = "Recordings",
+  STORAGE = "Storage",
   SETTINGS = "Settings",
   ALERTS = "Alerts",
   USERS = "Users",
@@ -34,8 +35,13 @@ export const dashboardItems: SidebarItem[] = [
   },
   {
     label: SideMenu.RECORDINGS,
-    icon: HardDrive,
+    icon: CassetteTape,
     href: "/recordings"
+  },
+  {
+    label: SideMenu.STORAGE,
+    icon: HardDrive,
+    href: "/storages"
   },
   // {
   //   label: SideMenu.SETTINGS,

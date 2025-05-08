@@ -10,7 +10,6 @@ import logo from "../../../../public/logo.png";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -23,6 +22,7 @@ import Image from "next/image";
 import {waitFor} from "@/lib/utils";
 import {toast} from "sonner"
 import Cookies from "js-cookie";
+import {validUser} from "@/lib/data";
 
 const Page = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -40,10 +40,7 @@ const Page = () => {
     setIsPending(true);
 
     try {
-      const validUsername = "admin";
-      const validPassword = "password123";
-
-      if (data.username === validUsername && data.password === validPassword) {
+      if (data.username === validUser.username && data.password === validUser.password) {
         const token_exist = Cookies.get("auth_token")
         if (token_exist) {
           Cookies.remove("auth_token");
