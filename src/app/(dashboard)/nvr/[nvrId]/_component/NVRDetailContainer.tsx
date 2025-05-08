@@ -12,7 +12,9 @@ import StorageBar from '@/components/StorageBar';
 import {mockedChannelsData} from "@/lib/data";
 import Link from "next/link";
 import {getDiskUsage} from "@/lib/queries";
-import {bytesToTB} from "@/lib/utils";
+import {bytesToTB, cn} from "@/lib/utils";
+import {Button} from "@/components/ui/button";
+import {ChevronDown, ChevronUp} from "lucide-react";
 
 type Props = {
   nvr: NVR;
@@ -20,6 +22,11 @@ type Props = {
 
 const NVRDetailContainer = (props: Props) => {
   const [usage, setUsage] = useState<DishUsageType | null>(null);
+  const [expanded, setExpanded] = useState<boolean>(false);
+
+  const toggleExpand = () => {
+    setExpanded(!expanded);
+  }
 
   useEffect(() => {
     const fetchUsageData = async () => {
@@ -55,50 +62,70 @@ const NVRDetailContainer = (props: Props) => {
         <CardContent className="lg:w-2/3 p-6">
           <div className="flex justify-between items-start mb-4">
             <div>
-              <h1 className="text-2xl font-bold">{props.nvr.name}</h1>
+              <h1 className="text-2xl font-bold m-0">{props.nvr.name}</h1>
               <p className="text-muted-foreground">{props.nvr.location}</p>
             </div>
             <div className="flex gap-5">
               <Link
                 href={`/nvr/${props.nvr.id}/recording`}
-                className="bg-blue-500 p-2 rounded-md text-gray-50"
+                className="bg-blue-500 p-2 rounded-md text-gray-50 text-sm py-1"
               >
                 Show Recording
               </Link>
-            <StatusBadge status={props.nvr.status} className="text-sm"/>
+              <StatusBadge status={props.nvr.status} className="text-sm"/>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-sm font-medium text-muted-foreground mb-2">Storage</h3>
-              <StorageBar used={bytesToTB(usage?.total_size_bytes)} total={props.nvr.storageTotal}/>
-            </div>
+            <StorageBar used={bytesToTB(usage?.total_size_bytes)} total={props.nvr.storageTotal}/>
 
-            <div>
-              <h3 className="text-sm font-medium text-muted-foreground mb-2">Summary</h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Channels:</span>
-                  <span className="font-medium">{nvrChannelCount}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Ip Address:</span>
-                  <span className="font-medium">{props.nvr.ipAddress}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Model:</span>
-                  <span className="font-medium">{props.nvr.model}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Model Name:</span>
-                  <span className="font-medium">{props.nvr.modelName}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Last Updated:</span>
-                  <span className="font-medium">{formatDate(props.nvr.lastUpdated)}</span>
-                </div>
+            <div className="space-y-2">
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Channels:</span>
+                <span className="text-gray-800 dark:text-gray-100 pl-1 font-medium">{nvrChannelCount}</span>
               </div>
+
+              <div className="flex justify-end">
+                <Button
+                  variant={"ghost"}
+                  onClick={toggleExpand}
+                  className="pr-0 text-xs"
+                >
+                  {expanded ? "Show less" : "Show more"}
+                  {expanded
+                    ? <ChevronUp/>
+                    : <ChevronDown/>
+                  }
+                </Button>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </div>
+
+      <div
+        className={cn("overflow-hidden transition-all duration-300 ease-in-out",
+          expanded ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+        )}
+      >
+        <CardContent className="border-t p-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <span className="text-muted-foreground">Ip Address:</span>
+              <span className="text-gray-800 dark:text-gray-100 pl-1 font-medium">{props.nvr.ipAddress}</span>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Model:</span>
+              <span className="text-gray-800 dark:text-gray-100 pl-1 font-medium">{props.nvr.model}</span>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Model Name:</span>
+              <span className="text-gray-800 dark:text-gray-100 pl-1 font-medium">{props.nvr.modelName}</span>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Last Updated:</span>
+              <span
+                className="text-gray-800 dark:text-gray-100 pl-1 font-medium">{formatDate(props.nvr.lastUpdated)}</span>
             </div>
           </div>
         </CardContent>
