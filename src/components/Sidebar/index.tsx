@@ -60,7 +60,7 @@ const Sidebar = () => {
     [SideMenu.DASHBOARD] : "Centralized command center displaying real-time security metrics and device status overview.",
     [SideMenu.REPORTS] : "Automated documentation of security insights with exportable data visualization capabilities.",
     [SideMenu.EVENTS] : "Real-time incident detection and notification system with customizable alert parameters.",
-    [SideMenu.ANALYTICS] : "AI-powered visualization tools analyzing patterns and trends from surveillance footage.",
+    [SideMenu.ANALYTIX_CORE] : "AI-powered visualization tools analyzing patterns and trends from surveillance footage.",
   };
 
   const getTooltipDescription = (menu:SideMenu) :string => {

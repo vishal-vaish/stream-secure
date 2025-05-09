@@ -21,7 +21,7 @@ export enum SideMenu {
   SETTINGS = "Settings",
   REPORTS = "Reports",
   EVENTS = "Events",
-  ANALYTICS = "Analytics",
+  ANALYTIX_CORE = "Analytix Core",
   LANE_GUARD = "Lane-Guard",
   USERS = "Users",
 }
@@ -66,8 +66,8 @@ export const dashboardItems: SidebarItem[] = [
     icon: Calendar,
   },
   {
-    label: SideMenu.ANALYTICS,
-    href: "/analytics",
+    label: SideMenu.ANALYTIX_CORE,
+    href: "/analytix_core",
     isDisabled: true,
     icon: BarChart3,
   },
