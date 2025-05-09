@@ -2,12 +2,16 @@ import React from 'react'
 import Image from "next/image";
 import Logo from "@/components/Sidebar/Logo";
 import {Button} from "@/components/ui/button";
-import {ArrowBigLeft} from "lucide-react";
+import {ArrowBigLeft, FullscreenIcon} from "lucide-react";
 import Theme from "@/components/theme";
 import {useRouter} from "next/navigation";
 import TooltipWrapper from "@/components/TooltipWrapper";
 
-const LiveGridFooter = () => {
+type Props = {
+  enterFullscreen?: () => void;
+}
+
+const LiveGridFooter = (props:Props) => {
   const router = useRouter();
 
   return (
@@ -27,6 +31,17 @@ const LiveGridFooter = () => {
         </Button>
         </TooltipWrapper>
         <Theme/>
+        <TooltipWrapper
+          content={"Full Screen"}
+        >
+          <Button
+            variant="no-background"
+            size="icon"
+            onClick={props.enterFullscreen}
+          >
+            <FullscreenIcon className="w-5 h-5" />
+          </Button>
+        </TooltipWrapper>
       </div>
 
       <div>
