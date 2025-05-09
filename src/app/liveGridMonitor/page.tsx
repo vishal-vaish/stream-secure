@@ -71,7 +71,7 @@ const Page = () => {
                         className="h-full"
                       />
                       <div
-                        className="absolute top-0 left-0 bg-gray-50 text-gray-800 dark:bg-black bg-opacity-70 p-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        className="absolute top-0 left-0 bg-gray-800 text-gray-100 bg-opacity-70 p-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         {video.title}
                       </div>
                     </div>
