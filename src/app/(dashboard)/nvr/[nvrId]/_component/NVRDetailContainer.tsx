@@ -59,7 +59,7 @@ const NVRDetailContainer = (props: Props) => {
             className="object-cover rounded-t-md md:rounded-l-md md:rounded-t-none"
           />
         </div>
-        <CardContent className="lg:w-2/3 p-6">
+        <CardContent className="lg:w-2/3 p-4">
           <div className="flex justify-between items-start mb-4">
             <div>
               <h1 className="text-2xl font-bold m-0">{props.nvr.name}</h1>
@@ -77,12 +77,14 @@ const NVRDetailContainer = (props: Props) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="">
             <StorageBar used={bytesToTB(usage?.total_size_bytes)} total={props.nvr.storageTotal}/>
+            </div>
 
-            <div className="space-y-2">
-              <div className="flex justify-between">
+            <div className="space-y-2 flex flex-col">
+              <div className="flex justify-end">
                 <span className="text-muted-foreground">Channels:</span>
-                <span className="text-gray-800 dark:text-gray-100 pl-1 font-medium">{nvrChannelCount}</span>
+                <span className="text-gray-800 dark:text-gray-100 pl-28 font-medium">{nvrChannelCount}</span>
               </div>
 
               <div className="flex justify-end">
