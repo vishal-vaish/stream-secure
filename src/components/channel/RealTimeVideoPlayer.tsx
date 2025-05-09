@@ -10,6 +10,7 @@ import {cn} from "@/lib/utils";
 type Props = {
   src: string;
   showAsThumbail?: boolean;
+  className?: string;
 }
 
 interface VideoJsPlayerProps {
@@ -59,7 +60,8 @@ const RealTimeVideoPlayer = (props: Props) => {
   return (
     <div
       className={cn("relative w-full aspect-video overflow-hidden shadow-lg",
-      props.showAsThumbail ? "" : "rounded-lg bg-black")}
+      props.showAsThumbail ? "" : "rounded-lg bg-black",
+      props.className)}
     >
       {!props.showAsThumbail && (
         <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded z-10">

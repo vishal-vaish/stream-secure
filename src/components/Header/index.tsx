@@ -4,6 +4,7 @@ import {Button} from "@/components/ui/button";
 import Theme from "@/components/theme";
 import SearchBar from "@/components/Header/SearchBar";
 import {useRouter} from "next/navigation";
+import TooltipWrapper from "@/components/TooltipWrapper";
 
 type Props = {
   title: string;
@@ -20,12 +21,16 @@ const Header = (props:Props) => {
         <div className="flex items-center space-x-4">
           <SearchBar/>
           <div className="flex items-center space-x-2">
+            <TooltipWrapper
+              content={"Grid Live View"}
+            >
             <Button
               variant="no-background"
               onClick={() => router.push("/liveGridMonitor")}
             >
               <LayoutGrid className="w-5 h-5" />
             </Button>
+            </TooltipWrapper>
             <Theme/>
             <Button
               variant={"no-background"}

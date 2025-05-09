@@ -14,20 +14,22 @@ type Props = {
 const Logo = (props:Props) => {
   return (
     <Link href="/">
-      <div className={cn("flex items-center justify-center h-16 dark:hidden",props.className)}>
+      <div className={cn("flex items-center justify-center dark:hidden aspect-auto",props.className)}>
         <Image
           src={LogiscanLogo}
           alt={"favicon-icon"}
           width={props.width ?? 200}
           height={props.height ?? 40}
+          className="object-contain object-center"
         />
       </div>
-      <div className={cn("hidden dark:flex items-center justify-center h-16", props.className)}>
+      <div className={cn("hidden dark:flex items-center justify-center aspect-auto", props.className)}>
         <Image
           src={LogiscanLogoDark}
           alt={"favicon-icon"}
           width={props.width ?? 200}
           height={props.height ?? 40}
+          className="object-contain object-center"
         />
       </div>
     </Link>
