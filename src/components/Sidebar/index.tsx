@@ -67,6 +67,10 @@ const Sidebar = () => {
     return tooltipRenderConfig[menu] || "";
   }
 
+  const isExternalLink = (url: string) => {
+    return url.startsWith('http://') || url.startsWith('https://');
+  };
+
   return (
     <>
       {/* Mobile menu button */}
@@ -116,6 +120,25 @@ const Sidebar = () => {
                       )}
                     </div>
                   </TooltipWrapper>
+                ) : isExternalLink(item.href!) ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      "flex items-center px-4 py-2 text-sm font-medium rounded-md",
+                      "text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-900"
+                    )}
+                  >
+                    <Icon className="w-5 h-5 mr-3"/>
+                    {item.label}
+                    {item.badge && (
+                      <span
+                        className="flex items-center justify-center w-5 h-5 ml-auto text-xs text-white bg-red-500 rounded-full">
+                       {item.badge}
+                      </span>
+                    )}
+                  </a>
                 ) : (
                   <Link
                     href={item.href!}

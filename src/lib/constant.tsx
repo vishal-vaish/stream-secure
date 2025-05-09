@@ -2,7 +2,7 @@ import {
   BarChart3,
   Calendar,
   Camera,
-  CassetteTape,
+  CassetteTape, ExternalLinkIcon,
   FileBarChart,
   HardDrive,
   LayoutDashboard,
@@ -22,6 +22,7 @@ export enum SideMenu {
   REPORTS = "Reports",
   EVENTS = "Events",
   ANALYTICS = "Analytics",
+  LANE_GUARD = "Lane-Guard",
   USERS = "Users",
 }
 
@@ -74,6 +75,11 @@ export const dashboardItems: SidebarItem[] = [
     label: SideMenu.USERS,
     href: "/users",
     icon: Users,
+  },
+  {
+    label: SideMenu.LANE_GUARD,
+    href: "http://54.10.12.14:5000",
+    icon: ExternalLinkIcon,
   },
   {
     label: SideMenu.SETTINGS,

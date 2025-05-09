@@ -7,7 +7,6 @@ import {cn} from "@/lib/utils";
 
 type Props = {
   className?: string;
-  height?: number;
   width?: number;
 }
 
@@ -18,8 +17,7 @@ const Logo = (props:Props) => {
         <Image
           src={LogiscanLogo}
           alt={"favicon-icon"}
-          width={props.width ?? 200}
-          height={props.height ?? 40}
+          width={props.width ?? 180}
           className="object-contain object-center"
         />
       </div>
@@ -27,8 +25,7 @@ const Logo = (props:Props) => {
         <Image
           src={LogiscanLogoDark}
           alt={"favicon-icon"}
-          width={props.width ?? 200}
-          height={props.height ?? 40}
+          width={props.width ?? 180}
           className="object-contain object-center"
         />
       </div>
