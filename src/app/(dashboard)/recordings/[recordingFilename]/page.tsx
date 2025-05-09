@@ -6,10 +6,8 @@ import {useParams} from "next/navigation";
 import {baseUrl, getAllRecordingsData} from "@/lib/queries";
 import {toast} from "sonner";
 import {Loader2} from "lucide-react";
-import {RecordingType} from "@/lib/types";
-import {Card, CardContent, CardHeader} from "@/components/ui/card";
+import {BreadcrumbItemType, RecordingType} from "@/lib/types";
 import VideoPlayer from "@/components/channel/VideoPlayer";
-import {bytesToMB} from "@/lib/utils";
 import RecordingFileDetailsCard from "@/components/recording/RecordingFileDetailsCard";
 
 const Page = () => {
@@ -21,9 +19,18 @@ const Page = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setNavbarTitle("File");
-    setBreadcrumbItems([]);
-  }, [setBreadcrumbItems, setNavbarTitle]);
+    if (recordingData) {
+      const breadcrumbItems: BreadcrumbItemType[] = [
+        {label: "All Recording", path: "/recordings"},
+        {
+          label: `${recordingData.filename.slice(0, 35)}`,
+          path: `/recordings/${recordingData.filename}`
+        },
+      ];
+      setNavbarTitle("File");
+      setBreadcrumbItems(breadcrumbItems);
+    }
+  }, [recordingData, setBreadcrumbItems, setNavbarTitle]);
 
   const refactorStorageFileName = recordingFilename.replace(/%3A/g, ":");
 
