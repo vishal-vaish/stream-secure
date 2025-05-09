@@ -1,4 +1,12 @@
-import {ChannelStatusEnum, ChannelType, NVR, NVRStatusEnum, StorageType, StorageTypeEnum} from "@/lib/types";
+import {
+  ChannelStatusEnum,
+  ChannelType,
+  NVR,
+  NVRStatusEnum,
+  StorageType,
+  StorageTypeEnum,
+  VideoGridDataType
+} from "@/lib/types";
 import {Bell, KeyRound, User2Icon} from "lucide-react";
 
 export const mockedNVRData: NVR[] = [
@@ -225,3 +233,8 @@ export const settingMockedData = [
     icon: KeyRound
   },
 ]
+
+export const mockedVideoGridData:VideoGridDataType[] = [
+  { id: "1", url: "http://192.168.1.114:8000/hls/stream_0/playlist.m3u8", title: "cam-009" },
+  { id: "2", url: "http://192.168.1.114:8000/hls/stream_1/playlist.m3u8", title: "cam-010" }
+];

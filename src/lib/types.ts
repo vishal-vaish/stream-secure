@@ -94,3 +94,9 @@ export interface StorageType {
 export interface DishUsageType {
   total_size_bytes: number;
 }
+
+export interface VideoGridDataType {
+  id: string;
+  url: string;
+  title: string;
+}

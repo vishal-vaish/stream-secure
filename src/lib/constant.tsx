@@ -78,7 +78,7 @@ export const dashboardItems: SidebarItem[] = [
   },
   {
     label: SideMenu.LANE_GUARD,
-    href: "http://54.10.12.14:5000",
+    href: "http://192.168.1.111:3000",
     icon: ExternalLinkIcon,
   },
   {

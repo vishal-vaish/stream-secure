@@ -12,7 +12,8 @@ const LiveGridFooter = () => {
 
   return (
     <footer
-      className="px-5 my-2 bg-white border-t text-gray-500 text-base flex justify-between items-center  w-full dark:bg-gray-900 dark:text-gray-200">
+      className="px-5 bg-white border-t text-gray-500 text-base  dark:bg-gray-900 dark:text-gray-200">
+      <div className="my-2 flex justify-between items-center  w-full">
       <div className="flex items-center space-x-2">
         <TooltipWrapper
           content={"Back"}
@@ -58,6 +59,7 @@ const LiveGridFooter = () => {
       <Logo
         width={100}
       />
+      </div>
     </footer>
   )
 }

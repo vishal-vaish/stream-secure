@@ -1,14 +1,49 @@
-import React from 'react'
-import RealTimeVideoPlayer from "@/components/channel/RealTimeVideoPlayer";
+"use client";
 
-const initialVideos = [
-  { id: 1, url: "http://192.168.1.114:8000/hls/stream_0/playlist.m3u8", title: "cam-009" },
-  { id: 2, url: "http://192.168.1.114:8000/hls/stream_1/playlist.m3u8", title: "cam-010" }
-];
+import React, {useEffect, useRef} from 'react'
+import RealTimeVideoPlayer from "@/components/channel/RealTimeVideoPlayer";
+import {mockedVideoGridData} from "@/lib/data";
+
+interface FullscreenElement extends HTMLElement {
+  webkitRequestFullscreen?: () => Promise<void>;
+  mozRequestFullScreen?: () => Promise<void>;
+  msRequestFullscreen?: () => Promise<void>;
+}
+
+interface FullscreenDocument extends Document {
+  webkitExitFullscreen?: () => Promise<void>;
+  mozCancelFullScreen?: () => Promise<void>;
+  msExitFullscreen?: () => Promise<void>;
+}
 
 const Page = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const enterFullscreen = (): void => {
+    const element = containerRef.current as FullscreenElement | null;
+    if (element) {
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      enterFullscreen();
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="flex flex-col w-full h-full gap-4 bg-gray-900 text-white">
+    <div ref={containerRef} className="flex flex-col p-2 w-full h-full gap-4 bg-gray-900 text-white">
       <div
         className="grid gap-2 w-full h-full"
         style={{
@@ -17,7 +52,7 @@ const Page = () => {
         }}
       >
         {Array.from({ length: 16 }).map((_, index) => {
-          const video = initialVideos[index];
+          const video = mockedVideoGridData[index];
 
           return (
             <div
@@ -38,7 +73,7 @@ const Page = () => {
                 </>
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm">
-                  {index < initialVideos.length ? "Loading..." : "No Stream"}
+                  {index < mockedVideoGridData.length ? "Loading..." : "No Stream"}
                 </div>
               )}
             </div>
