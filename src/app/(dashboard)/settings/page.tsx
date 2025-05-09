@@ -1,9 +1,19 @@
-import React from 'react'
+"use client"
+
+import React, {useEffect} from 'react'
 import {MoveRight} from "lucide-react";
 import {settingMockedData} from "@/lib/data";
 import {Card} from "@/components/ui/card";
+import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 
 const Page = () => {
+  const {setBreadcrumbItems, setNavbarTitle} = useNavbarDetails();
+
+  useEffect(() => {
+      setBreadcrumbItems([]);
+      setNavbarTitle("Settings");
+  }, [setBreadcrumbItems, setNavbarTitle]);
+  
   return (
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">

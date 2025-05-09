@@ -56,14 +56,14 @@ const Sidebar = () => {
     router.push("/login");
   }
 
-  const tooltipRenderConfig:TooltipConfigType = {
-    [SideMenu.DASHBOARD] : "Centralized command center displaying real-time security metrics and device status overview.",
-    [SideMenu.REPORTS] : "Automated documentation of security insights with exportable data visualization capabilities.",
-    [SideMenu.EVENTS] : "Real-time incident detection and notification system with customizable alert parameters.",
-    [SideMenu.ANALYTIX_CORE] : "AI-powered visualization tools analyzing patterns and trends from surveillance footage.",
+  const tooltipRenderConfig: TooltipConfigType = {
+    [SideMenu.DASHBOARD]: "Centralized command center displaying real-time security metrics and device status overview.",
+    [SideMenu.REPORTS]: "Automated documentation of security insights with exportable data visualization capabilities.",
+    [SideMenu.EVENTS]: "Real-time incident detection and notification system with customizable alert parameters.",
+    [SideMenu.ANALYTIX_CORE]: "AI-powered visualization tools analyzing patterns and trends from surveillance footage.",
   };
 
-  const getTooltipDescription = (menu:SideMenu) :string => {
+  const getTooltipDescription = (menu: SideMenu): string => {
     return tooltipRenderConfig[menu] || "";
   }
 
@@ -75,7 +75,7 @@ const Sidebar = () => {
     <>
       {/* Mobile menu button */}
       <button
-        className="fixed z-50 p-2 text-gray-500 bg-white rounded-md shadow-md md:hidden top-4 left-4"
+        className="fixed z-50 p-2 text-gray-500 bg-white rounded-md shadow-md md:hidden top-4 left-4 dark:bg-gray-800 border:bg-gray-900 border"
         onClick={toggleSidebar}
       >
         {isOpen ? <X size={24}/> : <Menu size={24}/>}
@@ -87,8 +87,8 @@ const Sidebar = () => {
           isOpen ? 'translate-x-0' : '-translate-x-full')}
       >
         <Logo/>
-        <Separator className="mb-4"/>
-        <div className="flex flex-col flex-1 overflow-y-auto">
+        <Separator className="mb-1"/>
+        <div className="flex flex-col flex-1 overflow-y-auto gap-1">
           {dashboardItems.map(item => {
             const Icon = item.icon;
 
@@ -106,7 +106,7 @@ const Sidebar = () => {
                   >
                     <div
                       className={cn(
-                        "flex items-center px-4 py-2 text-sm font-medium rounded-md dark:text-gray-500",
+                        "flex items-center px-4 py-2 text-sm font-medium rounded-md dark:text-gray-500 text-gray-400",
                         isActive(item.href!) ? "" : "hover:bg-gray-100 dark:hover:bg-gray-900"
                       )}
                     >
@@ -142,6 +142,11 @@ const Sidebar = () => {
                 ) : (
                   <Link
                     href={item.href!}
+                    onClick={() => {
+                      if (isOpen) {
+                        setIsOpen(false);
+                      }
+                    }}
                     className={cn(
                       "flex items-center px-4 py-2 text-sm font-medium rounded-md ",
                       isActive(item.href!) ? "" : "hover:bg-gray-100 dark:hover:bg-gray-900"
