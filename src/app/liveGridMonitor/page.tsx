@@ -47,7 +47,7 @@ const Page = () => {
     <div className="flex flex-col h-screen">
       <div
         ref={containerRef}
-        className="flex-1 min-h-0 p-2 gap-4 overflow-hidden bg-gray-900 text-white">
+        className="flex-1 min-h-0 p-2 gap-4 overflow-hidden bg-gray-50 dark:bg-gray-900 text-white">
         <div
           className="grid gap-2 w-full h-full"
           style={{
@@ -61,7 +61,7 @@ const Page = () => {
             return (
               <div
                 key={index}
-                className={`rounded overflow-hidden relative ${video ? 'bg-gray-800' : 'bg-black'}`}
+                className={`rounded overflow-hidden relative ${video ? 'bg-gray-800' : 'bg-gray-100 dark:bg-black'}`}
               >
                 {video ? (
                   <>
@@ -71,7 +71,7 @@ const Page = () => {
                         className="h-full"
                       />
                       <div
-                        className="absolute top-0 left-0 bg-black bg-opacity-70 p-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        className="absolute top-0 left-0 bg-gray-50 text-gray-800 dark:bg-black bg-opacity-70 p-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         {video.title}
                       </div>
                     </div>
