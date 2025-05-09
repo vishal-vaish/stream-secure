@@ -3,7 +3,7 @@
 import React, {useEffect} from 'react'
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import {mockedChannelsData} from "@/lib/data";
-import ChannelListCard from "@/app/(dashboard)/nvr/[nvrId]/_component/ChannelListCard";
+import ChannelListCard from "@/components/channel/ChannelListCard";
 import Link from "next/link";
 
 const Page = () => {

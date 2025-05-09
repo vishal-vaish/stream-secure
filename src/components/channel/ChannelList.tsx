@@ -3,7 +3,7 @@
 import React from 'react'
 import {getFilteredChannel} from "@/actions/nvr";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
-import ChannelListCard from "@/app/(dashboard)/nvr/[nvrId]/_component/ChannelListCard";
+import ChannelListCard from "@/components/channel/ChannelListCard";
 import Link from "next/link";
 
 type Props = {

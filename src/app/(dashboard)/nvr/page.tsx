@@ -1,8 +1,8 @@
 "use client";
 
 import React, {useEffect} from 'react'
-import NVRCardContainer from "@/app/(dashboard)/nvr/_component/NVRCardContainer";
-import NVRList from "@/app/(dashboard)/nvr/_component/NVRList";
+import NVRCardContainer from "@/components/nvr/NVRCardContainer";
+import NVRList from "@/components/nvr/NVRList";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 
 const Page = () => {

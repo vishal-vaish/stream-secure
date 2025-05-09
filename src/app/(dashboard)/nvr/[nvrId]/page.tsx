@@ -5,8 +5,8 @@ import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import {BreadcrumbItemType} from "@/lib/types";
 import {useParams} from "next/navigation";
 import {getNVRById} from "@/actions/nvr";
-import NVRDetailContainer from "@/app/(dashboard)/nvr/[nvrId]/_component/NVRDetailContainer";
-import ChannelList from "@/app/(dashboard)/nvr/[nvrId]/_component/ChannelList";
+import NVRDetailContainer from "@/components/nvr/NVRDetailContainer";
+import ChannelList from "@/components/channel/ChannelList";
 
 const Page = () => {
   const {setBreadcrumbItems, setNavbarTitle} = useNavbarDetails();

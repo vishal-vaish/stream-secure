@@ -49,15 +49,15 @@ const ChannelListCard = (props: Props) => {
             <div className="absolute top-2 right-2">
               <StatusBadge status={props.channel.status}/>
             </div>
-            {props.channel.status !== "offline" && (
-              <div
-                className="absolute inset-0 flex items-center justify-center bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div
-                  className="bg-blue-600 rounded-full p-3 transform transition-transform duration-300 group-hover:scale-110">
-                  <Play className="w-6 h-6 text-white" fill="white"/>
-                </div>
-              </div>
-            )}
+            {/*{props.channel.status !== "offline" && (*/}
+            {/*  <div*/}
+            {/*    className="absolute inset-0 flex items-center justify-center bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">*/}
+            {/*    <div*/}
+            {/*      className="bg-blue-600 rounded-full p-3 transform transition-transform duration-300 group-hover:scale-110">*/}
+            {/*      <Play className="w-6 h-6 text-white" fill="white"/>*/}
+            {/*    </div>*/}
+            {/*  </div>*/}
+            {/*)}*/}
             {props.channel.status === "offline" && (
               <div className="absolute inset-0 flex items-center justify-center g-opacity-40">
                 <VideoOff className="w-10 h-10 text-white opacity-70"/>
