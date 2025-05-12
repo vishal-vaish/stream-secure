@@ -39,11 +39,12 @@ export interface ChannelType {
   nvrId: string;
   name: string;
   location: string;
-  status: ChannelStatusEnum;
+  status?: ChannelStatusEnum;
   lastUpdated: string;
   resolution: string;
   streamUrl: string;
   thumbnail: string;
+  isLiveStreaming?:boolean;
 }
 
 export enum ChannelStatusEnum {
@@ -99,4 +100,11 @@ export interface VideoGridDataType {
   id: string;
   url: string;
   title: string;
+}
+
+export interface StreamHealthType {
+  status: ChannelStatusEnum;
+  channelId: string;
+  ffmpeg_running: boolean;
+  recording_running: boolean;
 }

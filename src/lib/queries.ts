@@ -1,5 +1,5 @@
 import axios from "axios";
-import {DishUsageType, RecordingType} from "@/lib/types";
+import {DishUsageType, RecordingType, StreamHealthType} from "@/lib/types";
 
 export const baseUrl = "http://192.168.1.114:8000";
 
@@ -28,6 +28,18 @@ export const getAllRecordingsData = async (
 export const getDiskUsage = async (): Promise<DishUsageType> => {
   try {
     const response = await axios.get(`${baseUrl}/disk-usage`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching camera data:', error);
+    throw error;
+  }
+};
+
+export const getChannelHealth = async (
+  channelId: string,
+): Promise<StreamHealthType> => {
+  try {
+    const response = await axios.get(`${baseUrl}/status/${channelId}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching camera data:', error);

@@ -1,17 +1,19 @@
-import React from 'react'
-import {ChannelType} from "@/lib/types";
-import StatusBadge from "@/components/StatusBadge";
+import React, {useCallback, useEffect, useState} from 'react'
+import {ChannelType, StreamHealthType} from "@/lib/types";
+import StatusBadge, {StatusType} from "@/components/StatusBadge";
 import VideoPlayer from "@/components/channel/VideoPlayer";
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import RealTimeVideoPlayer from "@/components/channel/RealTimeVideoPlayer";
 import Link from "next/link";
+import {getChannelHealth} from "@/lib/queries";
 
 type Props = {
   channel: ChannelType;
-  isChannelFlow?:boolean;
+  isChannelFlow?: boolean;
 }
 
 const ChannelCard = (props: Props) => {
+  const [health, setHealth] = useState<StreamHealthType | undefined>(undefined);
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat('en-US', {
@@ -20,18 +22,21 @@ const ChannelCard = (props: Props) => {
     }).format(date);
   };
 
-  const isRealStreaming =
-    props.channel.id === "cam-009" ||
-    props.channel.id === "cam-010";
+  const fetchChannelHealth = useCallback(async () => {
+    try {
+      const res = await getChannelHealth(props.channel.id);
+      console.log(res);
+      setHealth(res);
+    } catch (error) {
+      console.error(error);
+    }
+  }, [props]);
 
-  const streamUrl: Record<string, string> = {
-    "cam-009": "http://192.168.1.114:8000/hls/stream_0/playlist.m3u8",
-    "cam-010": "http://192.168.1.114:8000/hls/stream_1/playlist.m3u8"
-  }
+  useEffect(() => {
+    fetchChannelHealth();
+  }, [fetchChannelHealth]);
 
-  const liveStreamUrl = (id: string) => {
-    return streamUrl[id];
-  }
+  if(!health) return null;
 
   return (
     <div className="w-full">
@@ -39,13 +44,17 @@ const ChannelCard = (props: Props) => {
         <div className="mb-6 col-span-2">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold text-gray-800 dark:text-white">Live View</h2>
-            <StatusBadge status={props.channel.status}/>
+            <StatusBadge status={health.status as StatusType}/>
           </div>
 
           {props.channel.status !== 'offline' ? (
-            isRealStreaming ? (
+            props.channel.isLiveStreaming ? (
               <RealTimeVideoPlayer
-                src={liveStreamUrl(props.channel.id)}
+                src={props.channel.streamUrl}
+                refetch={async () => {
+                  console.log("refetching")
+                  await fetchChannelHealth();
+                }}
               />
             ) : (
               <VideoPlayer
@@ -91,7 +100,7 @@ const ChannelCard = (props: Props) => {
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Status</p>
-                <StatusBadge status={props.channel.status}/>
+                <StatusBadge status={health.status as StatusType}/>
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Last Updated</p>
@@ -101,7 +110,7 @@ const ChannelCard = (props: Props) => {
           </Card>
           <Link
             href={props.isChannelFlow
-              ?  `/channels/${props.channel.id}/recording`
+              ? `/channels/${props.channel.id}/recording`
               : `/nvr/${props.channel.nvrId}/channel/${props.channel.id}/recording`}
             className="bg-blue-500 dark:bg-blue-600 p-2 rounded-md text-gray-50 text-center"
           >

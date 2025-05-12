@@ -1,6 +1,4 @@
 import {
-  ChannelStatusEnum,
-  ChannelType,
   NVR,
   NVRStatusEnum,
   StorageType,
@@ -69,118 +67,30 @@ export const mockedNVRData: NVR[] = [
   // }
 ];
 
-export const mockedChannelsData: ChannelType[] = [
-  // Main Server 1 Cameras
-  // {
-  //   id: "cam-001",
-  //   nvrId: "nvr-002",
-  //   name: "Lobby Camera 1",
-  //   location: "Main Entrance",
-  //   status: ChannelStatusEnum.ONLINE,
-  //   lastUpdated: new Date().toISOString(),
-  //   resolution: "1080p",
-  //   streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-  //   thumbnail: "https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-  // },
-  // {
-  //   id: "cam-002",
-  //   nvrId: "nvr-002",
-  //   name: "Lobby Camera 2",
-  //   location: "Reception Desk",
-  //   status: ChannelStatusEnum.ONLINE,
-  //   lastUpdated: new Date().toISOString(),
-  //   resolution: "1080p",
-  //   streamUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-  //   thumbnail: "https://images.pexels.com/photos/3205735/pexels-photo-3205735.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-  // },
-  // {
-  //   id: "cam-003",
-  //   nvrId: "nvr-002",
-  //   name: "Elevator Camera",
-  //   location: "Main Lobby Elevator",
-  //   status: ChannelStatusEnum.OFFLINE,
-  //   lastUpdated: new Date().toISOString(),
-  //   resolution: "1080p",
-  //   streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-  //   thumbnail: "https://images.pexels.com/photos/821754/pexels-photo-821754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-  // },
-  // // Additional cameras would be defined here, but trimmed for brevity
-  // {
-  //   id: "cam-004",
-  //   nvrId: "nvr-003",
-  //   name: "Office Hallway 1",
-  //   location: "1st Floor Hallway",
-  //   status: ChannelStatusEnum.ONLINE,
-  //   lastUpdated: new Date().toISOString(),
-  //   resolution: "1080p",
-  //   streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-  //   thumbnail: "https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-  // },
-  // {
-  //   id: "cam-005",
-  //   nvrId: "nvr-002",
-  //   name: "Conference Room A",
-  //   location: "2nd Floor East Wing",
-  //   status: ChannelStatusEnum.OFFLINE,
-  //   lastUpdated: new Date(Date.now() - 7200000).toISOString(),
-  //   resolution: "1080p",
-  //   streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-  //   thumbnail: "https://images.pexels.com/photos/561458/pexels-photo-561458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-  // },
-  // {
-  //   id: "cam-006",
-  //   nvrId: "nvr-003",
-  //   name: "Parking Entrance",
-  //   location: "Underground Parking",
-  //   status: ChannelStatusEnum.OFFLINE,
-  //   lastUpdated: new Date().toISOString(),
-  //   resolution: "1080p",
-  //   streamUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-  //   thumbnail: "https://images.pexels.com/photos/1756957/pexels-photo-1756957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-  // },
-  // {
-  //   id: "cam-007",
-  //   nvrId: "nvr-002",
-  //   name: "Warehouse Gate",
-  //   location: "Main Warehouse Entrance",
-  //   status: ChannelStatusEnum.ONLINE,
-  //   lastUpdated: new Date().toISOString(),
-  //   resolution: "1080p",
-  //   streamUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-  //   thumbnail: "https://images.pexels.com/photos/1756957/pexels-photo-1756957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-  // },
-  // {
-  //   id: "cam-008",
-  //   nvrId: "nvr-002",
-  //   name: "Loading Dock 1",
-  //   location: "North Loading Area",
-  //   status: ChannelStatusEnum.ONLINE,
-  //   lastUpdated: new Date().toISOString(),
-  //   resolution: "1080p",
-  //   streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-  //   thumbnail: "https://images.pexels.com/photos/4481326/pexels-photo-4481326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-  // },
+export const mockedChannelsData = [
   {
     id: "cam-009",
     nvrId: "nvr-001",
     name: "Ground Floor Lobby-1",
     location: "Ground Floor Lobby",
-    status: ChannelStatusEnum.ONLINE,
+    // status: ChannelStatusEnum.ONLINE,
     lastUpdated: new Date().toISOString(),
     resolution: "1080p",
-    streamUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    thumbnail: "https://images.pexels.com/photos/4481326/pexels-photo-4481326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    streamUrl: "http://192.168.1.114:8000/hls/stream_0/playlist.m3u8",
+    thumbnail: "http://192.168.1.114:8000/hls/stream_0/playlist.m3u8",
+    isLiveStreaming:true,
   },
   {
     id: "cam-010",
     nvrId: "nvr-001",
     name: "Ground Floor Lobby-2",
     location: "Ground Floor Lobby",
-    status: ChannelStatusEnum.ONLINE,
+    // status: ChannelStatusEnum.ONLINE,
     lastUpdated: new Date(Date.now() - 7200000).toISOString(),
     resolution: "1080p",
-    streamUrl: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-    thumbnail: "https://images.pexels.com/photos/561458/pexels-photo-561458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    streamUrl: "http://192.168.1.114:8000/hls/stream_1/playlist.m3u8",
+    thumbnail: "http://192.168.1.114:8000/hls/stream_1/playlist.m3u8",
+    isLiveStreaming:true,
   },
 ];
 

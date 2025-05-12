@@ -1,42 +1,46 @@
-import React from "react"
-import {
-  Card,
-  CardContent,
-  CardHeader
-} from "@/components/ui/card";
+"use client";
+
+import React, {useCallback, useEffect, useState} from "react"
+import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import Image from "next/image";
-import StatusBadge from "@/components/StatusBadge";
-import {Play, VideoOff} from "lucide-react";
-import {ChannelType} from "@/lib/types";
+import StatusBadge, {StatusType} from "@/components/StatusBadge";
+import {VideoOff} from "lucide-react";
+import {ChannelStatusEnum, ChannelType, StreamHealthType} from "@/lib/types";
 import RealTimeVideoPlayer from "@/components/channel/RealTimeVideoPlayer";
+import {getChannelHealth} from "@/lib/queries";
 
 type Props = {
   channel: ChannelType;
 }
 
 const ChannelListCard = (props: Props) => {
-  const isRealStreaming =
-    props.channel.id === "cam-009" ||
-    props.channel.id === "cam-010";
+  const [health, setHealth] = useState<StreamHealthType | undefined>(undefined);
 
-  const streamUrl: Record<string, string> = {
-    "cam-009": "http://192.168.1.114:8000/hls/stream_0/playlist.m3u8",
-    "cam-010": "http://192.168.1.114:8000/hls/stream_1/playlist.m3u8"
-  }
+  const fetchChannelHealth = useCallback(async () => {
+    try {
+      const res = await getChannelHealth(props.channel.id);
+      setHealth(res);
+    } catch (error) {
+      console.error(error);
+    }
+  }, [props]);
 
-  const liveStreamUrl = (id: string) => {
-    return streamUrl[id];
-  }
+  useEffect(() => {
+    fetchChannelHealth();
+  }, [fetchChannelHealth]);
+
+  if (!health) return null;
 
   return (
     <div className="block">
       <Card className="hover:shadow-md dark:shadow-border/60">
         <CardHeader className="p-0 mb-4">
           <div className="relative h-40 overflow-hidden rounded-t-lg group">
-            {isRealStreaming ? (
+            {props.channel.isLiveStreaming ? (
               <RealTimeVideoPlayer
-                src={liveStreamUrl(props.channel.id)}
+                src={props.channel.streamUrl}
                 showAsThumbail={true}
+                refetch={fetchChannelHealth}
               />
             ) : (
               <Image
@@ -46,20 +50,12 @@ const ChannelListCard = (props: Props) => {
                 fill
               />
             )}
-            <div className="absolute top-2 right-2">
-              <StatusBadge status={props.channel.status}/>
+            <div className="absolute top-2 right-2 z-10">
+              <StatusBadge status={health.status as StatusType}/>
             </div>
-            {/*{props.channel.status !== "offline" && (*/}
-            {/*  <div*/}
-            {/*    className="absolute inset-0 flex items-center justify-center bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">*/}
-            {/*    <div*/}
-            {/*      className="bg-blue-600 rounded-full p-3 transform transition-transform duration-300 group-hover:scale-110">*/}
-            {/*      <Play className="w-6 h-6 text-white" fill="white"/>*/}
-            {/*    </div>*/}
-            {/*  </div>*/}
-            {/*)}*/}
-            {props.channel.status === "offline" && (
-              <div className="absolute inset-0 flex items-center justify-center g-opacity-40">
+            {health.status === ChannelStatusEnum.OFFLINE && (
+              <div
+                className="absolute inset-0 flex items-center justify-center bg-black/40 dark:bg-black/80 group-hover:opacity-100 transition-opacity duration-300">
                 <VideoOff className="w-10 h-10 text-white opacity-70"/>
               </div>
             )}

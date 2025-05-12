@@ -2,7 +2,7 @@ import React from "react"
 import {Badge} from "@/components/ui/badge";
 import {cn} from "@/lib/utils";
 
-type StatusType = "online" | "offline" | "recording";
+export type StatusType = "online" | "offline" | "recording";
 
 type Props = {
   status: StatusType;
