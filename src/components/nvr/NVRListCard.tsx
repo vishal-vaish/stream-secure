@@ -1,7 +1,7 @@
 "use client";
 
-import React, {useEffect, useState} from 'react'
-import {DishUsageType, NVR} from "@/lib/types";
+import React, {useCallback, useEffect, useState} from 'react'
+import {DishUsageType, GetNVRHealthType, NVR} from "@/lib/types";
 import {
   Card,
   CardContent,
@@ -10,11 +10,11 @@ import {
 } from "@/components/ui/card"
 import Link from "next/link";
 import Image from "next/image";
-import StatusBadge from "@/components/StatusBadge";
+import StatusBadge, {StatusType} from "@/components/StatusBadge";
 import {Camera} from "lucide-react";
 import StorageBar from '@/components/StorageBar';
 import {mockedChannelsData} from "@/lib/data";
-import {getDiskUsage} from "@/lib/queries";
+import {getDiskUsage, getNVRHealth} from "@/lib/queries";
 import {bytesToTB} from "@/lib/utils";
 
 type Props = {
@@ -23,6 +23,7 @@ type Props = {
 
 const NvrListCard = (props: Props) => {
   const [usage, setUsage] = useState<DishUsageType | null>(null);
+  const [health, setHealth] = useState<GetNVRHealthType>();
 
   useEffect(() => {
     const fetchUsageData = async () => {
@@ -32,7 +33,21 @@ const NvrListCard = (props: Props) => {
     fetchUsageData();
   }, [props]);
 
-  const channelCount = mockedChannelsData.filter(channel => channel.nvrId === props.nvr.id).length;
+  const fetchNVRHealth = useCallback(async () => {
+    try {
+      const res = await getNVRHealth();
+      setHealth(res)
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchNVRHealth();
+  }, [fetchNVRHealth]);
+
+  const channelCount = mockedChannelsData
+    .filter(channel => channel.nvrId === props.nvr.id).length;
 
   return (
     <Link href={`/nvr/${props.nvr.id}`} className="block">
@@ -46,7 +61,9 @@ const NvrListCard = (props: Props) => {
               fill
             />
             <div className="absolute top-2 right-2">
-              <StatusBadge status={props.nvr.status}/>
+              {health?.status && (
+                <StatusBadge status={health.status as StatusType}/>
+              )}
             </div>
           </div>
         </CardHeader>

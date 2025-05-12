@@ -185,7 +185,7 @@ const CreateStorageDialog = () => {
                 )}
               />
 
-              <div>
+              <div className="!mt-2">
                 <h3 className="text-lg font-medium ml-2">Authentication</h3>
                 <div className="flex !mt-1">
                   <FormField

@@ -25,7 +25,6 @@ const ChannelCard = (props: Props) => {
   const fetchChannelHealth = useCallback(async () => {
     try {
       const res = await getChannelHealth(props.channel.id);
-      console.log(res);
       setHealth(res);
     } catch (error) {
       console.error(error);
@@ -36,15 +35,15 @@ const ChannelCard = (props: Props) => {
     fetchChannelHealth();
   }, [fetchChannelHealth]);
 
-  if(!health) return null;
-
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div className="mb-6 col-span-2">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold text-gray-800 dark:text-white">Live View</h2>
-            <StatusBadge status={health.status as StatusType}/>
+            {health?.status && (
+              <StatusBadge status={health.status as StatusType}/>
+            )}
           </div>
 
           {props.channel.status !== 'offline' ? (
@@ -52,7 +51,6 @@ const ChannelCard = (props: Props) => {
               <RealTimeVideoPlayer
                 src={props.channel.streamUrl}
                 refetch={async () => {
-                  console.log("refetching")
                   await fetchChannelHealth();
                 }}
               />
@@ -100,7 +98,9 @@ const ChannelCard = (props: Props) => {
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Status</p>
-                <StatusBadge status={health.status as StatusType}/>
+                {health?.status && (
+                  <StatusBadge status={health.status as StatusType}/>
+                )}
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Last Updated</p>

@@ -108,3 +108,7 @@ export interface StreamHealthType {
   ffmpeg_running: boolean;
   recording_running: boolean;
 }
+
+export interface GetNVRHealthType {
+  status: ChannelStatusEnum;
+}

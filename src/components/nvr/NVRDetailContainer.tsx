@@ -1,17 +1,17 @@
 "use client";
 
-import React, {useEffect, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import Image from "next/image";
-import {DishUsageType, NVR} from "@/lib/types";
+import {DishUsageType, GetNVRHealthType, NVR} from "@/lib/types";
 import {
   Card,
   CardContent,
 } from "@/components/ui/card"
-import StatusBadge from "@/components/StatusBadge";
+import StatusBadge, {StatusType} from "@/components/StatusBadge";
 import StorageBar from '@/components/StorageBar';
 import {mockedChannelsData} from "@/lib/data";
 import Link from "next/link";
-import {getDiskUsage} from "@/lib/queries";
+import {getDiskUsage, getNVRHealth} from "@/lib/queries";
 import {bytesToTB, cn} from "@/lib/utils";
 import {Button} from "@/components/ui/button";
 import {ChevronDown, ChevronUp} from "lucide-react";
@@ -23,6 +23,7 @@ type Props = {
 const NVRDetailContainer = (props: Props) => {
   const [usage, setUsage] = useState<DishUsageType | null>(null);
   const [expanded, setExpanded] = useState<boolean>(false);
+  const [health, setHealth] = useState<GetNVRHealthType>();
 
   const toggleExpand = () => {
     setExpanded(!expanded);
@@ -35,6 +36,19 @@ const NVRDetailContainer = (props: Props) => {
     }
     fetchUsageData();
   }, [props]);
+
+  const fetchNVRHealth = useCallback(async () => {
+    try {
+      const res = await getNVRHealth();
+      setHealth(res)
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchNVRHealth();
+  }, [fetchNVRHealth]);
 
   const nvrChannelCount = mockedChannelsData
     .filter(channel => channel.nvrId === props.nvr.id)
@@ -72,7 +86,12 @@ const NVRDetailContainer = (props: Props) => {
               >
                 Show Recording
               </Link>
-              <StatusBadge status={props.nvr.status} className="text-sm"/>
+              {health?.status && (
+                <StatusBadge
+                  status={health.status as StatusType}
+                  className="text-sm"
+                />
+              )}
             </div>
           </div>
 

@@ -29,8 +29,6 @@ const ChannelListCard = (props: Props) => {
     fetchChannelHealth();
   }, [fetchChannelHealth]);
 
-  if (!health) return null;
-
   return (
     <div className="block">
       <Card className="hover:shadow-md dark:shadow-border/60">
@@ -51,9 +49,11 @@ const ChannelListCard = (props: Props) => {
               />
             )}
             <div className="absolute top-2 right-2 z-10">
-              <StatusBadge status={health.status as StatusType}/>
+              {health?.status && (
+                <StatusBadge status={health.status as StatusType}/>
+              )}
             </div>
-            {health.status === ChannelStatusEnum.OFFLINE && (
+            {health?.status && health.status === ChannelStatusEnum.OFFLINE && (
               <div
                 className="absolute inset-0 flex items-center justify-center bg-black/40 dark:bg-black/80 group-hover:opacity-100 transition-opacity duration-300">
                 <VideoOff className="w-10 h-10 text-white opacity-70"/>
