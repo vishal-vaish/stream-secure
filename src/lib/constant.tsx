@@ -67,7 +67,6 @@ export const dashboardItems: SidebarItem[] = [
   {
     label: SideMenu.ANALYTIX_CORE,
     href: "/analytix_core",
-    isDisabled: true,
     icon: BarChart3,
   },
   {

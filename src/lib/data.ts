@@ -266,14 +266,106 @@ export const recentEventsStats:recentEventsStatsType[] = [
     timeAgo: "1h 2m ago",
     details: "New firmware available"
   },
-  // {
-  //   id: 6,
-  //   type: "Motion Detected",
-  //   location: "Camera 3 - Parking Lot",
-  //   device: "System",
-  //   timestamp: "May 7, 2025, 9:10 PM",
-  //   severity: "low",
-  //   status: "new",
-  //   timeAgo: "4m ago"
-  // }
+]
+
+export const motionData = [
+  { hour: "00:00", "Ground Floor Lobby-1": 3, "Ground Floor Lobby-2": 2, timestamp: "May 7, 12:00 AM" },
+  { hour: "01:00", "Ground Floor Lobby-1": 1, "Ground Floor Lobby-2": 0, timestamp: "May 7, 1:00 AM" },
+  { hour: "02:00", "Ground Floor Lobby-1": 0, "Ground Floor Lobby-2": 1, timestamp: "May 7, 2:00 AM" },
+  { hour: "03:00", "Ground Floor Lobby-1": 0, "Ground Floor Lobby-2": 0, timestamp: "May 7, 3:00 AM" },
+  { hour: "04:00", "Ground Floor Lobby-1": 1, "Ground Floor Lobby-2": 0, timestamp: "May 7, 4:00 AM" },
+  { hour: "05:00", "Ground Floor Lobby-1": 2, "Ground Floor Lobby-2": 1, timestamp: "May 7, 5:00 AM" },
+  { hour: "06:00", "Ground Floor Lobby-1": 5, "Ground Floor Lobby-2": 3, timestamp: "May 7, 6:00 AM" },
+  { hour: "07:00", "Ground Floor Lobby-1": 8, "Ground Floor Lobby-2": 6, timestamp: "May 7, 7:00 AM" },
+  { hour: "08:00", "Ground Floor Lobby-1": 17, "Ground Floor Lobby-2": 14, timestamp: "May 7, 8:00 AM" },
+  { hour: "09:00", "Ground Floor Lobby-1": 22, "Ground Floor Lobby-2": 19, timestamp: "May 7, 9:00 AM" },
+  { hour: "10:00", "Ground Floor Lobby-1": 15, "Ground Floor Lobby-2": 12, timestamp: "May 7, 10:00 AM" },
+  { hour: "11:00", "Ground Floor Lobby-1": 11, "Ground Floor Lobby-2": 9, timestamp: "May 7, 11:00 AM" },
+  { hour: "12:00", "Ground Floor Lobby-1": 18, "Ground Floor Lobby-2": 16, timestamp: "May 7, 12:00 PM" },
+  { hour: "13:00", "Ground Floor Lobby-1": 16, "Ground Floor Lobby-2": 14, timestamp: "May 7, 1:00 PM" },
+  { hour: "14:00", "Ground Floor Lobby-1": 12, "Ground Floor Lobby-2": 10, timestamp: "May 7, 2:00 PM" },
+  { hour: "15:00", "Ground Floor Lobby-1": 14, "Ground Floor Lobby-2": 11, timestamp: "May 7, 3:00 PM" },
+  { hour: "16:00", "Ground Floor Lobby-1": 19, "Ground Floor Lobby-2": 17, timestamp: "May 7, 4:00 PM" },
+  { hour: "17:00", "Ground Floor Lobby-1": 23, "Ground Floor Lobby-2": 21, timestamp: "May 7, 5:00 PM" },
+  { hour: "18:00", "Ground Floor Lobby-1": 14, "Ground Floor Lobby-2": 12, timestamp: "May 7, 6:00 PM" },
+  { hour: "19:00", "Ground Floor Lobby-1": 9, "Ground Floor Lobby-2": 7, timestamp: "May 7, 7:00 PM" },
+  { hour: "20:00", "Ground Floor Lobby-1": 6, "Ground Floor Lobby-2": 4, timestamp: "May 7, 8:00 PM" },
+  { hour: "21:00", "Ground Floor Lobby-1": 4, "Ground Floor Lobby-2": 3, timestamp: "May 7, 9:00 PM" },
+  { hour: "22:00", "Ground Floor Lobby-1": 3, "Ground Floor Lobby-2": 2, timestamp: "May 7, 10:00 PM" },
+  { hour: "23:00", "Ground Floor Lobby-1": 2, "Ground Floor Lobby-2": 1, timestamp: "May 7, 11:00 PM" },
+]
+
+export const storageData = [
+  { name: "Used Space", value: 1.8, color: "#3B82F6" },
+  { name: "Free Space", value: 6.2, color: "#1E293B" },
+]
+
+export const storageGrowthData = [
+  { date: "May 1", growth: 0.28, day: "Mon" },
+  { date: "May 2", growth: 0.31, day: "Tue" },
+  { date: "May 3", growth: 0.35, day: "Wed" },
+  { date: "May 4", growth: 0.32, day: "Thu" },
+  { date: "May 5", growth: 0.42, day: "Fri" },
+  { date: "May 6", growth: 0.19, day: "Sat" },
+  { date: "May 7", growth: 0.15, day: "Sun" },
+]
+
+export const weeklyMotionData = [
+  { day: "Mon", "Ground Floor Lobby-1": 145, "Ground Floor Lobby-2": 132, date: "May 1, 2025" },
+  { day: "Tue", "Ground Floor Lobby-1": 132, "Ground Floor Lobby-2": 121, date: "May 2, 2025" },
+  { day: "Wed", "Ground Floor Lobby-1": 164, "Ground Floor Lobby-2": 145, date: "May 3, 2025" },
+  { day: "Thu", "Ground Floor Lobby-1": 187, "Ground Floor Lobby-2": 167, date: "May 4, 2025" },
+  { day: "Fri", "Ground Floor Lobby-1": 219, "Ground Floor Lobby-2": 198, date: "May 5, 2025" },
+  { day: "Sat", "Ground Floor Lobby-1": 98, "Ground Floor Lobby-2": 87, date: "May 6, 2025" },
+  { day: "Sun", "Ground Floor Lobby-1": 65, "Ground Floor Lobby-2": 54, date: "May 7, 2025" },
+]
+
+export const eventTypeData = [
+  { name: "Motion Detection", value: 65, color: "#3B82F6" },
+  { name: "Connection Issues", value: 15, color: "#EF4444" },
+  { name: "Storage Warnings", value: 10, color: "#F59E0B" },
+  { name: "Login Attempts", value: 5, color: "#10B981" },
+  { name: "System Alerts", value: 5, color: "#8B5CF6" },
+]
+
+export const hourlyEventData = [
+  { hour: "00:00", events: 5 },
+  { hour: "01:00", events: 2 },
+  { hour: "02:00", events: 1 },
+  { hour: "03:00", events: 0 },
+  { hour: "04:00", events: 1 },
+  { hour: "05:00", events: 3 },
+  { hour: "06:00", events: 8 },
+  { hour: "07:00", events: 14 },
+  { hour: "08:00", events: 31 },
+  { hour: "09:00", events: 41 },
+  { hour: "10:00", events: 27 },
+  { hour: "11:00", events: 20 },
+  { hour: "12:00", events: 34 },
+  { hour: "13:00", events: 30 },
+  { hour: "14:00", events: 22 },
+  { hour: "15:00", events: 25 },
+  { hour: "16:00", events: 36 },
+  { hour: "17:00", events: 44 },
+  { hour: "18:00", events: 26 },
+  { hour: "19:00", events: 16 },
+  { hour: "20:00", events: 10 },
+  { hour: "21:00", events: 7 },
+  { hour: "22:00", events: 5 },
+  { hour: "23:00", events: 3 },
+]
+
+export const performanceData = [
+  { time: "00:00", cpu: 15, memory: 30, network: 5 },
+  { time: "02:00", cpu: 12, memory: 28, network: 3 },
+  { time: "04:00", cpu: 10, memory: 26, network: 2 },
+  { time: "06:00", cpu: 18, memory: 32, network: 8 },
+  { time: "08:00", cpu: 35, memory: 45, network: 25 },
+  { time: "10:00", cpu: 28, memory: 40, network: 18 },
+  { time: "12:00", cpu: 32, memory: 42, network: 22 },
+  { time: "14:00", cpu: 30, memory: 41, network: 20 },
+  { time: "16:00", cpu: 34, memory: 44, network: 24 },
+  { time: "18:00", cpu: 25, memory: 38, network: 15 },
+  { time: "20:00", cpu: 20, memory: 35, network: 10 },
+  { time: "22:00", cpu: 18, memory: 32, network: 7 },
 ]
