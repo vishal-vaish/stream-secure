@@ -1,11 +1,21 @@
 import {
+  EventSeverityEnum,
+  EventStatusEnum,
   NVR,
   NVRStatusEnum,
+  recentEventsStatsType,
   StorageType,
   StorageTypeEnum,
   VideoGridDataType
 } from "@/lib/types";
-import {Bell, KeyRound, User2Icon} from "lucide-react";
+import {
+  Activity,
+  Bell,
+  KeyRound,
+  Shield,
+  User2Icon,
+  Users
+} from "lucide-react";
 
 export const mockedNVRData: NVR[] = [
   {
@@ -148,3 +158,122 @@ export const mockedVideoGridData:VideoGridDataType[] = [
   { id: "1", url: "http://192.168.1.114:8000/hls/stream_0/playlist.m3u8", title: "cam-009" },
   { id: "2", url: "http://192.168.1.114:8000/hls/stream_1/playlist.m3u8", title: "cam-010" }
 ];
+
+export const systemHealthUsageStats = [
+  {
+    label: "CPU Usage",
+    value: 45,
+    barColor: "bg-blue-600",
+    textColor: "text-blue-600 dark:text-blue-400",
+  },
+  {
+    label: "Memory Usage",
+    value: 68,
+    barColor: "bg-green-600",
+    textColor: "text-green-600 dark:text-green-400",
+  },
+  {
+    label: "Network Load",
+    value: 32,
+    barColor: "bg-purple-600",
+    textColor: "text-purple-600 dark:text-purple-400",
+  },
+  {
+    label: "Storage I/O",
+    value: 55,
+    barColor: "bg-orange-600",
+    textColor: "text-orange-600 dark:text-orange-400",
+  },
+];
+
+export const activeUserStats = [
+  {
+    label: "Online Users",
+    description: "Currently active in the system",
+    icon: Users,
+    iconBg: "bg-blue-100 dark:bg-blue-900/20",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    value: 1,
+  },
+  {
+    label: "Admin Users",
+    description: "With administrative access",
+    icon: Shield,
+    iconBg: "bg-green-100 dark:bg-green-900/20",
+    iconColor: "text-green-600 dark:text-green-400",
+    value: 2,
+  },
+  {
+    label: "Active Sessions",
+    description: "Current monitoring sessions",
+    icon: Activity,
+    iconBg: "bg-yellow-100 dark:bg-yellow-900/20",
+    iconColor: "text-yellow-600 dark:text-yellow-400",
+    value: 1,
+  },
+]
+
+export const recentEventsStats:recentEventsStatsType[] = [
+  {
+    id: 1,
+    type: "Motion Detected",
+    location: "Ground Floor Lobby-1",
+    device: "JMS Mining HQ",
+    timestamp: "May 7, 2025, 9:12 PM",
+    severity: EventSeverityEnum.LOW,
+    status: EventStatusEnum.NEW,
+    timeAgo: "2m ago"
+  },
+  {
+    id: 2,
+    type: "Connection Lost",
+    location: "Ground Floor Lobby-2",
+    device: "JMS Mining HQ",
+    timestamp: "May 7, 2025, 8:45 PM",
+    severity: EventSeverityEnum.HIGH,
+    status: EventStatusEnum.ACKNOWLEDGED,
+    timeAgo: "29m ago"
+  },
+  {
+    id: 3,
+    type: "Storage Warning",
+    location: "Ground Floor Lobby-1",
+    device: "JMS Mining HQ",
+    timestamp: "May 7, 2025, 7:30 PM",
+    severity: EventSeverityEnum.MEDIUM,
+    status: EventStatusEnum.RESOLVED,
+    timeAgo: "1h 44m ago"
+  },
+  {
+    id: 4,
+    type: "Storage Warning",
+    location: "NVR 2",
+    device: "System",
+    timestamp: "May 7, 2025, 8:55 PM",
+    severity: EventSeverityEnum.MEDIUM,
+    status: EventStatusEnum.ACKNOWLEDGED,
+    timeAgo: "19m ago",
+    details: "reaching 85% capacity"
+  },
+  {
+    id: 5,
+    type: "System Update",
+    location: "Camera 5",
+    device: "System",
+    timestamp: "May 7, 2025, 8:12 PM",
+    severity: EventSeverityEnum.INFO,
+    status: EventStatusEnum.INFO,
+    timeAgo: "1h 2m ago",
+    details: "New firmware available"
+  },
+  // {
+  //   id: 6,
+  //   type: "Motion Detected",
+  //   location: "Camera 3 - Parking Lot",
+  //   device: "System",
+  //   timestamp: "May 7, 2025, 9:10 PM",
+  //   severity: "low",
+  //   status: "new",
+  //   timeAgo: "4m ago"
+  // }
+]

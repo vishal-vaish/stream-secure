@@ -117,3 +117,29 @@ export interface FilterConfigType {
   textFields: string[];
   dateField?: string;
 }
+
+export enum EventSeverityEnum {
+  LOW = "LOW",
+  HIGH = "HIGH",
+  MEDIUM = "MEDIUM",
+  INFO = "INFO",
+}
+
+export enum EventStatusEnum {
+  NEW = "NEW",
+  ACKNOWLEDGED = "ACKNOWLEDGED",
+  INFO = "INFO",
+  RESOLVED = "RESOLVED",
+}
+
+export type recentEventsStatsType = {
+  id:number;
+  type:string;
+  location:string;
+  device:string;
+  timestamp:string;
+  severity:EventSeverityEnum;
+  status: EventStatusEnum;
+  timeAgo: string;
+  details?:string;
+}

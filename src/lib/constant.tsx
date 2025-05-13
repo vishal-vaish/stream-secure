@@ -31,7 +31,6 @@ export const dashboardItems: SidebarItem[] = [
     label: SideMenu.DASHBOARD,
     href: "/",
     icon: LayoutDashboard,
-    isDisabled: true
   },
   {
     label: SideMenu.NVR_DEVICES,
