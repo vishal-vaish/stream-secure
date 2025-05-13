@@ -10,6 +10,7 @@ import {Badge} from "@/components/ui/badge";
 import {cn} from "@/lib/utils";
 import TooltipWrapper from "@/components/TooltipWrapper";
 import {validUserData} from "@/lib/data";
+import {applyDynamicFilter} from "@/components/applyDynamicFilter";
 
 const Page = () => {
   const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();
@@ -27,9 +28,10 @@ const Page = () => {
     );
   };
 
-  const filteredUser = validUserData.filter(data =>
-    data.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    data.email.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredUser = applyDynamicFilter(
+    validUserData,
+    searchTerm,
+    {textFields: ["username", "email"]}
   );
 
   return (
