@@ -4,12 +4,13 @@ import React, {useCallback, useEffect, useState} from 'react'
 import {getAllRecordingsData} from "@/lib/queries";
 import {toast} from "sonner";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
-import {BreadcrumbItemType, RecordingType} from "@/lib/types";
+import {BreadcrumbItemType, FilterConfigType, RecordingType} from "@/lib/types";
 import {getChannelById, getNVRById} from "@/actions/nvr";
 import {useParams} from "next/navigation";
 import RecordingsListSkeleton from "@/components/recording/RecordingsListSkeleton";
 import Link from "next/link";
 import RecordingListCard from "@/components/recording/RecordingListCard";
+import {applyDynamicFilter} from "@/components/applyDynamicFilter";
 
 const Page = () => {
   const {setNavbarTitle, setBreadcrumbItems, searchTerm} = useNavbarDetails();
@@ -66,10 +67,15 @@ const Page = () => {
     }
   }, [channel, nvr, setBreadcrumbItems, setNavbarTitle]);
 
+  const recordingFilterConfig: FilterConfigType = {
+    textFields: ["channelName", "nvrName"],
+    dateField: "created",
+  };
 
-  const filteredStorages = recordingData.filter(recording =>
-    recording.channelName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    recording.nvrName.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredStorages = applyDynamicFilter(
+    recordingData,
+    searchTerm,
+    recordingFilterConfig
   );
 
   return (

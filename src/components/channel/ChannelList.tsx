@@ -5,6 +5,7 @@ import {getFilteredChannel} from "@/actions/nvr";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import ChannelListCard from "@/components/channel/ChannelListCard";
 import Link from "next/link";
+import {applyDynamicFilter} from "@/components/applyDynamicFilter";
 
 type Props = {
   nvrId: string;
@@ -14,10 +15,10 @@ const ChannelList = (props:Props) => {
   const channel = getFilteredChannel(props.nvrId);
   const {searchTerm} = useNavbarDetails();
 
-  const filteredChannel = channel.filter(camera =>
-    camera.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    camera.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    camera.resolution.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredChannel = applyDynamicFilter(
+    channel,
+    searchTerm,
+    {textFields: ["name", "location", "resolution"]},
   );
 
   return (

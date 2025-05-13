@@ -112,3 +112,8 @@ export interface StreamHealthType {
 export interface GetNVRHealthType {
   status: ChannelStatusEnum;
 }
+
+export interface FilterConfigType {
+  textFields: string[];
+  dateField?: string;
+}

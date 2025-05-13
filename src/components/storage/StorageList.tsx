@@ -3,6 +3,7 @@ import {StorageType} from "@/lib/types";
 import {useNavbarDetails} from '@/hooks/useNavbarDetails';
 import StorageListCard from "@/components/storage/StorageListCard";
 import CreateStorageDialog from "@/components/storage/CreateStorageDialog";
+import {applyDynamicFilter} from "@/components/applyDynamicFilter";
 
 type Props = {
   data: StorageType[];
@@ -11,9 +12,10 @@ type Props = {
 const StorageList = (props: Props) => {
   const {searchTerm} = useNavbarDetails();
 
-  const filteredStorages = props.data.filter(data =>
-    data.storageName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    data.ipAddress.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredStorages = applyDynamicFilter(
+    props.data,
+    searchTerm,
+    {textFields: ["storageName", "ipAddress"]}
   );
 
   return (

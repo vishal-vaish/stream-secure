@@ -5,13 +5,15 @@ import {mockedNVRData} from "@/lib/data";
 import NVRListCard from "@/components/nvr/NVRListCard";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import CreateNVRDialog from "@/components/nvr/CreateNVRDialog";
+import {applyDynamicFilter} from "@/components/applyDynamicFilter";
 
 const NVRList = () => {
   const {searchTerm} = useNavbarDetails();
 
-  const filteredNVRs = mockedNVRData.filter(nvr =>
-    nvr.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    nvr.location.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredNVRs = applyDynamicFilter(
+    mockedNVRData,
+    searchTerm,
+    {textFields: ["name", "location"]},
   );
 
   return (

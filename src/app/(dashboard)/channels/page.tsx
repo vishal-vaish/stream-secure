@@ -5,6 +5,7 @@ import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import {mockedChannelsData} from "@/lib/data";
 import ChannelListCard from "@/components/channel/ChannelListCard";
 import Link from "next/link";
+import {applyDynamicFilter} from "@/components/applyDynamicFilter";
 
 const Page = () => {
   const {setNavbarTitle, setBreadcrumbItems, searchTerm} = useNavbarDetails();
@@ -14,10 +15,10 @@ const Page = () => {
     setBreadcrumbItems([]);
   }, [setBreadcrumbItems, setNavbarTitle]);
 
-  const filteredChannels = mockedChannelsData.filter(channel =>
-    channel.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    channel.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    channel.resolution.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredChannels = applyDynamicFilter(
+    mockedChannelsData,
+    searchTerm,
+    {textFields: ["name","location","resolution"]}
   );
 
   return (

@@ -2,8 +2,8 @@ import React from 'react'
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import RecordingListCard from "@/components/recording/RecordingListCard";
 import Link from "next/link";
-import {RecordingType} from "@/lib/types";
-import {convertToISOFormat} from "@/lib/utils";
+import {FilterConfigType, RecordingType} from "@/lib/types";
+import {applyDynamicFilter} from "@/components/applyDynamicFilter";
 
 type Props = {
   recordingData: RecordingType[];
@@ -12,23 +12,16 @@ type Props = {
 const RecordingList = (props: Props) => {
   const {searchTerm} = useNavbarDetails();
 
-  const filteredStorages = props.recordingData.filter(recording => {
-    if (searchTerm.type === "input") {
-      return (
-        recording.channelName.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
-        recording.nvrName.toLowerCase().includes(searchTerm.value.toLowerCase())
-      );
-    }
+  const recordingFilterConfig: FilterConfigType = {
+    textFields: ["channelName", "nvrName"],
+    dateField: "created",
+  };
 
-    if (searchTerm.type === "date") {
-      const {start, end} = convertToISOFormat(searchTerm.value);
-      const recordingDate = new Date(recording.created);
-      const startDate = new Date(start);
-      const endDate = new Date(end);
-      return recordingDate >= startDate && recordingDate <= endDate;
-    }
-    return true;
-  });
+  const filteredStorages = applyDynamicFilter(
+    props.recordingData,
+    searchTerm,
+    recordingFilterConfig
+  );
 
   return (
     <div>
