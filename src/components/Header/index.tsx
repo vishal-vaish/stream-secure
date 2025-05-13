@@ -18,7 +18,7 @@ const Header = (props:Props) => {
         <h1 className="text-2xl font-semibold text-gray-800 dark:text-white m-0">
           {props.title}
         </h1>
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
           <SearchBar/>
           <div className="flex items-center space-x-2">
             <TooltipWrapper
@@ -26,6 +26,7 @@ const Header = (props:Props) => {
             >
             <Button
               variant="no-background"
+              className="p-2"
               onClick={() => router.push("/liveGridMonitor")}
             >
               <LayoutGrid className="w-5 h-5" />

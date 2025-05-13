@@ -1,8 +1,10 @@
 import React from 'react'
 import {Input} from "@/components/ui/input";
-import {Search} from "lucide-react";
+import {Search, X} from "lucide-react";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import DateRangePicker from "@/components/DateRangePicker";
+import {Button} from "@/components/ui/button";
+import {cn} from "@/lib/utils";
 
 const SearchBar = () => {
   const {searchTerm, setSearchTerm} = useNavbarDetails();
@@ -20,11 +22,26 @@ const SearchBar = () => {
           setSearchTerm({value: e.target.value, type: "input"})}
         className="pl-10 dark:bg-gray-700 dark:border-gray-600 "
       />
-      <div className="absolute right-0 inset-y-0">
+      <div className={cn(
+        "absolute inset-y-0",
+        searchTerm.value.length > 0 ? "right-6" : "right-0"
+      )}>
         <DateRangePicker
           setSelectedValue={setSearchTerm}
         />
       </div>
+      {searchTerm.value.length > 0 && (
+        <div className="absolute inset-y-0 right-0">
+          <Button
+            variant="no-background"
+            className="px-1"
+            onClick={() =>
+              setSearchTerm({value: "", type: "input"})}
+          >
+            <X/>
+          </Button>
+        </div>
+      )}
     </div>
   )
 }

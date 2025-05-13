@@ -39,6 +39,9 @@ const DateRangePicker = (props: Props) => {
   const [month, setMonth] = useState(new Date());
   const [open, setOpen] = useState(false);
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   const changeMonth = (delta: number) => {
     const newMonth = new Date(month.getFullYear(), month.getMonth() + delta, 1);
     setMonth(newMonth);
@@ -76,6 +79,9 @@ const DateRangePicker = (props: Props) => {
 
     for (let i = 1; i <= lastDay.getDate(); i++) {
       const currentDate = new Date(month.getFullYear(), month.getMonth(), i);
+      currentDate.setHours(0,0,0,0);
+
+      const isFutureDate = currentDate > today;
 
       const isSelected =
         dateRange.startDate &&
@@ -94,13 +100,16 @@ const DateRangePicker = (props: Props) => {
       days.push(
         <button
           key={i}
-          onClick={() =>
+          onClick={() => {
+            if(!isFutureDate) {
             handleDateSelect(new Date(month.getFullYear(), month.getMonth(), i))
-          }
+            }
+          }}
+          disabled={isFutureDate}
           className={`h-8 w-8 rounded-md flex items-center justify-center text-sm
-            ${isSelected ? "bg-gray-700" : ""}
+            ${isSelected ? "dark:bg-gray-700 bg-gray-200" : ""}
             ${isStartDate || isEndDate ? "!bg-blue-500 text-white" : ""}
-            hover:bg-gray-800`}
+            ${isFutureDate ? "opacity-30 !text-gray-500" : "hover:dark:bg-gray-800 hover:bg-gray-300" }`}
         >
           {i}
         </button>
@@ -122,30 +131,27 @@ const DateRangePicker = (props: Props) => {
           <Button
             variant={"no-background"}
             className="w-full justify-start text-left font-normal hover:bg-transparent"
-            onClick={() => {
-
-            }}
           >
-            <Calendar className="h-4 w-4"/>
+            <Calendar className="h-4 w-4 hover:text-blue-600"/>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="p-4 mt-2 w-auto z-50 border rounded-md shadow-lg dark:bg-gray-900">
+        <DropdownMenuContent className="p-4 w-auto z-50 border rounded-md shadow-lg bg-whitedark:bg-gray-900">
           <div className="flex justify-between items-center mb-4">
-            <button onClick={() => changeMonth(-1)} className="p-1 text-gray-500">◀</button>
+            <button onClick={() => changeMonth(-1)} className="p-1 text-gray-700 dark:text-gray-500">◀</button>
             <div className="font-medium">
               {month.toLocaleDateString("en-US", {
                 month: "long",
                 year: "numeric",
               })}
             </div>
-            <button onClick={() => changeMonth(1)} className="p-1 text-gray-500">▶</button>
+            <button onClick={() => changeMonth(1)} className="p-1 text-gray-700 dark:text-gray-500">▶</button>
           </div>
 
           <div className="grid grid-cols-7 gap-1 mb-2">
             {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((day) => (
               <div
                 key={day}
-                className="h-8 w-8 flex items-center justify-center text-xs font-medium text-gray-200"
+                className="h-8 w-8 flex items-center justify-center text-xs font-medium text-gray-700 dark:text-gray-200"
               >
                 {day}
               </div>
