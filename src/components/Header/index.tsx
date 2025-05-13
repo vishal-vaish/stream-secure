@@ -18,7 +18,7 @@ const Header = (props:Props) => {
         <h1 className="text-2xl font-semibold text-gray-800 dark:text-white m-0">
           {props.title}
         </h1>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center">
           <SearchBar/>
           <div className="flex items-center space-x-2">
             <TooltipWrapper

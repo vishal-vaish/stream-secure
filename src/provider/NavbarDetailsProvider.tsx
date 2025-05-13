@@ -3,9 +3,14 @@
 import {createContext, ReactNode, useEffect, useState} from "react";
 import {BreadcrumbItemType} from "@/lib/types";
 
+export type SearchTermType = {
+  value: string;
+  type: "input" | "date";
+}
+
 export interface NavbarDetailsContextType {
-  searchTerm: string;
-  setSearchTerm: (term: string) => void;
+  searchTerm: SearchTermType;
+  setSearchTerm: (term: SearchTermType) => void;
   navbarTitle: string;
   setNavbarTitle: (navbarTitle: string) => void;
   breadcrumbItems: BreadcrumbItemType[];
@@ -15,7 +20,10 @@ export interface NavbarDetailsContextType {
 export const NavbarDetailsContext = createContext<NavbarDetailsContextType | null>(null);
 
 export const NavbarDetailsProvider = ({ children }: {children:ReactNode}) => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<SearchTermType>({
+    value:"",
+    type: "input",
+  });
   const [navbarTitle, setNavbarTitle] = useState<string>("");
   const [breadcrumbItems, setBreadcrumbItems] = useState<BreadcrumbItemType[]>([]);
 

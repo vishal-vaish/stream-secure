@@ -33,6 +33,8 @@ const StatusBadge = (props:Props) => {
    return statusConfig[status].badgeColor;
   };
 
+  if(!props.status) return null;
+
   return (
     <Badge className={cn(getStatusColor(props.status), props.className)}>
       <span className={`w-2 h-2 ${getStatusDotColor(props.status)} rounded-full mr-1.5`}></span>

@@ -78,8 +78,8 @@ export const dashboardItems: SidebarItem[] = [
   },
   {
     label: SideMenu.LANE_GUARD,
-    // href: "http://192.168.1.111:3000",
-    href: "http://localhost:3000",
+    href: "http://192.168.1.111:3000",
+    // href: "http://localhost:3000",
     icon: ExternalLinkIcon,
   },
   {

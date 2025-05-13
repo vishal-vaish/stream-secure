@@ -3,18 +3,32 @@ import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import RecordingListCard from "@/components/recording/RecordingListCard";
 import Link from "next/link";
 import {RecordingType} from "@/lib/types";
+import {convertToISOFormat} from "@/lib/utils";
 
 type Props = {
   recordingData: RecordingType[];
 }
 
-const RecordingList = (props:Props) => {
+const RecordingList = (props: Props) => {
   const {searchTerm} = useNavbarDetails();
 
-  const filteredStorages = props.recordingData.filter(recording =>
-    recording.channelName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    recording.nvrName.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredStorages = props.recordingData.filter(recording => {
+    if (searchTerm.type === "input") {
+      return (
+        recording.channelName.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
+        recording.nvrName.toLowerCase().includes(searchTerm.value.toLowerCase())
+      );
+    }
+
+    if (searchTerm.type === "date") {
+      const {start, end} = convertToISOFormat(searchTerm.value);
+      const recordingDate = new Date(recording.created);
+      const startDate = new Date(start);
+      const endDate = new Date(end);
+      return recordingDate >= startDate && recordingDate <= endDate;
+    }
+    return true;
+  });
 
   return (
     <div>
