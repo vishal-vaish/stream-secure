@@ -25,7 +25,7 @@ const TopCard = (props: Props) => {
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between p-4 pb-0">
+      <CardHeader className="flex flex-row items-center justify-between p-4 pt-2 pb-0">
         <h3 className="text-sm font-medium text-slate-600 dark:text-slate-400">{props.title}</h3>
         <div className={cn("rounded-md p-2", props.iconBackgroundColor)}>
           <Icon className={cn("w-6 h-6", props.iconColor)}/>

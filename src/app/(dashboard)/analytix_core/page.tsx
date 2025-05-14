@@ -3,7 +3,8 @@
 import React, {useEffect} from 'react'
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 import AnalytixStatsContainer from "@/components/Analytix_core/AnalytixStatsContainer";
-import {storageGrowthData, weeklyMotionData} from "@/lib/data";
+import {weeklyMotionData} from "@/lib/data";
+import AnalytixContainer from "@/components/Analytix_core/AnalytixContainer";
 
 const Page = () => {
   const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();
@@ -25,12 +26,11 @@ const Page = () => {
   }
 
   const motionChange = calculateChange(weeklyMotionData, "Ground Floor Lobby-1")
-  const storageChange = calculateChange(storageGrowthData, "growth")
 
   return (
     <div>
-      <AnalytixStatsContainer motionChange={motionChange} storageChange={storageChange}/>
-
+      <AnalytixStatsContainer motionChange={motionChange}/>
+      <AnalytixContainer/>
     </div>
   )
 }

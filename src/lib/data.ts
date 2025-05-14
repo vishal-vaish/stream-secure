@@ -297,7 +297,7 @@ export const motionData = [
 
 export const storageData = [
   { name: "Used Space", value: 1.8, color: "#3B82F6" },
-  { name: "Free Space", value: 6.2, color: "#1E293B" },
+  { name: "Free Space", value: 6.2, color: "#FACC15" },
 ]
 
 export const storageGrowthData = [
@@ -368,4 +368,207 @@ export const performanceData = [
   { time: "18:00", cpu: 25, memory: 38, network: 15 },
   { time: "20:00", cpu: 20, memory: 35, network: 10 },
   { time: "22:00", cpu: 18, memory: 32, network: 7 },
+]
+
+export const behavioralData = [
+  {
+    hour: "00:00",
+    "Ground Floor Lobby-1 Walking": 2,
+    "Ground Floor Lobby-1 Standing": 1,
+    "Ground Floor Lobby-2 Walking": 1,
+    "Ground Floor Lobby-2 Standing": 1,
+  },
+  {
+    hour: "01:00",
+    "Ground Floor Lobby-1 Walking": 1,
+    "Ground Floor Lobby-1 Standing": 0,
+    "Ground Floor Lobby-2 Walking": 0,
+    "Ground Floor Lobby-2 Standing": 0,
+  },
+  {
+    hour: "02:00",
+    "Ground Floor Lobby-1 Walking": 0,
+    "Ground Floor Lobby-1 Standing": 0,
+    "Ground Floor Lobby-2 Walking": 1,
+    "Ground Floor Lobby-2 Standing": 0,
+  },
+  {
+    hour: "03:00",
+    "Ground Floor Lobby-1 Walking": 0,
+    "Ground Floor Lobby-1 Standing": 0,
+    "Ground Floor Lobby-2 Walking": 0,
+    "Ground Floor Lobby-2 Standing": 0,
+  },
+  {
+    hour: "04:00",
+    "Ground Floor Lobby-1 Walking": 1,
+    "Ground Floor Lobby-1 Standing": 0,
+    "Ground Floor Lobby-2 Walking": 0,
+    "Ground Floor Lobby-2 Standing": 0,
+  },
+  {
+    hour: "05:00",
+    "Ground Floor Lobby-1 Walking": 1,
+    "Ground Floor Lobby-1 Standing": 1,
+    "Ground Floor Lobby-2 Walking": 1,
+    "Ground Floor Lobby-2 Standing": 0,
+  },
+  {
+    hour: "06:00",
+    "Ground Floor Lobby-1 Walking": 3,
+    "Ground Floor Lobby-1 Standing": 2,
+    "Ground Floor Lobby-2 Walking": 2,
+    "Ground Floor Lobby-2 Standing": 1,
+  },
+  {
+    hour: "07:00",
+    "Ground Floor Lobby-1 Walking": 6,
+    "Ground Floor Lobby-1 Standing": 2,
+    "Ground Floor Lobby-2 Walking": 4,
+    "Ground Floor Lobby-2 Standing": 2,
+  },
+  {
+    hour: "08:00",
+    "Ground Floor Lobby-1 Walking": 12,
+    "Ground Floor Lobby-1 Standing": 5,
+    "Ground Floor Lobby-2 Walking": 10,
+    "Ground Floor Lobby-2 Standing": 4,
+  },
+  {
+    hour: "09:00",
+    "Ground Floor Lobby-1 Walking": 14,
+    "Ground Floor Lobby-1 Standing": 8,
+    "Ground Floor Lobby-2 Walking": 12,
+    "Ground Floor Lobby-2 Standing": 7,
+  },
+  {
+    hour: "10:00",
+    "Ground Floor Lobby-1 Walking": 9,
+    "Ground Floor Lobby-1 Standing": 6,
+    "Ground Floor Lobby-2 Walking": 7,
+    "Ground Floor Lobby-2 Standing": 5,
+  },
+  {
+    hour: "11:00",
+    "Ground Floor Lobby-1 Walking": 7,
+    "Ground Floor Lobby-1 Standing": 4,
+    "Ground Floor Lobby-2 Walking": 5,
+    "Ground Floor Lobby-2 Standing": 4,
+  },
+  {
+    hour: "12:00",
+    "Ground Floor Lobby-1 Walking": 10,
+    "Ground Floor Lobby-1 Standing": 8,
+    "Ground Floor Lobby-2 Walking": 9,
+    "Ground Floor Lobby-2 Standing": 7,
+  },
+  {
+    hour: "13:00",
+    "Ground Floor Lobby-1 Walking": 9,
+    "Ground Floor Lobby-1 Standing": 7,
+    "Ground Floor Lobby-2 Walking": 8,
+    "Ground Floor Lobby-2 Standing": 6,
+  },
+  {
+    hour: "14:00",
+    "Ground Floor Lobby-1 Walking": 7,
+    "Ground Floor Lobby-1 Standing": 5,
+    "Ground Floor Lobby-2 Walking": 6,
+    "Ground Floor Lobby-2 Standing": 4,
+  },
+  {
+    hour: "15:00",
+    "Ground Floor Lobby-1 Walking": 8,
+    "Ground Floor Lobby-1 Standing": 6,
+    "Ground Floor Lobby-2 Walking": 7,
+    "Ground Floor Lobby-2 Standing": 4,
+  },
+  {
+    hour: "16:00",
+    "Ground Floor Lobby-1 Walking": 11,
+    "Ground Floor Lobby-1 Standing": 8,
+    "Ground Floor Lobby-2 Walking": 10,
+    "Ground Floor Lobby-2 Standing": 7,
+  },
+  {
+    hour: "17:00",
+    "Ground Floor Lobby-1 Walking": 14,
+    "Ground Floor Lobby-1 Standing": 9,
+    "Ground Floor Lobby-2 Walking": 13,
+    "Ground Floor Lobby-2 Standing": 8,
+  },
+  {
+    hour: "18:00",
+    "Ground Floor Lobby-1 Walking": 9,
+    "Ground Floor Lobby-1 Standing": 5,
+    "Ground Floor Lobby-2 Walking": 8,
+    "Ground Floor Lobby-2 Standing": 4,
+  },
+  {
+    hour: "19:00",
+    "Ground Floor Lobby-1 Walking": 6,
+    "Ground Floor Lobby-1 Standing": 3,
+    "Ground Floor Lobby-2 Walking": 5,
+    "Ground Floor Lobby-2 Standing": 2,
+  },
+  {
+    hour: "20:00",
+    "Ground Floor Lobby-1 Walking": 4,
+    "Ground Floor Lobby-1 Standing": 2,
+    "Ground Floor Lobby-2 Walking": 3,
+    "Ground Floor Lobby-2 Standing": 1,
+  },
+  {
+    hour: "21:00",
+    "Ground Floor Lobby-1 Walking": 3,
+    "Ground Floor Lobby-1 Standing": 1,
+    "Ground Floor Lobby-2 Walking": 2,
+    "Ground Floor Lobby-2 Standing": 1,
+  },
+  {
+    hour: "22:00",
+    "Ground Floor Lobby-1 Walking": 2,
+    "Ground Floor Lobby-1 Standing": 1,
+    "Ground Floor Lobby-2 Walking": 1,
+    "Ground Floor Lobby-2 Standing": 1,
+  },
+  {
+    hour: "23:00",
+    "Ground Floor Lobby-1 Walking": 1,
+    "Ground Floor Lobby-1 Standing": 1,
+    "Ground Floor Lobby-2 Walking": 1,
+    "Ground Floor Lobby-2 Standing": 0,
+  },
+]
+
+export const behaviorByZoneData = [
+  { zone: "Ground Floor Lobby-1", walking: 65, standing: 35, color: "#3B82F6" },
+  { zone: "Ground Floor Lobby-2", walking: 70, standing: 30, color: "#10B981" },
+]
+
+export const durationData = [
+  { duration: "0-1 min", "Ground Floor Lobby-1": 45, "Ground Floor Lobby-2": 52 },
+  { duration: "1-2 min", "Ground Floor Lobby-1": 32, "Ground Floor Lobby-2": 38 },
+  { duration: "2-5 min", "Ground Floor Lobby-1": 18, "Ground Floor Lobby-2": 15 },
+  { duration: "5-10 min", "Ground Floor Lobby-1": 8, "Ground Floor Lobby-2": 6 },
+  { duration: "10+ min", "Ground Floor Lobby-1": 5, "Ground Floor Lobby-2": 3 },
+]
+
+export const crossLobbyMovement = [
+  { time: "00:00-04:00", "Lobby-1 to Lobby-2": 8, "Lobby-2 to Lobby-1": 6 },
+  { time: "04:00-08:00", "Lobby-1 to Lobby-2": 22, "Lobby-2 to Lobby-1": 18 },
+  { time: "08:00-12:00", "Lobby-1 to Lobby-2": 35, "Lobby-2 to Lobby-1": 28 },
+  { time: "12:00-16:00", "Lobby-1 to Lobby-2": 30, "Lobby-2 to Lobby-1": 22 },
+  { time: "16:00-20:00", "Lobby-1 to Lobby-2": 20, "Lobby-2 to Lobby-1": 12 },
+  { time: "20:00-00:00", "Lobby-1 to Lobby-2": 9, "Lobby-2 to Lobby-1": 4 },
+]
+
+export const dwellTimeData = [
+  { location: "Ground Floor Lobby-1", time: 3.5 },
+  { location: "Ground Floor Lobby-2", time: 2.8 },
+]
+
+export const staffMovementPatterns = [
+  { pattern: "Ground Floor Lobby-1 → Ground Floor Lobby-2", count: 124, percentage: 58 },
+  { pattern: "Ground Floor Lobby-2 → Ground Floor Lobby-1", count: 90, percentage: 42 },
 ]

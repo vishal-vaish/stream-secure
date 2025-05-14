@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
       <Sidebar/>
       <div className="flex-1 flex flex-col md:ml-64">
         <Header title={navbarTitle || "Dashboard"} />
-        <main className="flex-1 p-4 md:p-6 overflow-auto">
+        <main className="flex-1 p-4 overflow-auto">
           {breadcrumbItems.length > 0 && (
             <div className="mb-6">
               <BreadcrumbContainer items={breadcrumbItems} />

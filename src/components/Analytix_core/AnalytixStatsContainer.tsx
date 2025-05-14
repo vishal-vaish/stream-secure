@@ -1,10 +1,9 @@
 import React from 'react'
-import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-import {ArrowDown, ArrowUp} from "lucide-react";
-import {cn} from "@/lib/utils";
+import {Activity, BarChart3, TimerReset, Footprints} from "lucide-react";
 import {motionData} from "@/lib/data";
+import TopCard from "@/components/TopCard";
 
-const AnalytixStatsContainer = ({motionChange, storageChange}:{motionChange:any; storageChange:any}) => {
+const AnalytixStatsContainer = ({motionChange}: { motionChange: any }) => {
   const totalMotionEvents = motionData.reduce(
     (sum, item) => sum + item["Ground Floor Lobby-1"] + item["Ground Floor Lobby-2"],
     0,
@@ -12,80 +11,50 @@ const AnalytixStatsContainer = ({motionChange, storageChange}:{motionChange:any;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <AnalytixStatsCardContainer
+      <TopCard
         title="Total Events"
         value={"247"}
-        change="12.4%"
-        isIncrease={true}
-        changePeriod="vs. previous 7 days"
-        changeColor="text-green-500"
+        icon={Activity}
+        iconColor="text-green-600 dark:text-green-400"
+        iconBackgroundColor="dark:bg-green-900/20 bg-green-100/40"
+        changeValue={"12.4%"}
+        changeIsPositive={true}
+        changeText={"vs. previous 7 days"}
       />
 
-      <AnalytixStatsCardContainer
+      <TopCard
         title="Motion Events"
         value={(totalMotionEvents).toString()}
-        change={`${motionChange.value}%`}
-        isIncrease={motionChange.isIncrease}
-        changePeriod="vs. previous day"
+        icon={BarChart3}
+        iconColor="text-red-600 dark:text-red-400"
+        iconBackgroundColor="dark:bg-red-900/20 bg-red-100/40"
+        changeIsPositive={motionChange.isIncrease}
+        changeValue={`${motionChange.value}%`}
+        changeText="vs. previous day"
       />
 
-      <AnalytixStatsCardContainer
-        title="Avg. Storage Growth"
-        value="0.29 TB/day"
-        change={`${storageChange.value}%`}
-        isIncrease={storageChange.isIncrease}
-        changePeriod="vs. previous day"
+      <TopCard
+        title="Walking Behaviors"
+        value="142"
+        icon={Footprints}
+        iconColor="text-orange-600 dark:text-orange-400"
+        iconBackgroundColor="dark:bg-orange-900/20 bg-orange-100/40"
+        changeIsPositive={true}
+        changeValue={"5.2%"}
+        changeText="vs. previous week"
       />
 
-      <AnalytixStatsCardContainer
+      <TopCard
         title="System Uptime"
         value="99.8%"
-        change="0.2%"
-        isIncrease={true}
-        changePeriod="vs. previous month"
-        changeColor="text-green-500"
+        icon={TimerReset}
+        iconColor="text-blue-600 dark:text-blue-400"
+        iconBackgroundColor="dark:bg-blue-900/20 bg-blue-100/40"
+        changeIsPositive={true}
+        changeValue="0.2%"
+        changeText="vs. previous month"
       />
     </div>
   )
 }
 export default AnalytixStatsContainer
-
-type Props = {
-  title: string;
-  value: string;
-  change: string;
-  isIncrease: boolean;
-  changePeriod: string;
-  changeColor?: string;
-}
-
-const AnalytixStatsCardContainer = (props: Props) => {
-  return (
-    <Card>
-      <CardHeader className="py-4 pb-2">
-        <CardTitle className="text-sm font-medium">{props.title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="flex items-end gap-2">
-          <div className="text-2xl font-bold">{props.value}</div>
-          <div className={cn(
-            "flex items-center text-xs mb-1",
-            props.changeColor
-              ? props.changeColor
-              : props.isIncrease
-                ? "text-green-500"
-                : "text-red-500"
-          )}>
-            {props.isIncrease ? (
-              <ArrowUp className="h-3 w-3 mr-1"/>
-            ) : (
-              <ArrowDown className="h-3 w-3 mr-1"/>
-            )}
-            {props.change}
-          </div>
-        </div>
-        <p className="text-xs text-slate-500">{props.changePeriod}</p>
-      </CardContent>
-    </Card>
-  )
-}
