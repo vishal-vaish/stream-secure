@@ -55,13 +55,11 @@ export const dashboardItems: SidebarItem[] = [
   {
     label: SideMenu.REPORTS,
     href: "/reports",
-    isDisabled: true,
     icon: FileBarChart,
   },
   {
     label: SideMenu.EVENTS,
     href: "/events",
-    isDisabled: true,
     icon: Calendar,
   },
   {
