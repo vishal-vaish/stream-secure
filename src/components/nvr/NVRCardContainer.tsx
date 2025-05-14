@@ -1,4 +1,6 @@
-import React from 'react'
+"use client";
+
+import React, {useEffect, useState} from 'react'
 import {mockedChannelsData, mockedNVRData} from "@/lib/data";
 import TopCard from "@/components/TopCard";
 import {
@@ -7,10 +9,22 @@ import {
   Database,
   ServerIcon
 } from "lucide-react";
+import {getDiskUsage} from "@/lib/queries";
+import {DishUsageType} from "@/lib/types";
+import {bytesToTB} from "@/lib/utils";
 
 const NVRCardContainer = () => {
+  const [usage, setUsage] = useState<DishUsageType | null>(null);
   const totalChannelCount = mockedChannelsData.length;
   const totalNVRCount = mockedNVRData.length;
+
+  useEffect(() => {
+    const fetchUsageData = async () => {
+      const usageData = await getDiskUsage();
+      setUsage(usageData);
+    }
+    fetchUsageData();
+  }, []);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
@@ -35,11 +49,13 @@ const NVRCardContainer = () => {
         changeText="vs. previous month"
       />
       <TopCard
-        title="Total Capacity"
+        title="Total Storage"
         value="1 TB"
         icon={Database}
         iconColor="text-purple-600 dark:text-purple-400"
         iconBackgroundColor="dark:bg-purple-900/20 bg-purple-100/40"
+        showCapacityMeter={true}
+        usedSpace={bytesToTB(usage?.total_size_bytes)}
       />
       <TopCard
         title="Active Alerts"

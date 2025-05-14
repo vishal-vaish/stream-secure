@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/card";
 import {cn} from "@/lib/utils";
 import {ArrowDown, ArrowUp, LucideIcon} from "lucide-react";
+import StorageBar from "@/components/StorageBar";
 
 type Props = {
   title: string;
@@ -17,6 +18,8 @@ type Props = {
   changeIsPositive?: boolean;
   changeValue?: string;
   changeText?: string;
+  showCapacityMeter?: boolean;
+  usedSpace?: number;
 }
 
 const TopCard = (props: Props) => {
@@ -31,7 +34,7 @@ const TopCard = (props: Props) => {
           <Icon className={cn("w-6 h-6", props.iconColor)}/>
         </div>
       </CardHeader>
-      <CardContent className="p-4 pt-2">
+      <CardContent className="p-4 pt-0">
         <div className="flex items-end gap-2">
           <div className="text-2xl font-bold text-gray-800 dark:text-white">{props.value}</div>
           {props.changeValue !== undefined && (
@@ -46,7 +49,11 @@ const TopCard = (props: Props) => {
           )}
         </div>
         {props.changeText && <p className="text-xs text-slate-400 dark:text-slate-500">{props.changeText}</p>}
-
+        {props.showCapacityMeter && props.usedSpace && (
+          <div className="mt-2">
+            <StorageBar used={props.usedSpace} total={1} hideTotal={false}/>
+          </div>
+        )}
       </CardContent>
     </Card>
   )
