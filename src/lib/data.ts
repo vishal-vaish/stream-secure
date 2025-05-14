@@ -255,17 +255,6 @@ export const recentEventsStats:recentEventsStatsType[] = [
     timeAgo: "19m ago",
     details: "reaching 85% capacity"
   },
-  {
-    id: 5,
-    type: "System Update",
-    location: "Camera 5",
-    device: "System",
-    timestamp: "May 7, 2025, 8:12 PM",
-    severity: EventSeverityEnum.INFO,
-    status: EventStatusEnum.INFO,
-    timeAgo: "1h 2m ago",
-    details: "New firmware available"
-  },
 ]
 
 export const motionData = [

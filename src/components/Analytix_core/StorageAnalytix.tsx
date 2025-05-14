@@ -43,7 +43,7 @@ const StorageAnalytix = () => {
 
   const storageData = [
     {name: "Used Space", value: bytesToTB(usage?.total_size_bytes), color: "#3B82F6"},
-    {name: "Free Space", value: freeSpace, color: "#FACC15"},
+    {name: "Free Space", value: freeSpace, color: "#93C5FD"},
   ]
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4 md:mt-0 mb-4">
