@@ -295,11 +295,6 @@ export const motionData = [
   { hour: "23:00", "Ground Floor Lobby-1": 2, "Ground Floor Lobby-2": 1, timestamp: "May 7, 11:00 PM" },
 ]
 
-export const storageData = [
-  { name: "Used Space", value: 1.8, color: "#3B82F6" },
-  { name: "Free Space", value: 6.2, color: "#FACC15" },
-]
-
 export const storageGrowthData = [
   { date: "May 1", growth: 0.28, day: "Mon" },
   { date: "May 2", growth: 0.31, day: "Tue" },
