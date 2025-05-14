@@ -7,12 +7,13 @@ import {weeklyMotionData} from "@/lib/data";
 import AnalytixContainer from "@/components/Analytix_core/AnalytixContainer";
 
 const Page = () => {
-  const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();
+  const {setNavbarTitle, setBreadcrumbItems, setPostFix} = useNavbarDetails();
 
   useEffect(() => {
     setNavbarTitle("Analytix Core");
+    setPostFix("(TM)")
     setBreadcrumbItems([]);
-  }, [setBreadcrumbItems, setNavbarTitle]);
+  }, [setBreadcrumbItems, setNavbarTitle, setPostFix]);
 
   const calculateChange = (data: any[], key: string) => {
     if (data.length < 2) return { value: 0, isIncrease: true }

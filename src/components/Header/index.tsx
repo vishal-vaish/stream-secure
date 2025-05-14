@@ -8,6 +8,7 @@ import TooltipWrapper from "@/components/TooltipWrapper";
 
 type Props = {
   title: string;
+  postfix?: string;
 }
 
 const Header = (props:Props) => {
@@ -15,9 +16,14 @@ const Header = (props:Props) => {
   return (
     <header className="p-3 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-row justify-between gap-4 items-center pl-14 md:pl-0">
-        <h1 className="text-2xl font-semibold text-gray-800 dark:text-white m-0">
-          {props.title}
-        </h1>
+        <div className="flex gap-1">
+          <h1 className="text-2xl font-semibold text-gray-800 dark:text-white m-0">
+            {props.title}
+          </h1>
+        {props.postfix && (
+          <div className="text-xs text-gray-800 dark:text-white">{props.postfix}</div>
+        )}
+        </div>
         <div className="flex items-center gap-2">
           <SearchBar/>
           <div className="flex items-center space-x-2">

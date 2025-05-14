@@ -14,6 +14,8 @@ export interface NavbarDetailsContextType {
   setSearchTerm: (term: SearchTermType) => void;
   navbarTitle: string;
   setNavbarTitle: (navbarTitle: string) => void;
+  postFix: string;
+  setPostFix: (postFix: string) => void;
   breadcrumbItems: BreadcrumbItemType[];
   setBreadcrumbItems: (breadcrumbItems: BreadcrumbItemType[]) => void;
   isToShowDatePicker: boolean;
@@ -29,6 +31,7 @@ export const NavbarDetailsProvider = ({children}: { children: ReactNode }) => {
     type: "input",
   });
   const [navbarTitle, setNavbarTitle] = useState<string>("");
+  const [postFix, setPostFix] = useState<string>("");
   const [breadcrumbItems, setBreadcrumbItems] = useState<BreadcrumbItemType[]>([]);
   const [isToShowDatePicker, setIsToShowDatePicker] = useState<boolean>(false);
 
@@ -52,6 +55,8 @@ export const NavbarDetailsProvider = ({children}: { children: ReactNode }) => {
       setSearchTerm,
       navbarTitle,
       setNavbarTitle,
+      postFix,
+      setPostFix,
       breadcrumbItems,
       setBreadcrumbItems,
       isToShowDatePicker,
