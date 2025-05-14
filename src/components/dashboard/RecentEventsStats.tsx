@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import {recentEventsStats} from "@/lib/data";
 import {AlertTriangle, Check, Clock, Info} from "lucide-react";
@@ -66,10 +66,10 @@ const RecentEventsStats = () => {
               <div className="flex items-start space-x-3">
                 <div className={cn(
                   "p-2 rounded-full bg-opacity-20 mt-1",
-                  event.severity === EventSeverityEnum.HIGH ? 'bg-red-900/30' :
-                    event.severity === EventSeverityEnum.MEDIUM ? 'bg-yellow-900/30' :
-                      event.severity === EventSeverityEnum.LOW ? 'bg-blue-900/30' :
-                        'bg-purple-900/30'
+                  event.severity === EventSeverityEnum.HIGH ? "bg-red-300 dark:bg-red-900/30" :
+                    event.severity === EventSeverityEnum.MEDIUM ? "bg-yellow-300 dark:bg-yellow-900/30" :
+                      event.severity === EventSeverityEnum.LOW ? "bg-blue-300 dark:bg-blue-900/30" :
+                        "bg-purple-300 dark:bg-purple-900/30"
                 )}>
                   {getSeverityIcon(event.severity, event.status)}
                 </div>
