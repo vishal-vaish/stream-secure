@@ -41,7 +41,7 @@ export const convertToISOFormat = (dateRangeString:string) => {
   const [startDay, startMonth, startYear] = startDate.split('/').map(Number);
   const [startHour, startMinute] = startTime.split(':').map(Number);
 
-  const [endDate, endTime] = endPart.split(' ');
+  const [endDate, endTime] = endPart.split(' at ');
   const [endDay, endMonth, endYear] = endDate.split('/').map(Number);
   const [endHour, endMinute] = endTime.split(':').map(Number);
 

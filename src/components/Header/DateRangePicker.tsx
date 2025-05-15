@@ -192,7 +192,7 @@ const DateRangePicker = (props: Props) => {
                 const {startDate, endDate, startTime, endTime} = dateRange;
                 if (!startDate || !endDate) return null;
                 const start = `${formatDateWithoutTime(startDate)} at ${startTime}`
-                const end = `${formatDateWithoutTime(endDate)} ${endTime}`
+                const end = `${formatDateWithoutTime(endDate)} at ${endTime}`
                 props.setSelectedValue({value: `${start} - ${end}`, type: "date"});
                 setOpen(false);
               }}
