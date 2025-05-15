@@ -5,7 +5,7 @@ import {Separator} from "@/components/ui/separator";
 
 const Page = () => {
   return (
-    <div className="h-[34rem] flex items-center justify-center">
+    <div className="h-[calc(100vh-9rem)] flex items-center justify-center">
       <Card className="max-w-md mx-auto text-center">
         <CardHeader className="flex flex-col items-center gap-2">
           <AlertCircle className="text-gray-500" size={32} />
