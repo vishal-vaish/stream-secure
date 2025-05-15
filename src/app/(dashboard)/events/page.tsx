@@ -1,9 +1,19 @@
-import React from 'react'
+"use client";
+
+import React, {useEffect} from 'react'
 import {Card, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {AlertCircle} from "lucide-react";
 import {Separator} from "@/components/ui/separator";
+import {useNavbarDetails} from "@/hooks/useNavbarDetails";
 
 const Page = () => {
+  const {setBreadcrumbItems, setNavbarTitle} = useNavbarDetails();
+
+  useEffect(() => {
+    setNavbarTitle("All Events");
+    setBreadcrumbItems([]);
+  }, [setBreadcrumbItems, setNavbarTitle]);
+
   return (
     <div className="h-[calc(100vh-9rem)] flex items-center justify-center">
       <Card className="max-w-md mx-auto text-center">

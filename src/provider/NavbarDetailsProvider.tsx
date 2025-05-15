@@ -51,6 +51,7 @@ export const NavbarDetailsProvider = ({children}: { children: ReactNode }) => {
       value:"",
       type: "input",
     })
+    setPostFix("");
   }, [pathname]);
 
   return (
