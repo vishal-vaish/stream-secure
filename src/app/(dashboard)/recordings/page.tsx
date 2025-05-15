@@ -4,13 +4,15 @@ import React, {useEffect, useState} from 'react'
 import {getAllRecordingsData} from "@/lib/queries";
 import {toast} from "sonner";
 import {useNavbarDetails} from "@/hooks/useNavbarDetails";
-import {RecordingType} from "@/lib/types";
+import {FilterConfigType, RecordingType} from "@/lib/types";
 import RecordingCardContainer from "@/components/recording/RecordingCardContainer";
-import RecordingList from "@/components/recording/RecordingList";
 import RecordingsListSkeleton from "@/components/recording/RecordingsListSkeleton";
+import {applyDynamicFilter} from "@/components/applyDynamicFilter";
+import Link from "next/link";
+import RecordingListCard from "@/components/recording/RecordingListCard";
 
 const Page = () => {
-  const {setNavbarTitle, setBreadcrumbItems} = useNavbarDetails();
+  const {setNavbarTitle, setBreadcrumbItems, searchTerm} = useNavbarDetails();
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [recordingData, setRecordingData] = useState<RecordingType[]>([]);
 
@@ -40,6 +42,17 @@ const Page = () => {
     fetchData();
   }, []);
 
+  const recordingFilterConfig: FilterConfigType = {
+    textFields: ["channelName", "nvrName"],
+    dateField: "created",
+  };
+
+  const filteredRecordings = applyDynamicFilter(
+    recordingData,
+    searchTerm,
+    recordingFilterConfig
+  );
+
   return (
     <div>
       <RecordingCardContainer recordingData={recordingData}/>
@@ -53,7 +66,28 @@ const Page = () => {
             </p>
           </div>
         ) : (
-          <RecordingList recordingData={recordingData}/>
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">All Recordings Files</h2>
+
+            {filteredRecordings.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                {filteredRecordings.map((recording, index) => (
+                  <Link
+                    href={`/recordings/${recording.filename}`}
+                    key={index}
+                  >
+                    <RecordingListCard recording={recording}/>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-xl text-gray-700 dark:text-gray-200">
+                  No data is Available
+                </p>
+              </div>
+            )}
+          </div>
         )
       )}
     </div>

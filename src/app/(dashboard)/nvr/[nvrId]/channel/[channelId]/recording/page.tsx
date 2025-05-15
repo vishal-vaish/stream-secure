@@ -83,7 +83,7 @@ const Page = () => {
       {isLoading ? (
         <RecordingsListSkeleton/>
       ) : (
-        recordingData.length === 0 ? (
+        filteredStorages.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-xl text-gray-700 dark:text-gray-200">
               No data is Available

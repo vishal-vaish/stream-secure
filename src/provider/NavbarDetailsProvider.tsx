@@ -47,6 +47,10 @@ export const NavbarDetailsProvider = ({children}: { children: ReactNode }) => {
     const isDynamicMatch = validDatePickerDynamicPaths.some(pattern => pattern.test(pathname));
 
     setIsToShowDatePicker(isStaticMatch || isDynamicMatch);
+    setSearchTerm({
+      value:"",
+      type: "input",
+    })
   }, [pathname]);
 
   return (
