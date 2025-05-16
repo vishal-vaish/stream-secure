@@ -46,7 +46,7 @@ const Page = () => {
           Cookies.remove("auth_token");
         }
         Cookies.set("auth_token", "true", {expires: 1});
-        await waitFor(5);
+        await waitFor(2);
         router.push('/nvr');
       } else {
         toast.error("Invalid username or password. Please try again.");

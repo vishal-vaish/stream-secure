@@ -50,7 +50,8 @@ const LiveGridFooter = (props:Props) => {
           contentRenderer={
             <div className="flex items-center gap-2">
               <Image
-                src={"/skytel-logo.png"}
+                // src={"/skytel-logo.png"}
+                src={"/logo.png"}
                 alt="skytel-logo"
                 width={20}
                 height={20}
@@ -61,7 +62,8 @@ const LiveGridFooter = (props:Props) => {
                 rel="noopener noreferrer"
                 className="hover:text-blue-600 hover:underline"
               >
-                Skytel Teleservices
+                {/*Skytel Teleservices*/}
+                LogiScan
               </a>
             </div>
           }
