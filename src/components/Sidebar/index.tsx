@@ -5,16 +5,11 @@ import React, {useEffect, useState} from 'react'
 import {cn, waitFor} from "@/lib/utils";
 import Link from "next/link";
 import {usePathname, useRouter} from "next/navigation";
-import {dashboardItems, SideMenu} from "@/lib/constant";
+import {dashboardItems} from "@/lib/constant";
 import Logo from "@/components/Sidebar/Logo";
 import {Separator} from "@/components/ui/separator";
 import Cookies from "js-cookie";
 import {validUserData} from "@/lib/data";
-import TooltipWrapper from "@/components/TooltipWrapper";
-
-type TooltipConfigType = {
-  [key in SideMenu]?: string;
-};
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -56,17 +51,6 @@ const Sidebar = () => {
     router.push("/login");
   }
 
-  const tooltipRenderConfig: TooltipConfigType = {
-    [SideMenu.DASHBOARD]: "Centralized command center displaying real-time security metrics and device status overview.",
-    [SideMenu.REPORTS]: "Automated documentation of security insights with exportable data visualization capabilities.",
-    [SideMenu.EVENTS]: "Real-time incident detection and notification system with customizable alert parameters.",
-    [SideMenu.ANALYTIX_CORE]: "AI-powered visualization tools analyzing patterns and trends from surveillance footage.",
-  };
-
-  const getTooltipDescription = (menu: SideMenu): string => {
-    return tooltipRenderConfig[menu] || "";
-  }
-
   const isExternalLink = (url: string) => {
     return url.startsWith('http://') || url.startsWith('https://');
   };
@@ -94,33 +78,7 @@ const Sidebar = () => {
 
             return (
               <div key={item.href} className={cn("mx-2 rounded-md", hoverLinkClass(isActive(item.href!)))}>
-                {item.isDisabled ? (
-                  <TooltipWrapper
-                    contentRenderer={
-                      <div className="flex flex-col gap-2">
-                        <p className="border-b pb-2">This Feature is currently disabled</p>
-                        <p>{getTooltipDescription(item.label)}</p>
-                      </div>
-                    }
-                    side={"right"}
-                  >
-                    <div
-                      className={cn(
-                        "flex items-center px-4 py-2 text-sm font-medium rounded-md dark:text-gray-500 text-gray-400",
-                        isActive(item.href!) ? "" : "hover:bg-gray-100 dark:hover:bg-gray-900"
-                      )}
-                    >
-                      <Icon className="w-5 h-5 mr-3"/>
-                      {item.label}
-                      {item.badge && (
-                        <span
-                          className="flex items-center justify-center w-5 h-5 ml-auto text-xs text-white bg-red-500 rounded-full">
-                       {item.badge}
-                      </span>
-                      )}
-                    </div>
-                  </TooltipWrapper>
-                ) : isExternalLink(item.href!) ? (
+                {isExternalLink(item.href!) ? (
                   <a
                     href={item.href}
                     target="_blank"
