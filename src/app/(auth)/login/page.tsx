@@ -47,7 +47,7 @@ const Page = () => {
         }
         Cookies.set("auth_token", "true", {expires: 1});
         await waitFor(2);
-        router.push('/nvr');
+        router.push('/');
       } else {
         toast.error("Invalid username or password. Please try again.");
       }
@@ -63,7 +63,7 @@ const Page = () => {
       className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <Card className="max-w-md w-full p-4">
         <CardHeader className="text-center">
-          <CardTitle className="text-white text-2xl flex flex-col justify-center items-center">
+          <CardTitle className="text-2xl flex flex-col justify-center items-center">
             <Image src={logo} alt="logo" width={40} height={40}/>
             LOGISCAN
           </CardTitle>
@@ -134,7 +134,7 @@ const Page = () => {
               />
               <Button
                 type="submit"
-                className="w-full dark:text-white text-gray-800"
+                className="w-full text-white"
                 disabled={isPending}
               >
                 {!isPending ? "Login" : <Loader2 className="animate-spin"/>}
