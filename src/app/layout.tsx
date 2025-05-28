@@ -27,7 +27,6 @@ export default function RootLayout({
       <link rel="icon" href="/logo.png" sizes="any" />
     </head>
     <body className="font-sans">
-
     <NextTopLoader color="#2564eb" showSpinner={false}/>
      <AppProvider>
         <main >

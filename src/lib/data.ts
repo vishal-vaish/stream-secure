@@ -104,7 +104,7 @@ export const mockedChannelsData = [
   },
 ];
 
-export const validUserData = [
+export const validUserData =
   {
     id: "001",
     username: "admin",
@@ -114,7 +114,6 @@ export const validUserData = [
     status: "active",
     lastActive: new Date(Date.now() - 1000 * 60 * 15)
   }
-]
 
 export const storageMockedData: StorageType[] = [{
   id: "sto-001",

@@ -1,20 +1,18 @@
 "use client";
 
-import {LogOutIcon, Menu, X} from 'lucide-react';
+import { Menu, X} from 'lucide-react';
 import React, {useEffect, useState} from 'react'
-import {cn, waitFor} from "@/lib/utils";
+import {cn} from "@/lib/utils";
 import Link from "next/link";
-import {usePathname, useRouter} from "next/navigation";
+import {usePathname} from "next/navigation";
 import {dashboardItems} from "@/lib/constant";
 import Logo from "@/components/Sidebar/Logo";
 import {Separator} from "@/components/ui/separator";
-import Cookies from "js-cookie";
-import {validUserData} from "@/lib/data";
+import UserDetails from "@/components/Sidebar/UserDetails";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,12 +42,6 @@ const Sidebar = () => {
 
   const hoverLinkClass = (active: boolean) =>
     `${active ? 'text-blue-600 bg-blue-50 dark:bg-gray-700 dark:text-blue-400' : 'text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-200'}`
-
-  const removeToken = async () => {
-    Cookies.remove("auth_token");
-    await waitFor(1);
-    router.push("/login");
-  }
 
   const isExternalLink = (url: string) => {
     return url.startsWith('http://') || url.startsWith('https://');
@@ -124,26 +116,7 @@ const Sidebar = () => {
             );
           })}
         </div>
-
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-          <div className="flex items-center justify-between">
-            <div className="flex">
-              <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white">
-                A
-              </div>
-              <div className="ml-3">
-                <p className="text-sm font-medium text-gray-700 dark:text-gray-100">{validUserData[0].username}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-300">{validUserData[0].email}</p>
-              </div>
-            </div>
-            <div
-              className="cursor-pointer"
-              onClick={removeToken}
-            >
-              <LogOutIcon/>
-            </div>
-          </div>
-        </div>
+        <UserDetails/>
       </aside>
 
       {isOpen && (

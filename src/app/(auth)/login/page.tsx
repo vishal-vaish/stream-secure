@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useState} from 'react'
+import React, {useCallback, useState} from 'react'
 import {Eye, EyeOff, Loader2} from "lucide-react";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {useForm} from "react-hook-form";
@@ -16,18 +16,14 @@ import {
   FormMessage
 } from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
-import {useRouter} from "next/navigation";
 import {Button} from "@/components/ui/button";
 import Image from "next/image";
-import {waitFor} from "@/lib/utils";
 import {toast} from "sonner"
-import Cookies from "js-cookie";
-import {validUserData} from "@/lib/data";
+import {useMutation} from "@tanstack/react-query";
+import {LoginUser} from "@/actions/auth";
 
 const Page = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [isPending, setIsPending] = useState(false);
-  const router = useRouter();
   const form = useForm<loginSchemaType>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -36,27 +32,23 @@ const Page = () => {
     }
   });
 
-  const onSubmit = async (data: loginSchemaType) => {
-    setIsPending(true);
-
-    try {
-      if (data.username === validUserData[0].username && data.password === validUserData[0].password) {
-        const token_exist = Cookies.get("auth_token")
-        if (token_exist) {
-          Cookies.remove("auth_token");
-        }
-        Cookies.set("auth_token", "true", {expires: 1});
-        await waitFor(2);
-        router.push('/');
-      } else {
-        toast.error("Invalid username or password. Please try again.");
-      }
-    } catch (err) {
-      toast.error("An unexpected error occurred. Please try again.");
-    } finally {
-      setIsPending(false);
+  const {mutate, isPending} = useMutation({
+    mutationFn: LoginUser,
+    onSuccess: () => {
+      toast.success("Login successful", {id: "login-user"});
+    },
+    onError: () => {
+      toast.error("Login failed", {id: "login-user"});
     }
-  };
+  })
+
+  const onSubmit = useCallback(
+    (values: loginSchemaType) => {
+      toast.loading("Logging user...", {id: "login-user"});
+      mutate(values);
+    },
+    [mutate]
+  );
 
   return (
     <div
@@ -123,8 +115,8 @@ const Page = () => {
                             <Eye className="h-4 w-4 text-muted-foreground"/>
                           )}
                           <span className="sr-only">
-                          {showPassword ? "Hide password" : "Show password"}
-                        </span>
+                            {showPassword ? "Hide password" : "Show password"}
+                          </span>
                         </Button>
                       </div>
                     </FormControl>
